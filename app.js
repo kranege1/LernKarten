@@ -5,7 +5,7 @@
   const $$ = s => document.querySelectorAll(s);
 
   const state = {
-    data: { folders: [], topics: [], cards: [], settings: { tts: { lang: 'de-DE', voiceURI: '', rate: 1 }, ai: { provider: 'openai', keyOpenai: '', keyGrok: '', endpoint: '', apiKey: '' }, drive: { clientId: '' } } },
+    data: { folders: [], topics: [], cards: [], settings: { tts: { lang: 'de-DE', voiceURI: '', rate: 0.7 }, ai: { provider: 'openai', keyOpenai: '', keyGrok: '', endpoint: '', apiKey: '' }, drive: { clientId: '' } } },
     session: { active: false, topicId: null, mode: 'beschreibung', answered: 0, correct: 0, current: null, multipleChoiceCorrect: null, maxCards: null, selectedCardCount: null },
     ui: { selectedFolderId: null, selectedTopicId: null, selectedStatsId: null, selectedStatsType: null, collapsedFolders: {} },
     voices: []
@@ -252,7 +252,7 @@
       renderCardsTable();
     }
     // Initialisiere UI-Werte für Settings
-    $('#tts-rate').value = state.data.settings.tts.rate || 1;
+    $('#tts-rate').value = state.data.settings.tts.rate || 0.7;
   }
 
   function baseStats(){
@@ -334,7 +334,7 @@
       if(!text) return;
       
       const voiceURI = state.data.settings.tts.voiceURI || 'Deutsch Female';
-      const rate = (state.data.settings.tts.rate || 1) * 100; // ResponsiveVoice nutzt 0-100
+      const rate = (state.data.settings.tts.rate || 0.7) * 100; // ResponsiveVoice nutzt 0-100
       
       // Versuche ResponsiveVoice zu nutzen (unterstützt SSML)
       if(typeof responsiveVoice !== 'undefined') {
@@ -351,7 +351,7 @@
       if(!('speechSynthesis' in window)) return;
       const u = new SpeechSynthesisUtterance(text);
       u.lang = state.data.settings.tts.lang || 'de-DE';
-      u.rate = state.data.settings.tts.rate || 1;
+      u.rate = state.data.settings.tts.rate || 0.7;
       window.speechSynthesis.cancel();
       window.speechSynthesis.speak(u);
     },
