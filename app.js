@@ -366,8 +366,14 @@
       // clamp slider value to a safe range for ResponsiveVoice
       const rate = clamp(state.data.settings.tts.rate || 0.7, 0.5, 1.5);
       
+      // Check if ResponsiveVoice is available and working
+      const useRV = (typeof responsiveVoice !== 'undefined' && 
+                     responsiveVoice.voiceSupport && 
+                     responsiveVoice.voiceSupport() &&
+                     window.responsiveVoiceReady);
+      
       // Versuche ResponsiveVoice zu nutzen (unterstützt SSML)
-      if(typeof responsiveVoice !== 'undefined' && responsiveVoice.voiceSupport && responsiveVoice.voiceSupport()) {
+      if(useRV) {
         try {
           responsiveVoice.cancel();
           // Nutze ausgewählte Stimme nur wenn vorhanden
@@ -520,7 +526,10 @@
     },
     playSegments(segments){
       const voice = state.data.settings.tts.voiceURI || 'Deutsch Female';
-      const useRV = (typeof responsiveVoice !== 'undefined' && responsiveVoice.voiceSupport && responsiveVoice.voiceSupport());
+      const useRV = (typeof responsiveVoice !== 'undefined' && 
+                     responsiveVoice.voiceSupport && 
+                     responsiveVoice.voiceSupport() &&
+                     window.responsiveVoiceReady);
       let idx = 0;
       const next = () => {
         if(idx >= segments.length) return;

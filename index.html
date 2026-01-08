@@ -9,8 +9,23 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js" defer></script>
 		<script src="https://apis.google.com/js/api.js"></script>
-		<!-- ResponsiveVoice für natürliche Stimmen auf allen Geräten -->
-		<script src="https://code.responsivevoice.org/responsivevoice.js"></script>
+		<!-- ResponsiveVoice für natürliche Stimmen (mit Web Speech API Fallback) -->
+		<script>
+			// Graceful fallback: Try ResponsiveVoice, but fallback to Web Speech API
+			window.responsiveVoiceReady = false;
+			const rvScript = document.createElement('script');
+			rvScript.src = 'https://code.responsivevoice.org/responsivevoice.js';
+			rvScript.async = true;
+			rvScript.onerror = () => {
+				console.warn('ResponsiveVoice CDN failed, using Web Speech API fallback');
+				window.responsiveVoiceReady = false;
+			};
+			rvScript.onload = () => {
+				window.responsiveVoiceReady = true;
+				console.log('ResponsiveVoice loaded');
+			};
+			document.head.appendChild(rvScript);
+		</script>
 	</head>
 	<body>
 		<header class="app-header">
