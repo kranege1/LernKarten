@@ -341,7 +341,13 @@ class LernKartenApp {
 
                 try {
                     const result = await Tesseract.recognize(file, 'deu', {
-                        logger: m => console.log(m)
+                        logger: m => {
+                            // Update button with progress if available
+                            if (m.status === 'recognizing text' && m.progress) {
+                                const percent = Math.round(m.progress * 100);
+                                btn.innerHTML = `⏳ OCR: ${percent}%`;
+                            }
+                        }
                     });
                     
                     const extractedText = result.data.text.trim();
@@ -713,12 +719,36 @@ class LernKartenApp {
         const startIndex = lines[0].toLowerCase().includes('frage') ? 1 : 0;
 
         for (let i = startIndex; i < lines.length; i++) {
-            const parts = lines[i].split(',').map(p => p.trim().replace(/^"|"$/g, ''));
-            if (parts.length >= 2) {
+            const line = lines[i].trim();
+            if (!line) continue;
+
+            // Simple CSV parsing - handles basic quoted fields
+            const parts = [];
+            let current = '';
+            let inQuotes = false;
+            
+            for (let j = 0; j < line.length; j++) {
+                const char = line[j];
+                
+                if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    parts.push(current.trim());
+                    current = '';
+                } else {
+                    current += char;
+                }
+            }
+            parts.push(current.trim());
+
+            // Remove quotes from parts
+            const cleanParts = parts.map(p => p.replace(/^"|"$/g, ''));
+
+            if (cleanParts.length >= 2) {
                 cards.push({
-                    question: { text: parts[0], image: null },
-                    answer: { text: parts[1], image: null },
-                    tags: parts[2] ? parts[2].split(';').map(t => t.trim()) : [],
+                    question: { text: cleanParts[0], image: null },
+                    answer: { text: cleanParts[1], image: null },
+                    tags: cleanParts[2] ? cleanParts[2].split(';').map(t => t.trim()).filter(t => t) : [],
                     stats: { correct: 0, wrong: 0, hard: 0 },
                     createdAt: new Date().toISOString(),
                     updatedAt: new Date().toISOString()
@@ -774,7 +804,7 @@ class LernKartenApp {
 
     // Utilities
     generateId() {
-        return Date.now().toString(36) + Math.random().toString(36).substr(2);
+        return Date.now().toString(36) + Math.random().toString(36).substring(2);
     }
 }
 
