@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LernKarten - Modernes Lernkartensystem</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎓 LernKarten</h1>
+            <p class="subtitle">Dein modernes, lokales Lernkartensystem</p>
+        </header>
+
+        <nav class="main-nav">
+            <button class="nav-btn active" data-view="cards">Karten</button>
+            <button class="nav-btn" data-view="learn">Lernen</button>
+            <button class="nav-btn" data-view="stats">Statistik</button>
+            <button class="nav-btn" data-view="settings">Einstellungen</button>
+        </nav>
+
+        <!-- Cards View -->
+        <div id="cards-view" class="view active">
+            <div class="view-header">
+                <h2>Meine Lernkarten</h2>
+                <div class="header-actions">
+                    <button id="add-card-btn" class="btn btn-primary">+ Neue Karte</button>
+                    <button id="import-btn" class="btn btn-secondary">Import</button>
+                    <button id="export-btn" class="btn btn-secondary">Export</button>
+                </div>
+            </div>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Karten durchsuchen...">
+            </div>
+            <div id="cards-list" class="cards-list">
+                <div class="empty-state">
+                    <p>Noch keine Karten vorhanden. Erstelle deine erste Lernkarte!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Learn View -->
+        <div id="learn-view" class="view">
+            <div class="view-header">
+                <h2>Lernmodus</h2>
+                <button id="back-to-cards" class="btn btn-secondary">Zurück zu Karten</button>
+            </div>
+            <div id="learn-container">
+                <div class="learn-mode-selection">
+                    <h3>Wähle einen Lernmodus:</h3>
+                    <div class="mode-buttons">
+                        <button class="mode-btn" data-mode="text">
+                            <span class="icon">📝</span>
+                            <span>Text</span>
+                        </button>
+                        <button class="mode-btn" data-mode="voice">
+                            <span class="icon">🔊</span>
+                            <span>Sprache</span>
+                        </button>
+                        <button class="mode-btn" data-mode="image">
+                            <span class="icon">🖼️</span>
+                            <span>Bild</span>
+                        </button>
+                    </div>
+                </div>
+                <div id="learn-card-area" class="learn-card-area" style="display: none;">
+                    <div class="learn-progress">
+                        <span id="current-card-num">0</span> / <span id="total-cards-num">0</span>
+                    </div>
+                    <div class="learn-card">
+                        <div class="card-question" id="learn-question">
+                            <p id="question-text"></p>
+                            <img id="question-image" style="display: none;">
+                        </div>
+                        <div class="card-answer" id="learn-answer" style="display: none;">
+                            <p id="answer-text"></p>
+                            <img id="answer-image" style="display: none;">
+                        </div>
+                    </div>
+                    <div class="learn-controls">
+                        <button id="show-answer-btn" class="btn btn-primary">Antwort zeigen</button>
+                        <div id="answer-buttons" style="display: none;">
+                            <button class="btn btn-danger" id="wrong-btn">Falsch</button>
+                            <button class="btn btn-warning" id="hard-btn">Schwer</button>
+                            <button class="btn btn-success" id="correct-btn">Richtig</button>
+                        </div>
+                    </div>
+                    <div class="voice-controls" id="voice-controls" style="display: none;">
+                        <button id="speak-question-btn" class="btn btn-secondary">🔊 Frage vorlesen</button>
+                        <button id="speak-answer-btn" class="btn btn-secondary" style="display: none;">🔊 Antwort vorlesen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats View -->
+        <div id="stats-view" class="view">
+            <div class="view-header">
+                <h2>Statistik</h2>
+            </div>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h3>Gesamt Karten</h3>
+                    <p class="stat-value" id="total-cards-stat">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Gelernte Karten</h3>
+                    <p class="stat-value" id="learned-cards-stat">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Lernsitzungen</h3>
+                    <p class="stat-value" id="sessions-stat">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Erfolgsrate</h3>
+                    <p class="stat-value" id="success-rate-stat">0%</p>
+                </div>
+            </div>
+            <div class="recent-activity">
+                <h3>Letzte Aktivitäten</h3>
+                <div id="activity-list" class="activity-list">
+                    <p class="empty-state">Noch keine Aktivitäten vorhanden.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings View -->
+        <div id="settings-view" class="view">
+            <div class="view-header">
+                <h2>Einstellungen</h2>
+            </div>
+            <div class="settings-container">
+                <div class="setting-item">
+                    <label for="ai-enabled">KI-Umschreibung aktivieren</label>
+                    <input type="checkbox" id="ai-enabled">
+                </div>
+                <div class="setting-item" id="ai-settings" style="display: none;">
+                    <label for="ai-api-key">OpenAI API Key (optional)</label>
+                    <input type="password" id="ai-api-key" placeholder="sk-...">
+                    <small>Wird lokal gespeichert, nie übertragen außer an OpenAI</small>
+                </div>
+                <div class="setting-item">
+                    <label for="ocr-enabled">OCR aktivieren</label>
+                    <input type="checkbox" id="ocr-enabled" checked>
+                </div>
+                <div class="setting-item">
+                    <label for="voice-enabled">Sprachausgabe aktivieren</label>
+                    <input type="checkbox" id="voice-enabled" checked>
+                </div>
+                <div class="setting-item">
+                    <button id="clear-data-btn" class="btn btn-danger">Alle Daten löschen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Add/Edit Card -->
+    <div id="card-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Neue Karte erstellen</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="card-question-input">Frage</label>
+                    <textarea id="card-question-input" rows="3" placeholder="Gib deine Frage ein..."></textarea>
+                    <div class="input-actions">
+                        <button id="question-image-btn" class="btn btn-small">🖼️ Bild hochladen</button>
+                        <button id="question-ocr-btn" class="btn btn-small">📷 OCR aus Bild</button>
+                        <button id="question-ai-btn" class="btn btn-small" style="display: none;">✨ KI umschreiben</button>
+                    </div>
+                    <input type="file" id="question-image-input" accept="image/*" style="display: none;">
+                    <input type="file" id="question-ocr-input" accept="image/*" style="display: none;">
+                    <div id="question-image-preview" class="image-preview"></div>
+                </div>
+                <div class="form-group">
+                    <label for="card-answer-input">Antwort</label>
+                    <textarea id="card-answer-input" rows="3" placeholder="Gib deine Antwort ein..."></textarea>
+                    <div class="input-actions">
+                        <button id="answer-image-btn" class="btn btn-small">🖼️ Bild hochladen</button>
+                        <button id="answer-ocr-btn" class="btn btn-small">📷 OCR aus Bild</button>
+                        <button id="answer-ai-btn" class="btn btn-small" style="display: none;">✨ KI umschreiben</button>
+                    </div>
+                    <input type="file" id="answer-image-input" accept="image/*" style="display: none;">
+                    <input type="file" id="answer-ocr-input" accept="image/*" style="display: none;">
+                    <div id="answer-image-preview" class="image-preview"></div>
+                </div>
+                <div class="form-group">
+                    <label for="card-tags-input">Tags (kommagetrennt)</label>
+                    <input type="text" id="card-tags-input" placeholder="z.B. Mathe, Algebra, Gleichungen">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="cancel-card-btn" class="btn btn-secondary">Abbrechen</button>
+                <button id="save-card-btn" class="btn btn-primary">Speichern</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Import Modal -->
+    <div id="import-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Karten importieren</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="import-options">
+                    <button id="import-json-btn" class="btn btn-primary">JSON Datei wählen</button>
+                    <button id="import-csv-btn" class="btn btn-primary">CSV Datei wählen</button>
+                    <input type="file" id="import-file-input" accept=".json,.csv" style="display: none;">
+                </div>
+                <div id="import-preview" class="import-preview"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
