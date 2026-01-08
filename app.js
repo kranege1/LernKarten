@@ -2920,8 +2920,31 @@
 
   // --- Settings ---
   function bindSettings(){
+    const sampleField = $('#tts-sample');
+    const insertBtn = $('#tts-insert-sample');
+    const defaultSSML = `<speak>
+  <emphasis level="strong">Willkommen</emphasis> zur Stimmprobe.
+  <break time="400ms"/>
+  Wir testen <prosody rate="-10%">langsamere</prosody> und 
+  <prosody rate="+10%">schnellere</prosody> Passagen.
+  <break time="300ms"/>
+  Außerdem eine <prosody pitch="+10%">höhere</prosody> und
+  <prosody pitch="-10%">tiefere</prosody> Tonhöhe.
+  <break time="400ms"/>
+  Das war die <emphasis level="moderate">SSML</emphasis> Demonstration.
+</speak>`;
+
+    if(sampleField && !sampleField.value){
+      sampleField.value = defaultSSML;
+    }
+    if(insertBtn){
+      insertBtn.addEventListener('click', ()=>{
+        sampleField.value = defaultSSML;
+        sampleField.focus();
+      });
+    }
     $('#tts-test').addEventListener('click', () => {
-      const text = 'Dies ist ein Stimmtest.';
+      const text = (sampleField?.value || '').trim() || 'Dies ist ein Stimmtest.';
       TTS.speakDirect(text);
     });
     $('#tts-lang').addEventListener('change', (e)=>{ state.data.settings.tts.lang = e.target.value; Storage.save(); refreshVoiceSelectors(); });
