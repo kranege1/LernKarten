@@ -253,6 +253,9 @@
     }
     // Initialisiere UI-Werte für Settings
     $('#tts-rate').value = state.data.settings.tts.rate || 0.7;
+
+    // Version im Footer anzeigen
+    showDeployedVersion();
   }
 
   function baseStats(){
@@ -261,6 +264,27 @@
 
   function getTopicName(id){
     return (state.data.topics.find(t=>t.id===id)||{name:'Unbekannt'}).name;
+  }
+
+  // Zeigt die aktuell deployte Commit-Version (gh-pages oder main) im Footer
+  async function showDeployedVersion(){
+    try{
+      const el = document.getElementById('app-version');
+      if(!el) return;
+      const onPages = location.hostname.endsWith('github.io');
+      const branch = onPages ? 'gh-pages' : 'main';
+      const res = await fetch(`https://api.github.com/repos/kranege1/LernKarten/branches/${branch}`);
+      if(!res.ok) return;
+      const data = await res.json();
+      const sha = (data.commit?.sha || '').slice(0,7);
+      const dateISO = data.commit?.commit?.committer?.date;
+      const dateStr = dateISO ? new Date(dateISO).toLocaleString() : '';
+      if(sha){
+        el.textContent = `· Version ${sha} (${dateStr})`;
+      }
+    } catch(e){
+      // still fine without version
+    }
   }
 
   // --- Scheduler (Leitner) ---
