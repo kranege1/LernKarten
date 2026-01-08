@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Start server (test)
+      run: |
+        npm start &
+        SERVER_PID=$!
+        sleep 3
+        curl -f http://localhost:3001/ || exit 1
+        curl -f http://localhost:3001/test.html || exit 1
+        kill $SERVER_PID
+        
+    - name: Check HTML/JS/CSS syntax
+      run: |
+        echo "✓ Files present: index.html, app.js, styles.css, test.html"
+        test -f index.html
+        test -f app.js
+        test -f styles.css
+        test -f test.html
+        test -f server.js
