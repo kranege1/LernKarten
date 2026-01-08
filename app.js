@@ -1911,6 +1911,7 @@
     const topic = state.data.topics.find(t => t.id === card.topicId);
     const answerMode = state.session.answerMode || topic?.answerMode || 'type';
     
+    const answerInputContainer = $('#answer-input-container');
     const answerInput = $('#answer-input');
     const checkBtn = $('#check-answer');
     const markCorrect = $('#mark-correct');
@@ -1919,7 +1920,7 @@
     const mcButtons = $$('.choice-btn');
 
     // Default: hide/disable everything, then enable what the mode needs
-    answerInput.parentElement.hidden = true;
+    answerInputContainer.hidden = true;
     checkBtn.disabled = true;
     multipleChoice.hidden = true;
     mcButtons.forEach(btn => btn.disabled = true);
@@ -1927,7 +1928,7 @@
     markWrong.hidden = true;
 
     if(answerMode === 'type'){
-      answerInput.parentElement.hidden = false;
+      answerInputContainer.hidden = false;
       checkBtn.disabled = false;
       answerInput.focus();
     } else if(answerMode === 'judge'){
