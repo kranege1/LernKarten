@@ -303,25 +303,25 @@
     }
   };
 
-  // --- TTS (Edge-TTS) ---
+  // --- TTS (ResponsiveVoice - funktioniert auf allen Geräten inkl. iPad) ---
   const TTS = {
-    voices: {},
-    currentAudio: null,
+    voices: [],
     
-    async initVoices(){
-      try {
-        const res = await fetch('http://localhost:3001/api/tts-voices');
-        this.voices = await res.json();
-        refreshVoiceSelectors();
-      } catch (err) {
-        console.warn('Edge-TTS nicht verfügbar, verwende Web Speech API Fallback');
-        state.voices = window.speechSynthesis?.getVoices() || [];
-        if(window.speechSynthesis) window.speechSynthesis.onvoiceschanged = () => {
-          state.voices = window.speechSynthesis.getVoices();
-          refreshVoiceSelectors();
-        };
-        refreshVoiceSelectors();
+    initVoices(){
+      // ResponsiveVoice stellt verfügbare Stimmen bereit
+      if(typeof responsiveVoice !== 'undefined' && responsiveVoice.getVoices) {
+        const rvVoices = responsiveVoice.getVoices();
+        // Filter für Deutsche Stimmen
+        this.voices = rvVoices.filter(v => v.lang && v.lang.startsWith('de'));
+        if(this.voices.length === 0) {
+          // Fallback: alle Stimmen wenn keine deutschen
+          this.voices = rvVoices;
+        }
+      } else {
+        // Fallback zur Web Speech API
+        this.voices = window.speechSynthesis?.getVoices() || [];
       }
+      refreshVoiceSelectors();
     },
     
     speak(text){
@@ -330,40 +330,23 @@
       this.speakDirect(text);
     },
     
-    async speakDirect(text){
+    speakDirect(text){
       if(!text) return;
       
-      try {
-        // Stop previous audio
-        if(this.currentAudio) {
-          this.currentAudio.pause();
-          this.currentAudio = null;
-        }
-        
-        const voice = state.data.settings.tts.voiceURI || 'de-DE-ConradNeural';
-        const rate = state.data.settings.tts.rate || 1;
-        
-        const res = await fetch('http://localhost:3001/api/tts', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ text, voice, rate })
-        });
-        
-        if(!res.ok) throw new Error('TTS error: ' + res.status);
-        
-        const audioBlob = await res.blob();
-        const audioUrl = URL.createObjectURL(audioBlob);
-        
-        this.currentAudio = new Audio(audioUrl);
-        this.currentAudio.play().catch(e => console.warn('Audio playback failed:', e));
-      } catch (err) {
-        console.warn('Edge-TTS Error, versuche Fallback:', err);
+      const voiceURI = state.data.settings.tts.voiceURI || 'Deutsch Female';
+      const rate = (state.data.settings.tts.rate || 1) * 100; // ResponsiveVoice nutzt 0-100
+      
+      // Versuche ResponsiveVoice zu nutzen
+      if(typeof responsiveVoice !== 'undefined') {
+        responsiveVoice.cancel();
+        responsiveVoice.speak(text, voiceURI, { rate: rate });
+      } else {
+        // Fallback zur Web Speech API
         this.speakDirectFallback(text);
       }
     },
     
     speakDirectFallback(text){
-      // Fallback zur Web Speech API
       if(!('speechSynthesis' in window)) return;
       const u = new SpeechSynthesisUtterance(text);
       u.lang = state.data.settings.tts.lang || 'de-DE';
@@ -377,23 +360,37 @@
     const langSel = $('#tts-lang');
     const voiceSel = $('#tts-voice');
     
-    // Use Edge-TTS voices if available
-    if(Object.keys(TTS.voices).length > 0) {
-      langSel.innerHTML = Object.keys(TTS.voices).map(l=>`<option value="${l}">${l}</option>`).join('');
+    // Wenn ResponsiveVoice verfügbar ist
+    if(typeof responsiveVoice !== 'undefined' && responsiveVoice.getVoices) {
+      const rvVoices = responsiveVoice.getVoices();
+      // Extrahiere eindeutige Sprachen
+      const langs = [...new Set(rvVoices.map(v => {
+        const lang = v.lang || 'de';
+        return lang.split('-')[0]; // z.B. "de" aus "de-DE"
+      }))].sort();
+      
+      langSel.innerHTML = langs.map(l=>`<option value="${l}">${l}</option>`).join('');
       langSel.value = state.data.settings.tts.lang || 'de';
       
-      const voices = TTS.voices[langSel.value] || [];
-      voiceSel.innerHTML = `<option value="">Standard</option>` + voices.map(v=>`<option value="${v.value}">${v.name}</option>`).join('');
+      // Filter Stimmen nach Sprache
+      const filteredVoices = rvVoices.filter(v => {
+        const lang = v.lang || 'de';
+        return lang.startsWith(langSel.value);
+      });
+      
+      voiceSel.innerHTML = `<option value="">Standard</option>` + 
+        filteredVoices.map(v=>`<option value="${v.name}">${v.name}</option>`).join('');
       voiceSel.value = state.data.settings.tts.voiceURI || '';
     } else {
-      // Fallback to Web Speech API
+      // Fallback zur Web Speech API
       const voices = state.voices || [];
       const langs = [...new Set(voices.map(v=>v.lang))].sort();
       langSel.innerHTML = langs.map(l=>`<option value="${l}">${l}</option>`).join('');
       langSel.value = state.data.settings.tts.lang || 'de-DE';
       
       const filteredVoices = voices.filter(v=>v.lang===langSel.value);
-      voiceSel.innerHTML = `<option value="">Standard</option>` + filteredVoices.map(v=>`<option value="${v.voiceURI}">${v.name}</option>`).join('');
+      voiceSel.innerHTML = `<option value="">Standard</option>` + 
+        filteredVoices.map(v=>`<option value="${v.voiceURI}">${v.name}</option>`).join('');
       voiceSel.value = state.data.settings.tts.voiceURI || '';
     }
   }
