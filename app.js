@@ -356,6 +356,11 @@
     
     speakDirect(text){
       if(!text) return;
+      // If SSML markup detected, use SSML playback path
+      if(this.isSSML(text)){
+        this.speakSSML(text);
+        return;
+      }
       
       const voiceURI = state.data.settings.tts.voiceURI || 'Deutsch Female';
       // clamp slider value to a safe range for ResponsiveVoice
@@ -421,6 +426,132 @@
     speakAnswer(text){
       const ssml = `<speak><prosody pitch="+10%">${this.addPauses(text, 300)}</prosody></speak>`;
       this.speakDirect(ssml);
+    },
+
+    // --- SSML Support (client-side subset) ---
+    isSSML(text){
+      return /<\s*speak[\s>]/i.test(text) || /<\/(emphasis|prosody)\s*>/i.test(text) || /<\s*break[\s/>]/i.test(text);
+    },
+    speakSSML(ssml){
+      let segments;
+      try{
+        segments = this.parseSSMLToSegments(ssml);
+      }catch(e){
+        // Fallback: strip tags and speak as plain text
+        const plain = ssml.replace(/<[^>]+>/g,' ');
+        this.speakDirect(plain);
+        return;
+      }
+      this.cancel();
+      this.playSegments(segments);
+    },
+    parseSSMLToSegments(ssml){
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(ssml, 'text/xml');
+      if(doc.getElementsByTagName('parsererror').length){
+        throw new Error('SSML parse error');
+      }
+      const baseRate = clamp(state.data.settings.tts.rate || 0.7, 0.5, 1.5);
+      const basePitch = 1.0; // ResponsiveVoice/WebSpeech default
+      const segments = [];
+
+      const walk = (node, ctx)=>{
+        if(node.nodeType === 3){
+          const text = node.nodeValue || '';
+          if(text.trim()){
+            segments.push({ type:'text', text, rate: ctx.rate, pitch: ctx.pitch });
+          } else if(text.match(/\s+/)){
+            // preserve some spacing
+            segments.push({ type:'text', text:' ', rate: ctx.rate, pitch: ctx.pitch });
+          }
+          return;
+        }
+        if(node.nodeType !== 1) return;
+        const name = node.nodeName.toLowerCase();
+        if(name === 'speak'){
+          Array.from(node.childNodes).forEach(ch => walk(ch, ctx));
+          return;
+        }
+        if(name === 'break'){
+          const t = node.getAttribute('time') || '';
+          let ms = 300;
+          const m = /([0-9]+)\s*ms/i.exec(t);
+          if(m) ms = parseInt(m[1],10);
+          segments.push({ type:'pause', ms });
+          return;
+        }
+        if(name === 'emphasis'){
+          const level = (node.getAttribute('level')||'moderate').toLowerCase();
+          const boost = level==='strong' ? 0.2 : level==='reduced' ? -0.05 : 0.1;
+          const newCtx = { rate: clamp(ctx.rate*0.95, 0.5, 1.5), pitch: clamp(ctx.pitch + boost, 0.5, 2.0) };
+          Array.from(node.childNodes).forEach(ch => walk(ch, newCtx));
+          return;
+        }
+        if(name === 'prosody'){
+          let r = ctx.rate;
+          let p = ctx.pitch;
+          const rateAttr = node.getAttribute('rate');
+          const pitchAttr = node.getAttribute('pitch');
+          if(rateAttr){
+            const pct = /([-+]?\d+)%/.exec(rateAttr);
+            if(pct){ r = clamp(ctx.rate * (1 + parseInt(pct[1],10)/100), 0.5, 1.5); }
+            else {
+              const num = parseFloat(rateAttr);
+              if(!isNaN(num)) r = clamp(num, 0.5, 1.5);
+            }
+          }
+          if(pitchAttr){
+            const pct = /([-+]?\d+)%/.exec(pitchAttr);
+            if(pct){ p = clamp(ctx.pitch * (1 + parseInt(pct[1],10)/100), 0.5, 2.0); }
+            else {
+              const num = parseFloat(pitchAttr);
+              if(!isNaN(num)) p = clamp(num, 0.5, 2.0);
+            }
+          }
+          const newCtx = { rate: r, pitch: p };
+          Array.from(node.childNodes).forEach(ch => walk(ch, newCtx));
+          return;
+        }
+        // default: traverse children
+        Array.from(node.childNodes).forEach(ch => walk(ch, ctx));
+      };
+      walk(doc.documentElement, { rate: baseRate, pitch: basePitch });
+      return segments;
+    },
+    playSegments(segments){
+      const voice = state.data.settings.tts.voiceURI || 'Deutsch Female';
+      const useRV = (typeof responsiveVoice !== 'undefined' && responsiveVoice.voiceSupport && responsiveVoice.voiceSupport());
+      let idx = 0;
+      const next = () => {
+        if(idx >= segments.length) return;
+        const seg = segments[idx++];
+        if(seg.type==='pause'){
+          this._ssmlTimer = setTimeout(next, seg.ms);
+          return;
+        }
+        if(useRV){
+          try{
+            const available = (responsiveVoice.getVoices && responsiveVoice.getVoices()) || [];
+            const hasVoice = available.some(v=>v && (v.name===voice || v.voiceURI===voice));
+            const vname = hasVoice ? voice : undefined;
+            const ok = responsiveVoice.speak(seg.text, vname, { rate: seg.rate, pitch: seg.pitch, onend: next });
+            if(ok===false){ this.speakDirectFallback(seg.text); next(); }
+          }catch(e){ this.speakDirectFallback(seg.text); next(); }
+        } else {
+          const u = new SpeechSynthesisUtterance(seg.text);
+          u.lang = state.data.settings.tts.lang || 'de-DE';
+          u.rate = seg.rate;
+          u.pitch = seg.pitch;
+          u.onend = next;
+          try{ window.speechSynthesis.speak(u); } catch(e){ next(); }
+        }
+      };
+      next();
+    },
+    cancel(){
+      try{ if(this._ssmlTimer) clearTimeout(this._ssmlTimer); }catch(e){}
+      try{ if(typeof responsiveVoice !== 'undefined') responsiveVoice.cancel(); }catch(e){}
+      try{ if('speechSynthesis' in window) window.speechSynthesis.cancel(); }catch(e){}
     }
   };
 
