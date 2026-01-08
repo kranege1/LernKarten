@@ -44,7 +44,7 @@ server.listen(PORT, () => {
   console.log(`
 ╔═══════════════════════════════════════╗
 ║  LernKarten Server läuft              ║
-║  http://localhost:${PORT}         ║
+║  http://localhost:${PORT}              ║
 ╚═══════════════════════════════════════╝
   
   Test-Suite:  http://localhost:${PORT}/test.html

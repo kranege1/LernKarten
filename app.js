@@ -303,45 +303,127 @@
     }
   };
 
-  // --- TTS ---
+  // --- TTS (ResponsiveVoice - funktioniert auf allen Geräten inkl. iPad + SSML Support) ---
   const TTS = {
+    voices: [],
+    
     initVoices(){
-      const populate = () => {
-        state.voices = window.speechSynthesis.getVoices();
-        refreshVoiceSelectors();
-      };
-      populate();
-      window.speechSynthesis.onvoiceschanged = populate;
+      // ResponsiveVoice stellt verfügbare Stimmen bereit
+      if(typeof responsiveVoice !== 'undefined' && responsiveVoice.getVoices) {
+        const rvVoices = responsiveVoice.getVoices();
+        // Filter für Deutsche Stimmen
+        this.voices = rvVoices.filter(v => v.lang && v.lang.startsWith('de'));
+        if(this.voices.length === 0) {
+          // Fallback: alle Stimmen wenn keine deutschen
+          this.voices = rvVoices;
+        }
+      } else {
+        // Fallback zur Web Speech API
+        this.voices = window.speechSynthesis?.getVoices() || [];
+      }
+      refreshVoiceSelectors();
     },
+    
     speak(text){
       const ttsMode = $('#tts-mode')?.value || 'none';
       if(ttsMode === 'none') return;
       this.speakDirect(text);
     },
+    
     speakDirect(text){
+      if(!text) return;
+      
+      const voiceURI = state.data.settings.tts.voiceURI || 'Deutsch Female';
+      const rate = (state.data.settings.tts.rate || 1) * 100; // ResponsiveVoice nutzt 0-100
+      
+      // Versuche ResponsiveVoice zu nutzen (unterstützt SSML)
+      if(typeof responsiveVoice !== 'undefined') {
+        responsiveVoice.cancel();
+        // ResponsiveVoice kann SSML direkt verarbeiten
+        responsiveVoice.speak(text, voiceURI, { rate: rate });
+      } else {
+        // Fallback zur Web Speech API
+        this.speakDirectFallback(text);
+      }
+    },
+    
+    speakDirectFallback(text){
       if(!('speechSynthesis' in window)) return;
       const u = new SpeechSynthesisUtterance(text);
       u.lang = state.data.settings.tts.lang || 'de-DE';
       u.rate = state.data.settings.tts.rate || 1;
-      const vuri = state.data.settings.tts.voiceURI;
-      if (vuri) {
-        const v = state.voices.find(x=>x.voiceURI===vuri);
-        if (v) u.voice = v;
-      }
       window.speechSynthesis.cancel();
       window.speechSynthesis.speak(u);
+    },
+    
+    // Hilfsfunktion: Text mit SSML Pausen formatieren
+    addPauses(text, pauseMs = 300){
+      // Teile Text in Sätze auf und füge Pausen ein
+      const sentences = text.split(/([.!?]+)/);
+      return sentences.map(s => {
+        if(s.match(/[.!?]/)) return s + `<break time="${pauseMs}ms"/>`;
+        return s;
+      }).join('');
+    },
+    
+    // Feedback mit Betonung
+    speakFeedback(correct){
+      const feedback = correct 
+        ? '<speak>Das ist <emphasis level="strong">richtig</emphasis>!</speak>'
+        : '<speak>Das ist <emphasis level="strong">falsch</emphasis>. Versuche es nochmal!</speak>';
+      this.speakDirect(feedback);
+    },
+    
+    // Frage mit Pausen zwischen Sätzen
+    speakQuestion(text){
+      const ssml = `<speak>${this.addPauses(text, 400)}</speak>`;
+      this.speakDirect(ssml);
+    },
+    
+    // Antwort mit etwas höherer Tonhöhe
+    speakAnswer(text){
+      const ssml = `<speak><prosody pitch="+10%">${this.addPauses(text, 300)}</prosody></speak>`;
+      this.speakDirect(ssml);
     }
   };
 
   function refreshVoiceSelectors(){
     const langSel = $('#tts-lang');
     const voiceSel = $('#tts-voice');
-    const langs = [...new Set(state.voices.map(v=>v.lang))].sort();
-    langSel.innerHTML = langs.map(l=>`<option value="${l}">${l}</option>`).join('');
-    langSel.value = state.data.settings.tts.lang;
-    const voices = state.voices.filter(v=>v.lang===langSel.value);
-    voiceSel.innerHTML = `<option value="">Standard</option>` + voices.map(v=>`<option value="${v.voiceURI}">${v.name}</option>`).join('');
-    voiceSel.value = state.data.settings.tts.voiceURI || '';
+    
+    // Wenn ResponsiveVoice verfügbar ist
+    if(typeof responsiveVoice !== 'undefined' && responsiveVoice.getVoices) {
+      const rvVoices = responsiveVoice.getVoices();
+      // Extrahiere eindeutige Sprachen
+      const langs = [...new Set(rvVoices.map(v => {
+        const lang = v.lang || 'de';
+        return lang.split('-')[0]; // z.B. "de" aus "de-DE"
+      }))].sort();
+      
+      langSel.innerHTML = langs.map(l=>`<option value="${l}">${l}</option>`).join('');
+      langSel.value = state.data.settings.tts.lang || 'de';
+      
+      // Filter Stimmen nach Sprache
+      const filteredVoices = rvVoices.filter(v => {
+        const lang = v.lang || 'de';
+        return lang.startsWith(langSel.value);
+      });
+      
+      voiceSel.innerHTML = `<option value="">Standard</option>` + 
+        filteredVoices.map(v=>`<option value="${v.name}">${v.name}</option>`).join('');
+      voiceSel.value = state.data.settings.tts.voiceURI || '';
+    } else {
+      // Fallback zur Web Speech API
+      const voices = state.voices || [];
+      const langs = [...new Set(voices.map(v=>v.lang))].sort();
+      langSel.innerHTML = langs.map(l=>`<option value="${l}">${l}</option>`).join('');
+      langSel.value = state.data.settings.tts.lang || 'de-DE';
+      
+      const filteredVoices = voices.filter(v=>v.lang===langSel.value);
+      voiceSel.innerHTML = `<option value="">Standard</option>` + 
+        filteredVoices.map(v=>`<option value="${v.voiceURI}">${v.name}</option>`).join('');
+      voiceSel.value = state.data.settings.tts.voiceURI || '';
+    }
   }
 
   // --- Importer ---
@@ -951,7 +1033,7 @@
     const topics = folderId ? state.data.topics.filter(t => t.folderId === folderId) : state.data.topics;
     const options = topics.map(t=>`<option value="${t.id}">${t.name}</option>`).join('');
     $('#learn-topic').innerHTML = options;
-    $('#import-topic').innerHTML = `<option value="">(neues Thema aus Datei oder wählen)</option>` + options;
+    $('#import-topic').innerHTML = `<option value="">(alle Themen)</option>` + options;
     $('#export-topic').innerHTML = `<option value="">(alle Themen)</option>` + options;
     
     // Stats-Topic befüllen mit Ordnern und Themen
@@ -1760,9 +1842,9 @@
       const speakPart = parts[2]; // 'umschreibung' oder 'begriff'
       
       if(speakPart === 'umschreibung'){
-        TTS.speak(state.session.current.description || '');
+        TTS.speakQuestion(state.session.current.description || '');
       } else {
-        TTS.speak(state.session.current.term);
+        TTS.speakQuestion(state.session.current.term);
       }
     });
     
@@ -1895,7 +1977,7 @@
         speakText = card.term;
       }
       
-      TTS.speak(speakText);
+      TTS.speakQuestion(speakText);
     } else {
       // Nicht-TTS Modi
       if(mode === 'umschreibung'){
@@ -1998,6 +2080,12 @@
     stamp.className = 'answer-stamp ' + (correct ? 'correct' : 'wrong');
     // Beide sind klickbar (correct und wrong)
     stamp.dataset.clickToContinue = 'true';
+    
+    // SSML-Feedback mit Betonung abspielen
+    const ttsMode = $('#tts-mode')?.value || 'none';
+    if(ttsMode !== 'none'){
+      TTS.speakFeedback(correct);
+    }
     
     console.log('Stempel angezeigt:', correct ? 'RICHTIG ✓' : 'FALSCH ✗', 'Display:', stamp.style.display, 'Visibility:', stamp.style.visibility, 'getBoundingClientRect:', stamp.getBoundingClientRect());
     
