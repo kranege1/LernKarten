@@ -951,7 +951,7 @@
     const topics = folderId ? state.data.topics.filter(t => t.folderId === folderId) : state.data.topics;
     const options = topics.map(t=>`<option value="${t.id}">${t.name}</option>`).join('');
     $('#learn-topic').innerHTML = options;
-    $('#import-topic').innerHTML = `<option value="">(neues Thema aus Datei oder wählen)</option>` + options;
+    $('#import-topic').innerHTML = `<option value="">(alle Themen)</option>` + options;
     $('#export-topic').innerHTML = `<option value="">(alle Themen)</option>` + options;
     
     // Stats-Topic befüllen mit Ordnern und Themen
