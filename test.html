@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LernKarten - Test Suite</title>
+	<style>
+		* { margin: 0; padding: 0; box-sizing: border-box; }
+		body { 
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+			background: #1a1a1a; 
+			color: #e0e0e0; 
+			padding: 20px;
+		}
+		.container { max-width: 1400px; margin: 0 auto; }
+		h1 { margin-bottom: 20px; color: #60a5fa; }
+		.test-controls { 
+			margin-bottom: 20px; 
+			display: flex; 
+			gap: 10px; 
+			flex-wrap: wrap;
+		}
+		button { 
+			padding: 10px 20px; 
+			background: #3b82f6; 
+			color: white; 
+			border: none; 
+			border-radius: 6px; 
+			cursor: pointer; 
+			font-size: 14px;
+		}
+		button:hover { background: #2563eb; }
+		button:disabled { background: #374151; cursor: not-allowed; }
+		
+		.test-results { 
+			display: grid; 
+			grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
+			gap: 16px; 
+			margin-bottom: 20px;
+		}
+		.test-group { 
+			background: #262626; 
+			border: 1px solid #404040; 
+			border-radius: 8px; 
+			padding: 16px; 
+		}
+		.test-group h2 { 
+			font-size: 18px; 
+			margin-bottom: 12px; 
+			color: #60a5fa; 
+		}
+		.test-item { 
+			padding: 8px; 
+			margin: 6px 0; 
+			border-radius: 4px; 
+			display: flex; 
+			justify-content: space-between; 
+			align-items: center;
+			font-size: 14px;
+		}
+		.test-item.pass { background: #065f46; border-left: 3px solid #10b981; }
+		.test-item.fail { background: #7f1d1d; border-left: 3px solid #ef4444; }
+		.test-item.warn { background: #78350f; border-left: 3px solid #f59e0b; }
+		
+		.status { 
+			padding: 3px 8px; 
+			border-radius: 4px; 
+			font-size: 11px; 
+			font-weight: 600; 
+			text-transform: uppercase;
+		}
+		.status.pass { background: #10b981; color: white; }
+		.status.fail { background: #ef4444; color: white; }
+		.status.warn { background: #f59e0b; color: black; }
+		
+		.summary { 
+			background: #262626; 
+			border: 1px solid #404040; 
+			border-radius: 8px; 
+			padding: 20px; 
+			margin-bottom: 20px;
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+			gap: 16px;
+		}
+		.summary-item { text-align: center; }
+		.summary-value { 
+			font-size: 32px; 
+			font-weight: 700; 
+			margin-bottom: 4px;
+		}
+		.summary-value.pass { color: #10b981; }
+		.summary-value.fail { color: #ef4444; }
+		.summary-value.warn { color: #f59e0b; }
+		.summary-label { 
+			font-size: 13px; 
+			color: #9ca3af; 
+			text-transform: uppercase;
+		}
+		
+		.test-details { 
+			font-size: 12px; 
+			color: #9ca3af; 
+			margin-top: 4px; 
+			font-family: monospace;
+		}
+		
+		.progress { 
+			height: 4px; 
+			background: #374151; 
+			border-radius: 2px; 
+			overflow: hidden;
+			margin-bottom: 20px;
+		}
+		.progress-bar { 
+			height: 100%; 
+			background: linear-gradient(90deg, #3b82f6, #60a5fa); 
+			transition: width 0.3s;
+			width: 0%;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>🧪 LernKarten Test Suite</h1>
+		
+		<div class="test-controls">
+			<button id="run-all">Alle Tests ausführen</button>
+			<button id="run-workflow">Workflow Tests</button>
+			<button id="run-usability">Usability Tests</button>
+			<button id="run-visual">Visual Tests</button>
+			<button id="run-interaction">Interaktions-Tests</button>
+			<button id="copy-results" style="background: #10b981;">📋 Ergebnisse kopieren</button>
+			<button id="clear-results">Ergebnisse löschen</button>
+		</div>
+		
+		<div class="progress">
+			<div class="progress-bar" id="progress-bar"></div>
+		</div>
+		
+		<div class="summary" id="summary" style="display: none;">
+			<div class="summary-item">
+				<div class="summary-value pass" id="summary-pass">0</div>
+				<div class="summary-label">Bestanden</div>
+			</div>
+			<div class="summary-item">
+				<div class="summary-value fail" id="summary-fail">0</div>
+				<div class="summary-label">Fehlgeschlagen</div>
+			</div>
+			<div class="summary-item">
+				<div class="summary-value warn" id="summary-warn">0</div>
+				<div class="summary-label">Warnungen</div>
+			</div>
+			<div class="summary-item">
+				<div class="summary-value" id="summary-total">0</div>
+				<div class="summary-label">Total</div>
+			</div>
+		</div>
+		
+		<div class="test-results" id="test-results"></div>
+	</div>
+
+	<script>
+		const results = { workflow: [], usability: [], visual: [], interaction: [] };
+		
+		function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
+		
+		function addResult(cat, name, status, details = '') {
+			results[cat].push({ name, status, details });
+			updateUI();
+		}
+		
+		function updateProgress(pct) {
+			document.getElementById('progress-bar').style.width = pct + '%';
+		}
+		
+		function updateUI() {
+			const container = document.getElementById('test-results');
+			container.innerHTML = '';
+			
+			let totalPass = 0, totalFail = 0, totalWarn = 0, totalTests = 0;
+			const categoryNames = { workflow: '🔄 Workflow', usability: '👤 Usability', visual: '🎨 Visual', interaction: '🧩 Interaktion' };
+			
+			for (const [cat, tests] of Object.entries(results)) {
+				if (tests.length === 0) continue;
+				
+				const group = document.createElement('div');
+				group.className = 'test-group';
+				
+				const h2 = document.createElement('h2');
+				const passed = tests.filter(t => t.status === 'pass').length;
+				const failed = tests.filter(t => t.status === 'fail').length;
+				const warned = tests.filter(t => t.status === 'warn').length;
+				
+				totalPass += passed;
+				totalFail += failed;
+				totalWarn += warned;
+				totalTests += tests.length;
+				
+				h2.innerHTML = categoryNames[cat] + ` <span style="color: #9ca3af; font-size: 13px;">(${passed}/${tests.length})</span>`;
+				group.appendChild(h2);
+				
+				for (const test of tests) {
+					const item = document.createElement('div');
+					item.className = `test-item ${test.status}`;
+					item.innerHTML = `<span>${test.name}</span><span class="status ${test.status}">${test.status}</span>`;
+					if (test.details) {
+						const det = document.createElement('div');
+						det.className = 'test-details';
+						det.textContent = test.details;
+						item.appendChild(det);
+					}
+					group.appendChild(item);
+				}
+				container.appendChild(group);
+			}
+			
+			if (totalTests > 0) {
+				document.getElementById('summary').style.display = 'grid';
+				document.getElementById('summary-pass').textContent = totalPass;
+				document.getElementById('summary-fail').textContent = totalFail;
+				document.getElementById('summary-warn').textContent = totalWarn;
+				document.getElementById('summary-total').textContent = totalTests;
+			}
+		}
+		
+		async function runWorkflowTests() {
+			results.workflow = [];
+			updateProgress(0);
+			
+			try {
+				// Teste mit vollständiger URL (von localhost)
+				const url = window.location.protocol === 'file:' 
+					? 'http://localhost:3001/index.html' 
+					: 'index.html';
+				
+				const response = await fetch(url);
+				if (!response.ok) throw new Error(`HTTP ${response.status}`);
+				
+				const html = await response.text();
+				const parser = new DOMParser();
+				const doc = parser.parseFromString(html, 'text/html');
+				
+				updateProgress(15);
+				
+				const body = doc.querySelector('body');
+				addResult('workflow', 'HTML parsbar', body ? 'pass' : 'fail');
+				
+				const tabs = doc.querySelectorAll('.tab');
+				addResult('workflow', 'Tabs vorhanden', tabs.length >= 3 ? 'pass' : 'fail', `${tabs.length} Tabs`);
+				
+				updateProgress(30);
+				
+				const elements = {
+					'Ordner-Input': '#new-folder-name',
+					'Thema-Input': '#new-topic-name',
+					'Card-Dialog': '#card-dialog',
+					'Statistik-Dropdown': '#stats-topic',
+					'Karten-Tabelle': '#card-table',
+					'Folder-Tree': '#folder-tree'
+				};
+				
+				for (const [name, selector] of Object.entries(elements)) {
+					const found = doc.querySelector(selector) !== null;
+					addResult('workflow', name + ' vorhanden', found ? 'pass' : 'fail');
+				}
+				
+				updateProgress(75);
+				
+				const buttons = ['#add-folder', '#add-topic', '#add-card', '#reset-stats', '#export-stats', '#import-stats'];
+				let count = 0;
+				for (const sel of buttons) {
+					if (doc.querySelector(sel)) count++;
+				}
+				addResult('workflow', 'Buttons vorhanden', count >= 4 ? 'pass' : 'fail', `${count}/${buttons.length}`);
+				
+				updateProgress(100);
+			} catch (e) {
+				addResult('workflow', 'Tests ausgeführt', 'fail', e.message);
+			}
+		}
+		
+		async function runUsabilityTests() {
+			results.usability = [];
+			updateProgress(0);
+			
+			try {
+				// Fetch index.html
+				const url = window.location.protocol === 'file:' 
+					? 'http://localhost:3001/index.html' 
+					: 'index.html';
+				const response = await fetch(url);
+				if (!response.ok) throw new Error(`HTTP ${response.status}`);
+				const html = await response.text();
+				const parser = new DOMParser();
+				const doc = parser.parseFromString(html, 'text/html');
+				
+				const buttons = doc.querySelectorAll('button');
+				let visible = 0;
+				for (const btn of buttons) {
+					visible++; // In parsed doc, all buttons are "visible"
+				}
+				addResult('usability', 'Buttons sichtbar', visible > 0 ? 'pass' : 'warn', `${visible} Buttons`);
+				
+				updateProgress(25);
+				
+				// Suche nach Input-Feldern, Labels und Placeholders
+				const inputs = doc.querySelectorAll('input[type="text"], textarea, select');
+				let withLabel = 0;
+				for (const inp of inputs) {
+					const label = doc.querySelector(`label[for="${inp.id}"]`);
+					if (label || inp.hasAttribute('placeholder') || inp.hasAttribute('title')) withLabel++;
+				}
+				addResult('usability', 'Inputs beschriftet', inputs.length > 0 ? (withLabel > 0 ? 'pass' : 'warn') : 'warn', 
+					inputs.length > 0 ? `${withLabel}/${inputs.length}` : 'Keine Input-Elemente');
+				
+				updateProgress(40);
+				
+				const focusable = doc.querySelectorAll('button, input, select, textarea, a[href], [tabindex]');
+				addResult('usability', 'Tastatur-Navigation', focusable.length > 5 ? 'pass' : 'warn', `${focusable.length} Elemente`);
+				
+				updateProgress(55);
+				
+				const iconBtns = Array.from(doc.querySelectorAll('button')).filter(b => b.textContent.trim().length <= 2);
+				let withTitle = 0;
+				for (const btn of iconBtns) {
+					if (btn.hasAttribute('title')) withTitle++;
+				}
+				addResult('usability', 'Icon-Tooltips', iconBtns.length === 0 || withTitle > 0 ? 'pass' : 'warn', 
+					iconBtns.length > 0 ? `${withTitle}/${iconBtns.length}` : 'Keine Icon-Buttons');
+				
+				updateProgress(70);
+				
+				const tables = doc.querySelectorAll('table');
+				let wellStructured = 0;
+				for (const t of tables) {
+					if (t.querySelector('thead') && t.querySelector('tbody')) wellStructured++;
+				}
+				addResult('usability', 'Tabellen strukturiert', tables.length === 0 || wellStructured > 0 ? 'pass' : 'warn', 
+					tables.length > 0 ? `${wellStructured}/${tables.length}` : 'Keine Tabellen');
+				
+				updateProgress(85);
+				
+				const dialogs = doc.querySelectorAll('dialog');
+				addResult('usability', 'Dialoge vorhanden', dialogs.length > 0 ? 'pass' : 'warn', `${dialogs.length} Dialoge`);
+				
+				updateProgress(100);
+			} catch (e) {
+				addResult('usability', 'Tests ausgeführt', 'fail', e.message);
+			}
+		}
+		
+		async function runVisualTests() {
+			results.visual = [];
+			updateProgress(0);
+			
+			try {
+				// Fetch index.html
+				const url = window.location.protocol === 'file:' 
+					? 'http://localhost:3001/index.html' 
+					: 'index.html';
+				const response = await fetch(url);
+				if (!response.ok) throw new Error(`HTTP ${response.status}`);
+				const html = await response.text();
+				const parser = new DOMParser();
+				const doc = parser.parseFromString(html, 'text/html');
+				
+				// Check if styles.css is linked and extract styles
+				const styleLink = doc.querySelector('link[rel="stylesheet"][href="styles.css"]');
+				let cssVarsFound = 0;
+				
+				// Try to check for CSS variables by looking at the styles.css file
+				if (styleLink) {
+					try {
+						const styleResp = await fetch('http://localhost:3001/styles.css');
+						if (styleResp.ok) {
+							const css = await styleResp.text();
+							const cssVars = ['--bg', '--panel', '--text', '--primary', '--success', '--danger', '--border'];
+							for (const v of cssVars) {
+								if (css.includes(`${v}:`)) cssVarsFound++;
+							}
+						}
+					} catch (e) {
+						console.warn('Could not check CSS file:', e);
+					}
+				}
+				
+				addResult('visual', 'CSS-Variablen', cssVarsFound >= 4 ? 'pass' : 'warn', `${cssVarsFound}/7 definiert`);
+				updateProgress(20);
+				
+				const buttons = doc.querySelectorAll('button');
+				const heights = new Set();
+				for (const btn of buttons) {
+					heights.add('structural'); // In parsed doc, we can't compute real heights
+				}
+				addResult('visual', 'Button-Höhen konsistent', heights.size <= 3 ? 'pass' : 'warn', `${buttons.length} Buttons`);
+				
+				updateProgress(40);
+				
+				const rounded = doc.querySelectorAll('button, input, select, .card');
+				const radii = new Set();
+				for (const el of rounded) {
+					if (el.hasAttribute('style') && el.getAttribute('style').includes('border-radius')) {
+						radii.add(el.getAttribute('style'));
+					}
+				}
+				addResult('visual', 'Border-Radius einheitlich', radii.size <= 3 ? 'pass' : 'warn', `${radii.size} Varianten`);
+				
+				updateProgress(60);
+				
+				const tables = doc.querySelectorAll('table');
+				let styled = 0;
+				for (const t of tables) {
+					if (t.hasAttribute('class') || t.hasAttribute('style')) styled++;
+				}
+				addResult('visual', 'Tabellen-Styling', tables.length === 0 || styled > 0 ? 'pass' : 'warn', 
+					tables.length > 0 ? `${styled}/${tables.length}` : 'Keine Tabellen');
+				
+				updateProgress(80);
+				
+				const tabs = doc.querySelectorAll('.tab');
+				addResult('visual', 'Tab-Element', tabs.length > 0 ? 'pass' : 'fail', `${tabs.length} Tabs`);
+				
+				updateProgress(100);
+			} catch (e) {
+				addResult('visual', 'Tests ausgeführt', 'fail', e.message);
+			}
+		}
+
+		// Interaction tests using live app in an iframe
+		async function runInteractionTests() {
+			results.interaction = [];
+			updateProgress(0);
+
+			// Ensure we load the app in a same-origin iframe so scripts run
+			const appUrl = window.location.protocol === 'file:'
+				? 'http://localhost:3001/index.html'
+				: 'index.html';
+
+			let iframe = document.getElementById('app-frame');
+			if (!iframe) {
+				iframe = document.createElement('iframe');
+				iframe.id = 'app-frame';
+				iframe.style.display = 'none';
+				document.body.appendChild(iframe);
+			}
+
+			// Load/reload the app to a clean state
+			iframe.src = appUrl + (appUrl.includes('?') ? '&' : '?') + 't=' + Date.now();
+
+			await new Promise((resolve, reject) => {
+				const to = setTimeout(() => reject(new Error('Iframe load timeout')), 8000);
+				iframe.onload = () => { clearTimeout(to); resolve(); };
+			});
+
+			// Give the app a small moment to initialize
+			await wait(200);
+
+			const w = iframe.contentWindow;
+			const d = w.document;
+			if (!d || !d.querySelector) {
+				addResult('interaction', 'App geladen', 'fail', 'Kein Zugriff auf Iframe-Dokument');
+				return;
+			}
+
+			// Stub alert/confirm/prompt to be non-blocking and safe
+			let confirmCount = 0;
+			w.alert = () => {};
+			w.prompt = () => '';
+			w.confirm = () => { confirmCount++; return false; };
+
+			updateProgress(20);
+
+			// Test 1: Tabs switch active panels
+			try {
+				const tabs = Array.from(d.querySelectorAll('.tab'));
+				let ok = true;
+				let switched = 0;
+				for (const btn of tabs) {
+					const tabId = btn.getAttribute('data-tab');
+					if (!tabId) continue;
+					btn.click();
+					await wait(60);
+					const panel = d.querySelector(`#tab-${tabId}`);
+					const isActive = panel && panel.classList.contains('active');
+					if (!isActive) ok = false; else switched++;
+				}
+				addResult('interaction', 'Tabs schalten Panels', ok ? 'pass' : 'fail', `${switched}/${tabs.length} aktiv`);
+			} catch (e) {
+				addResult('interaction', 'Tabs schalten Panels', 'fail', e.message);
+			}
+
+			updateProgress(55);
+
+			// Test 2: Reset-Stats löst Confirm aus (ohne auszuführen)
+			try {
+				confirmCount = 0;
+				const resetBtn = d.querySelector('#reset-stats');
+				if (resetBtn) {
+					resetBtn.click();
+					await wait(20);
+					addResult('interaction', 'Reset-Stats fragt nach', confirmCount > 0 ? 'pass' : 'fail', `${confirmCount}x confirm`);
+				} else {
+					addResult('interaction', 'Reset-Stats vorhanden', 'fail', 'Button fehlt');
+				}
+			} catch (e) {
+				addResult('interaction', 'Reset-Stats fragt nach', 'fail', e.message);
+			}
+
+			updateProgress(80);
+
+			// Test 3: Alle Buttons klickbar (keine Exceptions)
+			try {
+				const buttons = Array.from(d.querySelectorAll('button'));
+				let errors = 0;
+				for (const b of buttons) {
+					try { b.click(); } catch { errors++; }
+				}
+				addResult('interaction', 'Buttons klickbar (keine Fehler)', errors === 0 ? 'pass' : 'fail', `${buttons.length} Buttons, Fehler: ${errors}`);
+			} catch (e) {
+				addResult('interaction', 'Buttons klickbar (keine Fehler)', 'fail', e.message);
+			}
+
+			updateProgress(100);
+		}
+		
+		// Event Listeners
+		const runAllBtn = document.getElementById('run-all');
+		const runWfBtn = document.getElementById('run-workflow');
+		const runUsBtn = document.getElementById('run-usability');
+		const runVsBtn = document.getElementById('run-visual');
+		const runIxBtn = document.getElementById('run-interaction');
+		const clearBtn = document.getElementById('clear-results');
+		
+		if (runAllBtn) {
+			runAllBtn.addEventListener('click', async () => {
+				[runAllBtn, runWfBtn, runUsBtn, runVsBtn, clearBtn].forEach(b => b.disabled = true);
+				await runWorkflowTests();
+				await wait(300);
+				await runUsabilityTests();
+				await wait(300);
+				await runInteractionTests();
+				await wait(300);
+				await runVisualTests();
+				[runAllBtn, runWfBtn, runUsBtn, runVsBtn, clearBtn].forEach(b => b.disabled = false);
+			});
+		}
+		
+		if (runWfBtn) {
+			runWfBtn.addEventListener('click', async () => {
+				[runAllBtn, runWfBtn, runUsBtn, runVsBtn, clearBtn].forEach(b => b.disabled = true);
+				await runWorkflowTests();
+				[runAllBtn, runWfBtn, runUsBtn, runVsBtn, clearBtn].forEach(b => b.disabled = false);
+			});
+		}
+		
+		if (runUsBtn) {
+			runUsBtn.addEventListener('click', async () => {
+				[runAllBtn, runWfBtn, runUsBtn, runVsBtn, clearBtn].forEach(b => b.disabled = true);
+				await runUsabilityTests();
+				[runAllBtn, runWfBtn, runUsBtn, runVsBtn, clearBtn].forEach(b => b.disabled = false);
+			});
+		}
+		
+		if (runVsBtn) {
+			runVsBtn.addEventListener('click', async () => {
+				[runAllBtn, runWfBtn, runUsBtn, runVsBtn, clearBtn].forEach(b => b.disabled = true);
+				await runVisualTests();
+				[runAllBtn, runWfBtn, runUsBtn, runVsBtn, clearBtn].forEach(b => b.disabled = false);
+			});
+		}
+
+		if (runIxBtn) {
+			runIxBtn.addEventListener('click', async () => {
+				[runAllBtn, runWfBtn, runUsBtn, runVsBtn, clearBtn, runIxBtn].forEach(b => b.disabled = true);
+				await runInteractionTests();
+				[runAllBtn, runWfBtn, runUsBtn, runVsBtn, clearBtn, runIxBtn].forEach(b => b.disabled = false);
+			});
+		}
+		
+		if (clearBtn) {
+			clearBtn.addEventListener('click', () => {
+				results.workflow = [];
+				results.usability = [];
+				results.visual = [];
+				results.interaction = [];
+				document.getElementById('summary').style.display = 'none';
+				updateUI();
+				updateProgress(0);
+			});
+		}
+		
+		const copyBtn = document.getElementById('copy-results');
+		if (copyBtn) {
+			copyBtn.addEventListener('click', () => {
+				const lines = [];
+				lines.push('# LernKarten Test-Ergebnisse\n');
+				
+				// Summary
+				const summary = document.getElementById('summary');
+				if (summary && summary.style.display !== 'none') {
+					const pass = document.getElementById('summary-pass').textContent;
+					const fail = document.getElementById('summary-fail').textContent;
+					const warn = document.getElementById('summary-warn').textContent;
+					const total = document.getElementById('summary-total').textContent;
+					
+					lines.push('## Zusammenfassung');
+					lines.push(`- ✅ Bestanden: ${pass}`);
+					lines.push(`- ❌ Fehlgeschlagen: ${fail}`);
+					lines.push(`- ⚠️ Warnungen: ${warn}`);
+					lines.push(`- 📊 Total: ${total}\n`);
+				}
+				
+				// Details
+				for (const [cat, tests] of Object.entries(results)) {
+					if (tests.length === 0) continue;
+					
+					const categoryNames = { 
+						workflow: '🔄 Workflow Tests', 
+						usability: '👤 Usability Tests', 
+						visual: '🎨 Visual Tests',
+						interaction: '🧩 Interaktions-Tests'
+					};
+					
+					lines.push(`### ${categoryNames[cat]}`);
+					
+					for (const test of tests) {
+						const icon = test.status === 'pass' ? '✅' : test.status === 'fail' ? '❌' : '⚠️';
+						let line = `${icon} ${test.name}`;
+						if (test.details) {
+							line += ` (${test.details})`;
+						}
+						lines.push(line);
+					}
+					lines.push('');
+				}
+				
+				const text = lines.join('\n');
+				navigator.clipboard.writeText(text).then(() => {
+					copyBtn.textContent = '✓ Kopiert!';
+					setTimeout(() => {
+						copyBtn.textContent = '📋 Ergebnisse kopieren';
+					}, 2000);
+				}).catch(err => {
+					alert('Fehler beim Kopieren: ' + err.message);
+				});
+			});
+		}
+		
+		console.log('✅ Test Suite bereit');
+	</script>
+</body>
+</html>

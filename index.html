@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>LernKarten – Karten Lernspiel</title>
+		<link rel="stylesheet" href="styles.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js" defer></script>
+		<script src="https://apis.google.com/js/api.js"></script>
+	</head>
+	<body>
+		<header class="app-header">
+			<div class="brand">
+				<div class="logo">LK</div>
+				<div>
+					<h1>LernKarten</h1>
+					<p class="subtitle">Lernen mit Text und Sprache</p>
+				</div>
+			</div>
+			<nav class="tabs" role="tablist">
+				<button class="tab active" data-tab="lernen">Lernen</button>
+				<button class="tab" data-tab="verwalten">Verwalten</button>
+				<button class="tab" data-tab="import">Import/Export</button>
+				<button class="tab" data-tab="statistik">Statistik</button>
+				<button class="tab" data-tab="einstellungen">Einstellungen</button>
+			</nav>
+		</header>
+
+		<main class="container">
+			<!-- Lernen -->
+			<section id="tab-lernen" class="tab-panel active" aria-labelledby="lernen">
+				<div class="panel-grid">
+					<div class="card">
+						<h2>Lernsession</h2>
+						<div class="row three">
+							<div>
+								<label for="learn-folder">Ordner</label>
+								<select id="learn-folder"></select>
+							</div>
+							<div>
+								<label for="learn-topic">Thema</label>
+								<select id="learn-topic"></select>
+							</div>
+							<div>
+								<label for="learn-mode">Antwortmodus:</label>
+								<select id="learn-mode">
+									<option value="">-- Thema-Standard --</option>
+									<option value="type">💬 Tippen (frei)</option>
+									<option value="judge">✓/✗ Richtig/Falsch</option>
+									<option value="multiple-choice">🎯 Multiple Choice</option>
+								</select>
+							</div>
+						</div>
+						<div class="row two">
+							<div>
+								<label for="display-mode">Angezeigt wird:</label>
+								<select id="display-mode">
+									<option value="umschreibung">Umschreibung</option>
+									<option value="begriff">Begriff</option>
+								</select>
+							</div>
+							<div>
+								<label for="tts-mode">Vorgelesen wird:</label>
+								<select id="tts-mode">
+									<option value="none">Kein vorlesen</option>
+									<option value="umschreibung">Umschreibung</option>
+									<option value="begriff">Begriff</option>
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<label>Anzahl Karten:</label>
+							<div style="display: flex; gap: 8px;">
+								<button id="cards-5" class="ghost">5</button>
+								<button id="cards-10" class="ghost">10</button>
+								<button id="cards-20" class="ghost">20</button>
+								<button id="cards-all" class="ghost">Alle</button>
+							</div>
+						</div>
+						<div class="row">
+							<button id="start-session" class="primary">Lernen starten</button>
+							<button id="end-session" class="danger" disabled>Session beenden</button>
+						</div>
+						<div class="row">
+							<div id="session-stats" class="muted small"></div>
+						</div>
+					</div>
+
+					<div class="card large" id="learn-area">
+						<div class="prompt" id="prompt">
+							<div id="prompt-text" class="prompt-text">Wähle ein Thema und starte die Session.</div>
+
+							<!-- Stempel-Overlay -->
+							<div id="answer-stamp" class="answer-stamp" hidden>
+								<div class="stamp-icon"></div>
+							</div>
+						</div>
+						<div class="answer-area">
+							<label for="answer-input">Antwort eingeben (Begriff):</label>
+							<div class="answer-row">
+								<input id="answer-input" type="text" placeholder="Tippe hier…" autocomplete="off" />
+								<button id="check-answer" class="primary" disabled>Prüfen</button>
+							</div>
+							<!-- Multiple Choice Optionen -->
+							<div id="multiple-choice-options" class="multiple-choice-options" hidden>
+								<button class="choice-btn" data-choice="0"></button>
+								<button class="choice-btn" data-choice="1"></button>
+								<button class="choice-btn" data-choice="2"></button>
+								<button class="choice-btn" data-choice="3"></button>
+							</div>
+							<div class="feedback" id="feedback" role="status" aria-live="polite"></div>
+							<!-- Richtige Antwort prominent anzeigen -->
+							<div id="correct-answer-display" class="correct-answer-display" hidden>
+								<div class="correct-answer-label">Richtige Antwort:</div>
+								<div id="correct-answer-text" class="correct-answer-text"></div>
+								<button id="continue-after-wrong" class="primary">Weiter zur nächsten Karte</button>
+							</div>
+							<div class="actions">
+								<button id="mark-correct" class="success" disabled>Richtig</button>
+								<button id="mark-wrong" class="danger" disabled>Falsch</button>
+								<button id="skip-card" class="ghost" disabled>Überspringen</button>
+								<button id="replay-tts" class="ghost" title="Frage erneut vorlesen" disabled>🔊</button>
+							</div>
+							<div class="muted small" id="card-meta"></div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Verwalten -->
+			<section id="tab-verwalten" class="tab-panel" aria-labelledby="verwalten">
+				<div class="panel-grid" style="display: flex; flex-direction: column; gap: 16px;">
+					<div class="card">
+						<h2>Ordner & Themen</h2>
+						<div class="row add-inline">
+							<input id="new-folder-name" type="text" placeholder="Neuer Ordner…" />
+							<button id="add-folder" class="primary" title="Ordner hinzufügen">📁</button>
+						</div>
+						<div class="row add-inline">
+							<input id="new-topic-name" type="text" placeholder="Neues Thema…" />
+							<button id="add-topic" class="primary" title="Thema hinzufügen">📝</button>
+						</div>
+						<ul id="folder-tree" class="list"></ul>
+					</div>
+
+					<div class="card large">
+						<div class="header-row">
+							<h2>Karten verwalten</h2>
+							<div class="row two">
+								<div id="manage-selected" class="muted small">Bitte Thema im Baum auswählen</div>
+								<div style="display: flex; gap: 8px;">
+									<button id="add-card" class="primary" disabled title="Neue Karte">➕</button>
+									<button id="ai-fill-fields" class="ghost" disabled title="KI-Felder füllen">🤖</button>
+									<button id="ai-generate-terms" class="ghost" title="KI-Begriffe generieren">🤖➕</button>
+								</div>
+							</div>
+						</div>
+						<div class="table-wrap">
+							<table class="table" id="card-table">
+								<thead>
+									<tr>
+										<th>Begriff</th>
+										<th>Umschreibung</th>
+										<th>Antwort</th>
+										<th>Stats</th>
+										<th>Aktionen</th>
+									</tr>
+								</thead>
+								<tbody></tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Import/Export -->
+			<section id="tab-import" class="tab-panel" aria-labelledby="import">
+				<div class="panel-grid">
+					<div class="card">
+						<h2>Import</h2>
+						<div class="row">
+							<label>Format wählen</label>
+							<select id="import-format">
+								<option value="csv">CSV/TSV</option>
+								<option value="json">JSON</option>
+								<option value="text">Textliste (eine Zeile = Begriff)</option>
+								<option value="list">Liste (z.B. Haus, Zeit, ...)</option>
+							</select>
+							<button id="detect-import" class="ghost" style="white-space: nowrap;">Inhalt erkennen</button>
+						</div>
+						<div class="row" id="import-file-row">
+							<input id="import-file" type="file" accept=".csv,.tsv,.txt,.json" />
+						</div>
+						<div class="row" id="import-list-row" style="display:none">
+							<textarea id="import-list" rows="3" placeholder="Beispiel Dreifach-Modus: Photosynthese, Umwandlung von Licht in Energie, Photosynthese, Mitochondrium, Kraftwerk der Zelle, Mitochondrium"></textarea>
+						</div>
+						<div class="row" id="import-list-mode-row" style="display:none">
+							<label>Listenmodus:</label>
+							<select id="import-list-mode">
+								<option value="same">Jedes Wort = Frage & Antwort</option>
+								<option value="pair">Paarweise: 1. Frage, 2. Antwort, 3. Frage, ...</option>
+								<option value="triple">Dreifach: 1. Begriff, 2. Umschreibung, 3. Antwort, ...</option>
+								<option value="mc">4 Antworten: 1. Begriff, 2. Umschreibung, 3. Antwort1, 4. Antwort2, 5. Antwort3, 6. Antwort4, ...</option>
+							</select>
+						</div>
+						<div class="row two">
+							<select id="import-topic"></select>
+							<button id="run-import" class="primary">Importieren</button>
+						</div>
+						<details>
+							<summary>CSV Spaltennamen</summary>
+							<p>Erkannte Spalten: topic, begriff/term, umschreibung/description, antwort/answer, antwort1/option1, antwort2/option2, antwort3/option3, antwort4/option4</p>
+						</details>
+						<div class="muted small" id="import-status"></div>
+					</div>
+
+					<div class="card">
+						<h2>Export</h2>
+						<div class="row two">
+							<select id="export-topic"></select>
+							<select id="export-format">
+								<option value="json">JSON</option>
+								<option value="csv">CSV</option>
+							</select>
+						</div>
+						<div class="row">
+							<button id="run-export" class="ghost">Exportieren</button>
+						</div>
+						<div class="muted small">Tipp: Exportierte Dateien können zentral z.B. in Google Drive gespeichert werden.</div>
+					</div>
+
+					<div class="card">
+						<h2>Optionale Cloud / KI</h2>
+						<p class="muted small">Google Drive & KI-Umschreibung können in den Einstellungen konfiguriert werden.</p>
+						<div class="row">
+							<button id="drive-load" class="ghost">Aus Google Drive laden</button>
+							<button id="drive-save" class="ghost">Nach Google Drive speichern</button>
+						</div>
+						<div id="cloud-status" class="muted small"></div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Statistik -->
+			<section id="tab-statistik" class="tab-panel" aria-labelledby="statistik">
+				<div class="panel-grid" style="display: flex; flex-direction: column; gap: 16px;">
+					<div class="card">
+						<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+							<h2 style="margin: 0;">Statistik</h2>
+							<div style="display: flex; gap: 8px; align-items: center;">
+								<label for="stats-topic" class="muted small" style="white-space: nowrap;">Ansicht:</label>
+								<select id="stats-topic" style="min-width: 200px;">
+									<option value="">🌍 Global (alle Themen)</option>
+								</select>
+								<button id="reset-stats" class="ghost" title="Statistiken zurücksetzen">🔄 Reset</button>
+								<button id="export-stats" class="ghost" title="Statistiken exportieren">💾 Export</button>
+								<button id="import-stats" class="ghost" title="Statistiken importieren">📥 Import</button>
+							</div>
+						</div>
+						<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-top: 12px;">
+							<div class="stat-box">
+								<div class="stat-value" id="stat-total-cards">0</div>
+								<div class="stat-label">Karten gesamt</div>
+							</div>
+							<div class="stat-box">
+								<div class="stat-value" id="stat-total-topics">0</div>
+								<div class="stat-label">Themen</div>
+							</div>
+							<div class="stat-box">
+								<div class="stat-value" id="stat-due-today">0</div>
+								<div class="stat-label">Heute fällig</div>
+							</div>
+							<div class="stat-box">
+								<div class="stat-value" id="stat-mastered">0</div>
+								<div class="stat-label">Box 5 (gemeistert)</div>
+							</div>
+						</div>
+						<h3 style="margin-top: 24px; margin-bottom: 12px;">Karten nach Box</h3>
+						<div id="box-distribution" style="display: flex; flex-direction: column; gap: 8px;"></div>
+					</div>
+
+					<div class="card" id="topic-overview-card">
+						<h2>Themen-Übersicht</h2>
+						<div id="topic-stats" style="margin-top: 12px;"></div>
+					</div>
+
+					<div class="card">
+						<h2>Schwierigste Karten (≥3 Versuche)</h2>
+						<ul id="hardest-cards" class="list" style="max-height: 300px; overflow-y: auto;"></ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- Einstellungen -->
+			<section id="tab-einstellungen" class="tab-panel" aria-labelledby="einstellungen">
+				<div class="panel-grid">
+					<div class="card">
+						<h2>Sprache & Stimme</h2>
+						<div class="row two">
+							<div>
+								<label for="tts-lang">TTS Sprache</label>
+								<select id="tts-lang"></select>
+							</div>
+							<div>
+								<label for="tts-voice">Stimme</label>
+								<select id="tts-voice"></select>
+							</div>
+						</div>
+						<div class="row two">
+							<label for="tts-rate">Geschwindigkeit</label>
+							<input id="tts-rate" type="range" min="0.5" max="1.75" step="0.05" value="1" />
+						</div>
+						<div class="row">
+
+							<button id="tts-test" class="ghost">Stimme testen</button>
+						</div>
+					</div>
+
+					<div class="card">
+						<h2>KI Umschreibung (optional)</h2>
+						<div class="row">
+							<label for="ai-provider">KI-Anbieter</label>
+							<select id="ai-provider">
+								<option value="openai">OpenAI (GPT)</option>
+								<option value="grok">Grok (xAI)</option>
+								<option value="custom">Benutzerdefiniert</option>
+							</select>
+						</div>
+						<div class="row" id="ai-openai-row">
+							<label for="ai-key-openai">OpenAI API Key</label>
+							<input id="ai-key-openai" type="password" placeholder="sk-…" />
+						</div>
+						<div class="row" id="ai-grok-row" style="display:none">
+							<label for="ai-key-grok">Grok API Key</label>
+							<input id="ai-key-grok" type="password" placeholder="gsk-…" />
+						</div>
+						<div class="row" id="ai-custom-row" style="display:none">
+							<label for="ai-endpoint">Custom Endpoint</label>
+							<input id="ai-endpoint" type="text" placeholder="https://api.example.com/v1/chat/completions" />
+							<label for="ai-key">API Key</label>
+							<input id="ai-key" type="password" placeholder="sk-…" />
+						</div>
+						<div class="row">
+							<button id="test-ai" class="ghost">Testanfrage</button>
+						</div>
+						<div id="ai-status" class="muted small"></div>
+					</div>
+
+					<div class="card">
+						<h2>Google Drive (optional)</h2>
+						<div class="row">
+							<label for="drive-client-id">OAuth Client ID</label>
+							<input id="drive-client-id" type="text" placeholder="xxxxxxxxxxxx-abcdefg.apps.googleusercontent.com" />
+						</div>
+						<div class="row two">
+							<button id="drive-auth" class="ghost">Anmelden</button>
+							<button id="drive-signout" class="ghost">Abmelden</button>
+						</div>
+						<div id="drive-status" class="muted small"></div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- Dialoge -->
+		<dialog id="card-dialog">
+			<form method="dialog" class="dialog-form" id="card-form">
+				<h3 id="card-dialog-title">Karte bearbeiten</h3>
+				<div class="row">
+					<label>Modus</label>
+					<div id="mode-info" class="muted small"></div>
+				</div>
+				<div class="row">
+					<label for="card-term">Begriff</label>
+					<input id="card-term" required />
+				</div>
+				<div class="row">
+					<label for="card-desc">Umschreibung</label>
+					<textarea id="card-desc" rows="3" placeholder="Erkläre den Begriff ohne ihn zu nennen…"></textarea>
+				</div>
+				<div id="mc-options-area">
+					<h4>Antworten (1 = richtige Antwort)</h4>
+					<div class="row">
+						<label for="card-mc-option-1">Antwort 1</label>
+						<input id="card-mc-option-1" placeholder="Antwort 1" />
+					</div>
+					<div class="row">
+						<label for="card-mc-option-2">Antwort 2</label>
+						<input id="card-mc-option-2" placeholder="Antwort 2" />
+					</div>
+					<div class="row">
+						<label for="card-mc-option-3">Antwort 3</label>
+						<input id="card-mc-option-3" placeholder="Antwort 3" />
+					</div>
+					<div class="row">
+						<label for="card-mc-option-4">Antwort 4</label>
+						<input id="card-mc-option-4" placeholder="Antwort 4" />
+					</div>
+				</div>
+				<menu class="dialog-menu">
+					<button type="button" value="cancel" class="ghost" onclick="document.getElementById('card-dialog').close()">Abbrechen</button>
+					<button type="submit" id="card-save" value="default" class="primary">Speichern</button>
+				</menu>
+			</form>
+		</dialog>
+
+		<dialog id="ai-fill-dialog">
+			<div class="dialog-form">
+				<h3>KI-Felder automatisch füllen</h3>
+				<div class="row">
+					<label for="ai-fill-target">Zielfeld (wird ausgefüllt)</label>
+					<select id="ai-fill-target">
+						<option value="description">Umschreibung</option>
+						<option value="answer">Antwort</option>
+						<option value="mcOptions">Multiple Choice Optionen (4)</option>
+					</select>
+				</div>
+				<div class="row">
+					<label for="ai-fill-source">Basierend auf</label>
+					<select id="ai-fill-source">
+						<option value="term">Begriff</option>
+						<option value="description">Umschreibung</option>
+						<option value="answer">Antwort</option>
+					</select>
+				</div>
+				<div class="row">
+					<label for="ai-fill-prompt">Prompt-Vorlage (Platzhalter: {begriff}, {umschreibung}, {antwort})</label>
+					<textarea id="ai-fill-prompt" rows="4" placeholder="Erstelle eine kurze Umschreibung für: {begriff}"></textarea>
+				</div>
+				<div class="row">
+					<label>
+						<input type="checkbox" id="ai-fill-only-empty" checked />
+						Nur leere Felder füllen
+					</label>
+				</div>
+				<div class="muted small" id="ai-fill-info"></div>
+				<menu class="dialog-menu">
+					<button type="button" class="ghost" onclick="document.getElementById('ai-fill-dialog').close()">Abbrechen</button>
+					<button type="button" id="ai-fill-start" class="primary">Starten</button>
+				</menu>
+				<div id="ai-fill-progress" class="muted small" style="margin-top: 12px;"></div>
+			</div>
+		</dialog>
+
+		<dialog id="ai-generate-dialog">
+			<div class="dialog-form">
+				<h3>🤖 KI-Begriffe generieren</h3>
+				<p class="muted small">Lasse die KI eine Liste von Fachbegriffen zu einem bestimmten Thema erstellen.</p>
+				
+				<div class="row">
+					<label for="ai-generate-context">Thema / Kontext</label>
+					<input type="text" id="ai-generate-context" placeholder="z.B. Photosynthese, Deutsche Geschichte, Python Programmierung" />
+				</div>
+				
+				<div class="row">
+					<label for="ai-generate-count">Anzahl der Begriffe</label>
+					<input type="number" id="ai-generate-count" value="10" min="1" max="50" />
+				</div>
+				
+				<div class="row">
+					<label for="ai-generate-prompt">Prompt-Vorlage (Platzhalter: {anzahl}, {kontext})</label>
+					<textarea id="ai-generate-prompt" rows="4">Erstelle eine Liste von {anzahl} wichtigen Fachbegriffen zum Thema "{kontext}". Gib nur die Begriffe aus, einen pro Zeile, ohne Nummerierung oder Erklärungen.</textarea>
+				</div>
+				
+				<div id="ai-generate-info" class="muted small"></div>
+				<menu class="dialog-menu">
+					<button type="button" class="ghost" onclick="document.getElementById('ai-generate-dialog').close()">Abbrechen</button>
+					<button type="button" id="ai-generate-start" class="primary">Generieren</button>
+				</menu>
+				<div id="ai-generate-progress" class="muted small" style="margin-top: 12px;"></div>
+			</div>
+		</dialog>
+	
+	<dialog id="move-topic-dialog">
+		<div class="dialog-form">
+			<h3>📁 Thema verschieben</h3>
+			<p class="muted small" id="move-topic-current"></p>
+			
+			<div class="row">
+				<label for="move-topic-folder">Ziel-Ordner</label>
+				<select id="move-topic-folder">
+					<option value="">(Kein Ordner)</option>
+				</select>
+			</div>
+			
+			<menu class="dialog-menu">
+				<button type="button" class="ghost" onclick="document.getElementById('move-topic-dialog').close()">Abbrechen</button>
+				<button type="button" id="move-topic-confirm" class="primary">Verschieben</button>
+			</menu>
+		</div>
+	</dialog>
+
+	<!-- Import Mapping Dialog -->
+	<dialog id="import-mapping-dialog">
+		<div class="dialog-form import-mapping-dialog">
+			<h3>📊 Import-Assistent</h3>
+			
+			<!-- Phase 1: Datei analysieren -->
+			<div class="import-phase phase-1 active">
+				<h4>Schritt 1: Trennzeichen prüfen</h4>
+				
+				<div class="delimiter-selector">
+					<label>Trennzeichen erkannt:</label>
+					<div class="delimiter-buttons">
+						<button type="button" class="delimiter-btn" data-delim=",">Komma (,)</button>
+						<button type="button" class="delimiter-btn" data-delim="	">Tab (↹)</button>
+						<button type="button" class="delimiter-btn" data-delim=";">Semikolon (;)</button>
+						<button type="button" class="delimiter-btn" data-delim="|">Pipe (|)</button>
+					</div>
+				</div>
+				
+				<div class="preview-container">
+					<p class="muted small">Vorschau (erste 3 Zeilen):</p>
+					<div class="table-wrapper">
+						<table class="preview-table">
+							<thead>
+								<tr id="preview-header"></tr>
+							</thead>
+							<tbody id="preview-body"></tbody>
+						</table>
+					</div>
+				</div>
+				
+				<menu class="dialog-menu">
+					<button type="button" class="ghost" onclick="document.getElementById('import-mapping-dialog').close()">Abbrechen</button>
+					<button type="button" id="mapping-next-1" class="primary">Weiter →</button>
+				</menu>
+			</div>
+			
+			<!-- Phase 2: Column Mapping -->
+			<div class="import-phase phase-2">
+				<h4>Schritt 2: Spalten zuordnen</h4>
+				
+				<div class="table-wrapper">
+					<table class="mapping-table">
+						<thead>
+							<tr>
+								<th style="width: 30%;">Datei-Spalte</th>
+								<th style="width: 35%;">Ist ein...</th>
+								<th style="width: 35%;">Beispiel</th>
+							</tr>
+						</thead>
+						<tbody id="mapping-body"></tbody>
+					</table>
+				</div>
+				
+				<details open>
+					<summary class="small" style="margin: 16px 0 8px 0; cursor: pointer;">▼ Vorschau nach Zuordnung (erste 3 Karten)</summary>
+					<div class="table-wrapper">
+						<table class="result-preview-table">
+							<thead>
+								<tr>
+									<th>Begriff</th>
+									<th>Umschreibung</th>
+									<th>Antwort</th>
+									<th>MC-Optionen</th>
+								</tr>
+							</thead>
+							<tbody id="result-preview"></tbody>
+						</table>
+					</div>
+				</details>
+				
+				<menu class="dialog-menu">
+					<button type="button" class="ghost" id="mapping-back-2">← Zurück</button>
+					<button type="button" id="mapping-next-2" class="primary">Weiter →</button>
+				</menu>
+			</div>
+			
+			<!-- Phase 3: Bestätigung -->
+			<div class="import-phase phase-3">
+				<h4>Schritt 3: Import starten</h4>
+				
+				<div class="import-summary">
+					<p>✅ <strong id="summary-count">0</strong> Karten erkannt</p>
+					<p>✅ Spalten zugeordnet</p>
+					<p>➕ Import in Thema: <strong id="summary-topic">—</strong></p>
+				</div>
+				
+				<div class="row">
+					<label for="mapping-target-topic">Ziel-Thema:</label>
+					<select id="mapping-target-topic"></select>
+				</div>
+				
+				<menu class="dialog-menu">
+					<button type="button" class="ghost" id="mapping-back-3">← Zurück</button>
+					<button type="button" id="confirm-import" class="primary" style="font-weight: 600;">🚀 Jetzt importieren!</button>
+				</menu>
+			</div>
+		</div>
+	</dialog>
+
+		<footer class="app-footer">
+			<span class="muted">Lokal speicherbar · Optional Cloud & KI</span>
+		</footer>
+
+		<script src="app.js" defer></script>
+	</body>
+	</html>
+
