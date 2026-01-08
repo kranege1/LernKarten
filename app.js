@@ -2922,6 +2922,7 @@
   function bindSettings(){
     const sampleField = $('#tts-sample');
     const insertBtn = $('#tts-insert-sample');
+    const presetSel = $('#tts-preset');
     const defaultSSML = `<speak>
   <emphasis level="strong">Willkommen</emphasis> zur Stimmprobe.
   <break time="400ms"/>
@@ -2934,12 +2935,48 @@
   Das war die <emphasis level="moderate">SSML</emphasis> Demonstration.
 </speak>`;
 
+    const presets = {
+      vokabel: `<speak>
+  <emphasis level="moderate">Begriff:</emphasis>
+  <break time="300ms"/>
+  Photosynthese.
+  <break time="400ms"/>
+  <emphasis level="strong">Umschreibung:</emphasis>
+  <break time="250ms"/>
+  Prozess, bei dem Pflanzen 
+  <prosody rate="-5%">Licht in chemische Energie</prosody>
+  umwandeln.
+</speak>`,
+      mathe: `<speak>
+  <emphasis level="strong">Aufgabe:</emphasis> 12 plus 7.
+  <break time="400ms"/>
+  <prosody rate="-10%">Schritt eins:</prosody> 12 plus 5 ergibt 17.
+  <break time="300ms"/>
+  <prosody rate="-10%">Schritt zwei:</prosody> plus 2 ergibt 
+  <emphasis level="strong">19</emphasis>.
+</speak>`,
+      dialog: `<speak>
+  <prosody pitch="+5%">A:</prosody> Hello! How are you?
+  <break time="300ms"/>
+  <prosody pitch="-5%">B:</prosody> I'm fine, thanks. And you?
+</speak>`,
+      langsam: `<speak>
+  <prosody rate="-20%">Dies ist ein sehr langsamer und deutlicher Satz.</prosody>
+</speak>`,
+      quiz: `<speak>
+  <emphasis level="moderate">Frage:</emphasis> Hauptstadt von Frankreich?
+  <break time="700ms"/>
+  <emphasis level="strong">Antwort:</emphasis> Paris.
+</speak>`
+    };
+
     if(sampleField && !sampleField.value){
       sampleField.value = defaultSSML;
     }
     if(insertBtn){
       insertBtn.addEventListener('click', ()=>{
-        sampleField.value = defaultSSML;
+        const key = presetSel?.value;
+        sampleField.value = (key && presets[key]) ? presets[key] : defaultSSML;
         sampleField.focus();
       });
     }

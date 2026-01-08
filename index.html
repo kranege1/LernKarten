@@ -321,7 +321,16 @@
 							<textarea id="tts-sample" rows="5" style="width:100%; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace; resize: vertical;"></textarea>
 						</div>
 						<div class="row" style="gap:8px; align-items: center;">
-							<button id="tts-insert-sample" class="ghost">Beispiel einfügen</button>
+							<label for="tts-preset">Vorlage</label>
+							<select id="tts-preset">
+								<option value="">-- auswählen --</option>
+								<option value="vokabel">Deutsch: Vokabel</option>
+								<option value="mathe">Mathe: Schritt-für-Schritt</option>
+								<option value="dialog">Englisch: Dialog</option>
+								<option value="langsam">Langsam & deutlich</option>
+								<option value="quiz">Quiz: Frage → Antwort</option>
+							</select>
+							<button id="tts-insert-sample" class="ghost">Vorlage übernehmen</button>
 							<button id="tts-test" class="primary">Stimme testen</button>
 						</div>
 					</div>
