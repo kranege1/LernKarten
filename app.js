@@ -303,31 +303,71 @@
     }
   };
 
-  // --- TTS ---
+  // --- TTS (Edge-TTS) ---
   const TTS = {
-    initVoices(){
-      const populate = () => {
-        state.voices = window.speechSynthesis.getVoices();
+    voices: {},
+    currentAudio: null,
+    
+    async initVoices(){
+      try {
+        const res = await fetch('http://localhost:3001/api/tts-voices');
+        this.voices = await res.json();
         refreshVoiceSelectors();
-      };
-      populate();
-      window.speechSynthesis.onvoiceschanged = populate;
+      } catch (err) {
+        console.warn('Edge-TTS nicht verfügbar, verwende Web Speech API Fallback');
+        state.voices = window.speechSynthesis?.getVoices() || [];
+        if(window.speechSynthesis) window.speechSynthesis.onvoiceschanged = () => {
+          state.voices = window.speechSynthesis.getVoices();
+          refreshVoiceSelectors();
+        };
+        refreshVoiceSelectors();
+      }
     },
+    
     speak(text){
       const ttsMode = $('#tts-mode')?.value || 'none';
       if(ttsMode === 'none') return;
       this.speakDirect(text);
     },
-    speakDirect(text){
+    
+    async speakDirect(text){
+      if(!text) return;
+      
+      try {
+        // Stop previous audio
+        if(this.currentAudio) {
+          this.currentAudio.pause();
+          this.currentAudio = null;
+        }
+        
+        const voice = state.data.settings.tts.voiceURI || 'de-DE-ConradNeural';
+        const rate = state.data.settings.tts.rate || 1;
+        
+        const res = await fetch('http://localhost:3001/api/tts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text, voice, rate })
+        });
+        
+        if(!res.ok) throw new Error('TTS error: ' + res.status);
+        
+        const audioBlob = await res.blob();
+        const audioUrl = URL.createObjectURL(audioBlob);
+        
+        this.currentAudio = new Audio(audioUrl);
+        this.currentAudio.play().catch(e => console.warn('Audio playback failed:', e));
+      } catch (err) {
+        console.warn('Edge-TTS Error, versuche Fallback:', err);
+        this.speakDirectFallback(text);
+      }
+    },
+    
+    speakDirectFallback(text){
+      // Fallback zur Web Speech API
       if(!('speechSynthesis' in window)) return;
       const u = new SpeechSynthesisUtterance(text);
       u.lang = state.data.settings.tts.lang || 'de-DE';
       u.rate = state.data.settings.tts.rate || 1;
-      const vuri = state.data.settings.tts.voiceURI;
-      if (vuri) {
-        const v = state.voices.find(x=>x.voiceURI===vuri);
-        if (v) u.voice = v;
-      }
       window.speechSynthesis.cancel();
       window.speechSynthesis.speak(u);
     }
@@ -336,12 +376,26 @@
   function refreshVoiceSelectors(){
     const langSel = $('#tts-lang');
     const voiceSel = $('#tts-voice');
-    const langs = [...new Set(state.voices.map(v=>v.lang))].sort();
-    langSel.innerHTML = langs.map(l=>`<option value="${l}">${l}</option>`).join('');
-    langSel.value = state.data.settings.tts.lang;
-    const voices = state.voices.filter(v=>v.lang===langSel.value);
-    voiceSel.innerHTML = `<option value="">Standard</option>` + voices.map(v=>`<option value="${v.voiceURI}">${v.name}</option>`).join('');
-    voiceSel.value = state.data.settings.tts.voiceURI || '';
+    
+    // Use Edge-TTS voices if available
+    if(Object.keys(TTS.voices).length > 0) {
+      langSel.innerHTML = Object.keys(TTS.voices).map(l=>`<option value="${l}">${l}</option>`).join('');
+      langSel.value = state.data.settings.tts.lang || 'de';
+      
+      const voices = TTS.voices[langSel.value] || [];
+      voiceSel.innerHTML = `<option value="">Standard</option>` + voices.map(v=>`<option value="${v.value}">${v.name}</option>`).join('');
+      voiceSel.value = state.data.settings.tts.voiceURI || '';
+    } else {
+      // Fallback to Web Speech API
+      const voices = state.voices || [];
+      const langs = [...new Set(voices.map(v=>v.lang))].sort();
+      langSel.innerHTML = langs.map(l=>`<option value="${l}">${l}</option>`).join('');
+      langSel.value = state.data.settings.tts.lang || 'de-DE';
+      
+      const filteredVoices = voices.filter(v=>v.lang===langSel.value);
+      voiceSel.innerHTML = `<option value="">Standard</option>` + filteredVoices.map(v=>`<option value="${v.voiceURI}">${v.name}</option>`).join('');
+      voiceSel.value = state.data.settings.tts.voiceURI || '';
+    }
   }
 
   // --- Importer ---
