@@ -140,7 +140,7 @@ button:disabled { opacity: 0.6; cursor: not-allowed; }
 .switch { display:flex; align-items:center; gap: 8px; }
 
 /* Learn area */
-.prompt { min-height: 140px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; display: grid; place-items: center; padding: 16px; position: relative; }
+.prompt { min-height: 140px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 12px; display: grid; place-items: center; padding: 16px; position: relative; overflow: visible; }
 .prompt-text { font-size: 16px; line-height: 1.4; text-align: center; }
 .prompt-image { max-width: 100%; max-height: 240px; border-radius: 10px; display: block; }
 .answer-area { margin-top: 12px; }
@@ -191,9 +191,18 @@ button:disabled { opacity: 0.6; cursor: not-allowed; }
   z-index: 999;
   animation: stampAppear 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   pointer-events: auto; /* damit falscher Stempel klickbar ist */
+  cursor: pointer; /* beide Stempel klickbar */
+  width: 150px;
+  height: 150px;
 }
-.answer-stamp.wrong { cursor: pointer; }
-.answer-stamp.correct { cursor: default; }
+.stamp-icon {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 80px;
+  font-weight: bold;
 }
 .answer-stamp.correct .stamp-icon {
   width: 150px;

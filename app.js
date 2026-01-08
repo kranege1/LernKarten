@@ -1771,12 +1771,28 @@
       finishAnswer(false);
     });
 
-    // Klick auf den Stempel nach falscher Antwort startet direkt die nächste Frage
+    // Klick auf den Stempel startet die nächste Frage (egal ob richtig oder falsch)
     $('#answer-stamp').addEventListener('click', () => {
       const stamp = $('#answer-stamp');
-      if(stamp.dataset.clickToContinue === 'true'){
+      const isClickable = stamp.dataset.clickToContinue === 'true' || stamp.classList.contains('correct');
+      if(isClickable && state.session.current){
         stamp.dataset.clickToContinue = '';
-        finishAnswer(false);
+        // Gehe zur nächsten Karte (buche Ergebnis)
+        const correct = stamp.classList.contains('correct');
+        Scheduler.updateAfterAnswer(state.session.current, !!correct);
+        state.session.answered += 1;
+        if(correct) state.session.correct += 1;
+        Storage.save();
+        updateSessionStats();
+        
+        // Session-Ende prüfen
+        if(state.session.maxCards && state.session.answered >= state.session.maxCards){
+          endSession();
+          alert(`Session beendet!\n\nRichtig: ${state.session.correct}\nBeantwortet: ${state.session.answered}\nErfolgsquote: ${Math.round(100*state.session.correct/state.session.answered)}%`);
+          return;
+        }
+        
+        nextCard();
       }
     });
     
@@ -1935,10 +1951,11 @@
       return;
     }
     
-    // Stempel verstecken für neue Karte
+    // Stempel verstecken BEVOR neue Karte präsentiert wird
     const stamp = $('#answer-stamp');
     stamp.setAttribute('hidden', '');
     stamp.style.display = 'none';
+    stamp.dataset.clickToContinue = '';
     
     state.session.current = card;
     $('#answer-input').value = '';
@@ -1960,9 +1977,17 @@
     
     // Zuerst alle Attribute/Styles löschen die das Verstecken könnten
     stamp.removeAttribute('hidden');
-    stamp.style.display = 'block';
-    stamp.style.visibility = 'visible';
-    stamp.style.opacity = '1';
+    stamp.style.cssText = ''; // Alle inline-styles löschen
+    stamp.style.setProperty('display', 'block', 'important');
+    stamp.style.setProperty('visibility', 'visible', 'important');
+    stamp.style.setProperty('opacity', '1', 'important');
+    stamp.style.setProperty('position', 'absolute', 'important');
+    stamp.style.setProperty('z-index', '9999', 'important');
+    stamp.style.setProperty('width', '150px', 'important');
+    stamp.style.setProperty('height', '150px', 'important');
+    stamp.style.setProperty('top', '50%', 'important');
+    stamp.style.setProperty('left', '50%', 'important');
+    stamp.style.setProperty('transform', 'translate(-50%, -50%)', 'important');
     // Animation neu starten (explizit setzen)
     stamp.style.animation = 'none';
     void stamp.offsetWidth; // Reflow
@@ -1970,9 +1995,10 @@
     
     // Klasse setzen
     stamp.className = 'answer-stamp ' + (correct ? 'correct' : 'wrong');
-    stamp.dataset.clickToContinue = correct ? '' : 'true';
+    // Beide sind klickbar (correct und wrong)
+    stamp.dataset.clickToContinue = 'true';
     
-    console.log('Stempel angezeigt:', correct ? 'RICHTIG' : 'FALSCH', 'Element:', stamp, 'Computed style:', window.getComputedStyle(stamp).display, window.getComputedStyle(stamp).visibility);
+    console.log('Stempel angezeigt:', correct ? 'RICHTIG ✓' : 'FALSCH ✗', 'Display:', stamp.style.display, 'Visibility:', stamp.style.visibility, 'getBoundingClientRect:', stamp.getBoundingClientRect());
     
     // Sound abspielen
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -2128,15 +2154,7 @@
     if(answerMode === 'judge'){
       showStamp(correct);
       $('#feedback').textContent = correct ? '✔️ Richtig!' : '❌ Falsch';
-      // Warte 2 Sekunden bevor zur nächsten Karte
-      setTimeout(() => {
-        Scheduler.updateAfterAnswer(state.session.current, !!correct);
-        state.session.answered += 1;
-        if(correct) state.session.correct += 1;
-        Storage.save();
-        updateSessionStats();
-        nextCard();
-      }, 2000);
+      // Kein Timeout – Benutzer klickt auf Stempel oder drückt Weiter-Button
       return;
     }
     
