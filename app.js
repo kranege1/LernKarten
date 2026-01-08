@@ -332,19 +332,19 @@
     voices: [],
     
     initVoices(){
-      // ResponsiveVoice stellt verfügbare Stimmen bereit
-      if(typeof responsiveVoice !== 'undefined' && responsiveVoice.getVoices) {
-        const rvVoices = responsiveVoice.getVoices();
-        // Filter für Deutsche Stimmen
-        this.voices = rvVoices.filter(v => v.lang && v.lang.startsWith('de'));
-        if(this.voices.length === 0) {
-          // Fallback: alle Stimmen wenn keine deutschen
-          this.voices = rvVoices;
+      // Use Web Speech API voices
+      if('speechSynthesis' in window){
+        state.voices = window.speechSynthesis.getVoices();
+        if(window.speechSynthesis.onvoiceschanged !== undefined){
+          window.speechSynthesis.onvoiceschanged = () => {
+            state.voices = window.speechSynthesis.getVoices();
+            refreshVoiceSelectors();
+          };
         }
       } else {
-        // Fallback zur Web Speech API
-        this.voices = window.speechSynthesis?.getVoices() || [];
+        state.voices = [];
       }
+      this.voices = state.voices;
       refreshVoiceSelectors();
     },
     
@@ -362,37 +362,7 @@
         return;
       }
       
-      const voiceURI = state.data.settings.tts.voiceURI || 'Deutsch Female';
-      // clamp slider value to a safe range for ResponsiveVoice
-      const rate = clamp(state.data.settings.tts.rate || 0.7, 0.5, 1.5);
-      
-      // Check if ResponsiveVoice is available and working
-      const useRV = (typeof responsiveVoice !== 'undefined' && 
-                     responsiveVoice.voiceSupport && 
-                     responsiveVoice.voiceSupport() &&
-                     window.responsiveVoiceReady);
-      
-      // Versuche ResponsiveVoice zu nutzen (unterstützt SSML)
-      if(useRV) {
-        try {
-          responsiveVoice.cancel();
-          // Nutze ausgewählte Stimme nur wenn vorhanden
-          const available = (responsiveVoice.getVoices && responsiveVoice.getVoices()) || [];
-          const hasVoice = available.some(v=>v && (v.name===voiceURI || v.voiceURI===voiceURI));
-          const voiceName = hasVoice ? voiceURI : undefined;
-          const ok = responsiveVoice.speak(text, voiceName, { rate });
-          if(ok===false){
-            // Fallback wenn abgelehnt oder fehlgeschlagen
-            this.speakDirectFallback(text);
-          }
-        } catch(e){
-          console.warn('ResponsiveVoice speak failed, fallback to WebSpeech', e);
-          this.speakDirectFallback(text);
-        }
-      } else {
-        // Fallback zur Web Speech API
-        this.speakDirectFallback(text);
-      }
+      this.speakDirectFallback(text);
     },
     
     speakDirectFallback(text){
@@ -525,11 +495,7 @@
       return segments;
     },
     playSegments(segments){
-      const voice = state.data.settings.tts.voiceURI || 'Deutsch Female';
-      const useRV = (typeof responsiveVoice !== 'undefined' && 
-                     responsiveVoice.voiceSupport && 
-                     responsiveVoice.voiceSupport() &&
-                     window.responsiveVoiceReady);
+      const voice = state.data.settings.tts.voiceURI || '';
       let idx = 0;
       const next = () => {
         if(idx >= segments.length) return;
@@ -538,22 +504,17 @@
           this._ssmlTimer = setTimeout(next, seg.ms);
           return;
         }
-        if(useRV){
-          try{
-            const available = (responsiveVoice.getVoices && responsiveVoice.getVoices()) || [];
-            const hasVoice = available.some(v=>v && (v.name===voice || v.voiceURI===voice));
-            const vname = hasVoice ? voice : undefined;
-            const ok = responsiveVoice.speak(seg.text, vname, { rate: seg.rate, pitch: seg.pitch, onend: next });
-            if(ok===false){ this.speakDirectFallback(seg.text); next(); }
-          }catch(e){ this.speakDirectFallback(seg.text); next(); }
-        } else {
-          const u = new SpeechSynthesisUtterance(seg.text);
-          u.lang = state.data.settings.tts.lang || 'de-DE';
-          u.rate = seg.rate;
-          u.pitch = seg.pitch;
-          u.onend = next;
-          try{ window.speechSynthesis.speak(u); } catch(e){ next(); }
+        const u = new SpeechSynthesisUtterance(seg.text);
+        u.lang = state.data.settings.tts.lang || 'de-DE';
+        u.rate = seg.rate;
+        u.pitch = seg.pitch;
+        // Find and use selected voice if available
+        if(voice && state.voices){
+          const v = state.voices.find(x => x.voiceURI === voice);
+          if(v) u.voice = v;
         }
+        u.onend = next;
+        try{ window.speechSynthesis.speak(u); } catch(e){ next(); }
       };
       next();
     },
