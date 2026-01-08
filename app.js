@@ -327,7 +327,7 @@
     }
   };
 
-  // --- TTS (ResponsiveVoice - funktioniert auf allen Geräten inkl. iPad + SSML Support) ---
+  // --- TTS (Web Speech API - funktioniert auf allen Geräten inkl. iPad + SSML Support) ---
   const TTS = {
     voices: [],
     
@@ -428,7 +428,7 @@
         throw new Error('SSML parse error');
       }
       const baseRate = clamp(state.data.settings.tts.rate || 0.7, 0.5, 1.5);
-      const basePitch = 1.0; // ResponsiveVoice/WebSpeech default
+      const basePitch = 1.0; // Web Speech API default
       const segments = [];
 
       const walk = (node, ctx)=>{
@@ -520,7 +520,6 @@
     },
     cancel(){
       try{ if(this._ssmlTimer) clearTimeout(this._ssmlTimer); }catch(e){}
-      try{ if(typeof responsiveVoice !== 'undefined') responsiveVoice.cancel(); }catch(e){}
       try{ if('speechSynthesis' in window) window.speechSynthesis.cancel(); }catch(e){}
     }
   };
@@ -529,39 +528,16 @@
     const langSel = $('#tts-lang');
     const voiceSel = $('#tts-voice');
     
-    // Wenn ResponsiveVoice verfügbar ist
-    if(typeof responsiveVoice !== 'undefined' && responsiveVoice.getVoices) {
-      const rvVoices = responsiveVoice.getVoices();
-      // Extrahiere eindeutige Sprachen
-      const langs = [...new Set(rvVoices.map(v => {
-        const lang = v.lang || 'de';
-        return lang.split('-')[0]; // z.B. "de" aus "de-DE"
-      }))].sort();
-      
-      langSel.innerHTML = langs.map(l=>`<option value="${l}">${l}</option>`).join('');
-      langSel.value = state.data.settings.tts.lang || 'de';
-      
-      // Filter Stimmen nach Sprache
-      const filteredVoices = rvVoices.filter(v => {
-        const lang = v.lang || 'de';
-        return lang.startsWith(langSel.value);
-      });
-      
-      voiceSel.innerHTML = `<option value="">Standard</option>` + 
-        filteredVoices.map(v=>`<option value="${v.name}">${v.name}</option>`).join('');
-      voiceSel.value = state.data.settings.tts.voiceURI || '';
-    } else {
-      // Fallback zur Web Speech API
-      const voices = state.voices || [];
-      const langs = [...new Set(voices.map(v=>v.lang))].sort();
-      langSel.innerHTML = langs.map(l=>`<option value="${l}">${l}</option>`).join('');
-      langSel.value = state.data.settings.tts.lang || 'de-DE';
-      
-      const filteredVoices = voices.filter(v=>v.lang===langSel.value);
-      voiceSel.innerHTML = `<option value="">Standard</option>` + 
-        filteredVoices.map(v=>`<option value="${v.voiceURI}">${v.name}</option>`).join('');
-      voiceSel.value = state.data.settings.tts.voiceURI || '';
-    }
+    // Use Web Speech API voices
+    const voices = state.voices || [];
+    const langs = [...new Set(voices.map(v=>v.lang))].sort();
+    langSel.innerHTML = langs.map(l=>`<option value="${l}">${l}</option>`).join('');
+    langSel.value = state.data.settings.tts.lang || 'de-DE';
+    
+    const filteredVoices = voices.filter(v=>v.lang===langSel.value);
+    voiceSel.innerHTML = `<option value="">Standard</option>` + 
+      filteredVoices.map(v=>`<option value="${v.voiceURI}">${v.name}</option>`).join('');
+    voiceSel.value = state.data.settings.tts.voiceURI || '';
   }
 
   // --- Importer ---
