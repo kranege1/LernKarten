@@ -303,7 +303,7 @@
     }
   };
 
-  // --- TTS (ResponsiveVoice - funktioniert auf allen Geräten inkl. iPad) ---
+  // --- TTS (ResponsiveVoice - funktioniert auf allen Geräten inkl. iPad + SSML Support) ---
   const TTS = {
     voices: [],
     
@@ -336,9 +336,10 @@
       const voiceURI = state.data.settings.tts.voiceURI || 'Deutsch Female';
       const rate = (state.data.settings.tts.rate || 1) * 100; // ResponsiveVoice nutzt 0-100
       
-      // Versuche ResponsiveVoice zu nutzen
+      // Versuche ResponsiveVoice zu nutzen (unterstützt SSML)
       if(typeof responsiveVoice !== 'undefined') {
         responsiveVoice.cancel();
+        // ResponsiveVoice kann SSML direkt verarbeiten
         responsiveVoice.speak(text, voiceURI, { rate: rate });
       } else {
         // Fallback zur Web Speech API
@@ -353,6 +354,36 @@
       u.rate = state.data.settings.tts.rate || 1;
       window.speechSynthesis.cancel();
       window.speechSynthesis.speak(u);
+    },
+    
+    // Hilfsfunktion: Text mit SSML Pausen formatieren
+    addPauses(text, pauseMs = 300){
+      // Teile Text in Sätze auf und füge Pausen ein
+      const sentences = text.split(/([.!?]+)/);
+      return sentences.map(s => {
+        if(s.match(/[.!?]/)) return s + `<break time="${pauseMs}ms"/>`;
+        return s;
+      }).join('');
+    },
+    
+    // Feedback mit Betonung
+    speakFeedback(correct){
+      const feedback = correct 
+        ? '<speak>Das ist <emphasis level="strong">richtig</emphasis>!</speak>'
+        : '<speak>Das ist <emphasis level="strong">falsch</emphasis>. Versuche es nochmal!</speak>';
+      this.speakDirect(feedback);
+    },
+    
+    // Frage mit Pausen zwischen Sätzen
+    speakQuestion(text){
+      const ssml = `<speak>${this.addPauses(text, 400)}</speak>`;
+      this.speakDirect(ssml);
+    },
+    
+    // Antwort mit etwas höherer Tonhöhe
+    speakAnswer(text){
+      const ssml = `<speak><prosody pitch="+10%">${this.addPauses(text, 300)}</prosody></speak>`;
+      this.speakDirect(ssml);
     }
   };
 
@@ -1811,9 +1842,9 @@
       const speakPart = parts[2]; // 'umschreibung' oder 'begriff'
       
       if(speakPart === 'umschreibung'){
-        TTS.speak(state.session.current.description || '');
+        TTS.speakQuestion(state.session.current.description || '');
       } else {
-        TTS.speak(state.session.current.term);
+        TTS.speakQuestion(state.session.current.term);
       }
     });
     
@@ -1946,7 +1977,7 @@
         speakText = card.term;
       }
       
-      TTS.speak(speakText);
+      TTS.speakQuestion(speakText);
     } else {
       // Nicht-TTS Modi
       if(mode === 'umschreibung'){
@@ -2049,6 +2080,12 @@
     stamp.className = 'answer-stamp ' + (correct ? 'correct' : 'wrong');
     // Beide sind klickbar (correct und wrong)
     stamp.dataset.clickToContinue = 'true';
+    
+    // SSML-Feedback mit Betonung abspielen
+    const ttsMode = $('#tts-mode')?.value || 'none';
+    if(ttsMode !== 'none'){
+      TTS.speakFeedback(correct);
+    }
     
     console.log('Stempel angezeigt:', correct ? 'RICHTIG ✓' : 'FALSCH ✗', 'Display:', stamp.style.display, 'Visibility:', stamp.style.visibility, 'getBoundingClientRect:', stamp.getBoundingClientRect());
     
