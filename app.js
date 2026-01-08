@@ -334,13 +334,26 @@
       if(!text) return;
       
       const voiceURI = state.data.settings.tts.voiceURI || 'Deutsch Female';
-      const rate = state.data.settings.tts.rate || 0.7; // ResponsiveVoice nutzt Rate ~0.5–1.5
+      // clamp slider value to a safe range for ResponsiveVoice
+      const rate = clamp(state.data.settings.tts.rate || 0.7, 0.5, 1.5);
       
       // Versuche ResponsiveVoice zu nutzen (unterstützt SSML)
-      if(typeof responsiveVoice !== 'undefined') {
-        responsiveVoice.cancel();
-        // ResponsiveVoice kann SSML direkt verarbeiten
-        responsiveVoice.speak(text, voiceURI, { rate: rate });
+      if(typeof responsiveVoice !== 'undefined' && responsiveVoice.voiceSupport && responsiveVoice.voiceSupport()) {
+        try {
+          responsiveVoice.cancel();
+          // Nutze ausgewählte Stimme nur wenn vorhanden
+          const available = (responsiveVoice.getVoices && responsiveVoice.getVoices()) || [];
+          const hasVoice = available.some(v=>v && (v.name===voiceURI || v.voiceURI===voiceURI));
+          const voiceName = hasVoice ? voiceURI : undefined;
+          const ok = responsiveVoice.speak(text, voiceName, { rate });
+          if(ok===false){
+            // Fallback wenn abgelehnt oder fehlgeschlagen
+            this.speakDirectFallback(text);
+          }
+        } catch(e){
+          console.warn('ResponsiveVoice speak failed, fallback to WebSpeech', e);
+          this.speakDirectFallback(text);
+        }
       } else {
         // Fallback zur Web Speech API
         this.speakDirectFallback(text);
