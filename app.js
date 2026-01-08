@@ -334,7 +334,7 @@
       if(!text) return;
       
       const voiceURI = state.data.settings.tts.voiceURI || 'Deutsch Female';
-      const rate = (state.data.settings.tts.rate || 0.7) * 100; // ResponsiveVoice nutzt 0-100
+      const rate = state.data.settings.tts.rate || 0.7; // ResponsiveVoice nutzt Rate ~0.5–1.5
       
       // Versuche ResponsiveVoice zu nutzen (unterstützt SSML)
       if(typeof responsiveVoice !== 'undefined') {
