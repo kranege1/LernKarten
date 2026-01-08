@@ -334,7 +334,18 @@
     initVoices(){
       // Use Web Speech API voices
       if('speechSynthesis' in window){
-        state.voices = window.speechSynthesis.getVoices();
+        const loadVoices = () => {
+          state.voices = window.speechSynthesis.getVoices();
+          if(state.voices.length > 0){
+            refreshVoiceSelectors();
+          } else {
+            // Retry after a short delay if voices aren't loaded yet
+            setTimeout(loadVoices, 100);
+          }
+        };
+        loadVoices();
+        
+        // Listen for voices loaded event
         if(window.speechSynthesis.onvoiceschanged !== undefined){
           window.speechSynthesis.onvoiceschanged = () => {
             state.voices = window.speechSynthesis.getVoices();
@@ -345,7 +356,6 @@
         state.voices = [];
       }
       this.voices = state.voices;
-      refreshVoiceSelectors();
     },
     
     speak(text){
