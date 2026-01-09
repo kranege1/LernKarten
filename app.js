@@ -2974,6 +2974,15 @@
 
   // --- Settings ---
   function bindSettings(){
+    // Helper: Update Google voice section visibility
+    function updateGoogleVoiceSection(){
+      const googleKey = ($('#google-tts-key')?.value || '').trim();
+      const section = $('#google-voice-section');
+      if(section){
+        section.style.display = googleKey ? 'block' : 'none';
+      }
+    }
+    
     const sampleField = $('#tts-sample');
     const insertBtn = $('#tts-insert-sample');
     const presetSel = $('#tts-preset');
@@ -3110,14 +3119,7 @@
       }
     });
 
-    // Toggle Google voice section visibility based on API key
-    function updateGoogleVoiceSection(){
-      const googleKey = ($('#google-tts-key')?.value || '').trim();
-      const section = $('#google-voice-section');
-      if(section){
-        section.style.display = googleKey ? 'block' : 'none';
-      }
-    }
+    // Setup Google voice section and listeners
     updateGoogleVoiceSection();
     
     $('#google-tts-key').addEventListener('input', (e) => { 
