@@ -387,14 +387,7 @@
     },
     
     speakDirectFallback(text){
-      const googleKey = ($('#google-tts-key')?.value || '').trim();
-      if(googleKey){
-        // Use Google Cloud TTS if API key is available
-        this.speakGoogle(text);
-        return;
-      }
-      
-      // Fallback to Web Speech API
+      // Use Web Speech API (native browser voices)
       if(!('speechSynthesis' in window)) return;
       const u = new SpeechSynthesisUtterance(text);
       u.lang = state.data.settings.tts.lang || 'de-DE';
@@ -412,27 +405,33 @@
       
       try {
         // Call Google Cloud TTS API directly (works on GitHub Pages)
+        // Google natively supports SSML - send it directly without parsing
+        const requestBody = {
+          input: { text }, // Send as plain text or SSML directly
+          voice: {
+            languageCode: lang,
+            name: state.data.settings.tts.googleVoiceName || this.getGoogleVoiceForLang(lang)
+          },
+          audioConfig: {
+            audioEncoding: 'MP3',
+            pitch: 0,
+            speakingRate: rate
+          }
+        };
+        
         const response = await fetch(`https://texttospeech.googleapis.com/v1/text:synthesize?key=${encodeURIComponent(googleKey)}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            input: { text },
-            voice: {
-              languageCode: lang,
-              name: state.data.settings.tts.googleVoiceName || this.getGoogleVoiceForLang(lang)
-            },
-            audioConfig: {
-              audioEncoding: 'MP3',
-              pitch: 0,
-              speakingRate: rate
-            }
-          })
+          body: JSON.stringify(requestBody)
         });
         
         if(!response.ok) throw new Error('Google TTS failed');
         const data = await response.json();
         
         if(data.audioContent){
+          // Cancel any playing Web Speech API audio
+          if('speechSynthesis' in window) window.speechSynthesis.cancel();
+          
           // Track usage: increment character count and request count
           state.data.settings.tts.charsUsed = (state.data.settings.tts.charsUsed || 0) + text.length;
           state.data.settings.tts.requestsUsed = (state.data.settings.tts.requestsUsed || 0) + 1;
