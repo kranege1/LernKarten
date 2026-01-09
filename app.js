@@ -392,12 +392,12 @@
       
       const voiceSelect = $('#tts-voice');
       const voiceName = voiceSelect?.selectedOptions[0]?.text || 'Browser-Stimme';
-      this.updateTTSStatus(`Local TTS - ${voiceName}`, true);
       
       const u = new SpeechSynthesisUtterance(text);
       u.lang = state.data.settings.tts.lang || 'de-DE';
       u.rate = state.data.settings.tts.rate || 0.7;
       
+      u.onstart = () => this.updateTTSStatus(`Local TTS - ${voiceName}`, true);
       u.onend = () => this.updateTTSStatus(null, false);
       u.onerror = () => this.updateTTSStatus(null, false);
       
@@ -411,8 +411,8 @@
       
       const lang = state.data.settings.tts.lang || 'de-DE';
       const rate = state.data.settings.tts.rate || 1.0;
-      
-      const voiceType = $('#google-voice-type')?.value || 'Standard';
+      const voiceTypeRaw = $('#google-voice-type')?.value || 'Standard';
+      const voiceType = this.normalizeVoiceType(voiceTypeRaw);
       this.updateTTSStatus(`Cloud TTS - ${voiceType}`, true);
       
       try {
@@ -456,6 +456,7 @@
           if(costEl) costEl.textContent = this.calculateCost(state.data.settings.tts.charsUsed || 0).toFixed(4);
           
           const audio = new Audio(`data:audio/mpeg;base64,${data.audioContent}`);
+          audio.onplay = () => this.updateTTSStatus(`Cloud TTS - ${voiceType}`, true);
           audio.onended = () => this.updateTTSStatus(null, false);
           audio.onerror = () => this.updateTTSStatus(null, false);
           await audio.play();
@@ -500,9 +501,16 @@
         }, 500);
       }
     },
+
+    normalizeVoiceType(raw){
+      if(!raw) return 'Standard';
+      if(raw.toLowerCase() === 'wavenet' || raw === 'WaveNet') return 'Wavenet';
+      if(raw.toLowerCase() === 'neural2') return 'Neural2';
+      return 'Standard';
+    },
     
     getGoogleVoiceForLang(lang){
-      const voiceType = ($('#google-voice-type')?.value || 'Standard');
+      const voiceType = this.normalizeVoiceType($('#google-voice-type')?.value || 'Standard');
       const variant = ($('#google-voice-variant')?.value || 'A');
       
       // Extract base language code (e.g., 'de-DE' -> 'de-DE')
