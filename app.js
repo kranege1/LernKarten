@@ -1,105 +1,22 @@
 /* LernKarten – App Logic */
 (function(){
   'use strict';
-  const $ = s => document.querySelector(s);
-  const $$ = s => document.querySelectorAll(s);
+  function bindSettings(){
+    // Load saved settings
+    $('#tts-lang').value = state.data.settings.tts.lang || 'de-DE';
+    $('#tts-rate').value = state.data.settings.tts.rate || 1.0;
+    $('#tts-voice').value = state.data.settings.tts.voiceURI || '';
 
-  const state = {
-    data: { folders: [], topics: [], cards: [], settings: { tts: { lang: 'de-DE', voiceURI: '', rate: 0.7, charsUsed: 0, requestsUsed: 0, lastResetDate: new Date().toISOString().split('T')[0] }, ai: { provider: 'openai', keyOpenai: '', keyGrok: '', endpoint: '', apiKey: '' }, drive: { clientId: '' } } },
-    session: { active: false, topicId: null, mode: 'beschreibung', answered: 0, correct: 0, current: null, multipleChoiceCorrect: null, maxCards: null, selectedCardCount: null },
-    ui: { selectedFolderId: null, selectedTopicId: null, selectedStatsId: null, selectedStatsType: null, collapsedFolders: {} },
-    voices: []
-  };
+    // Attach listeners
+    $('#tts-lang').addEventListener('change', (e)=>{ state.data.settings.tts.lang = e.target.value; Storage.save(); refreshVoiceSelectors(); });
+    $('#tts-rate').addEventListener('input', (e)=>{ state.data.settings.tts.rate = parseFloat(e.target.value); Storage.save(); });
+    $('#tts-voice').addEventListener('change', (e)=>{ state.data.settings.tts.voiceURI = e.target.value; Storage.save(); });
 
-  const Storage = {
-    lastCardCount: 0,
-    load(){
-      const raw = localStorage.getItem('lernKarten');
-      if(raw){
-        try {
-          const parsed = JSON.parse(raw);
-          if(parsed.folders) state.data.folders = parsed.folders;
-          if(parsed.topics) state.data.topics = parsed.topics;
-          if(parsed.cards) state.data.cards = parsed.cards;
-          if(parsed.settings) state.data.settings = { ...state.data.settings, ...parsed.settings };
-          this.lastCardCount = state.data.cards.length;
-        } catch(e){ console.error('Load error', e); }
-      }
-    },
-    save(){
-      localStorage.setItem('lernKarten', JSON.stringify(state.data));
-      
-      // Auto-Backup wenn neue Karten hinzugekommen sind
-      const currentCount = state.data.cards.length;
-      if(currentCount > this.lastCardCount){
-        Drive.autoBackup();
-        this.lastCardCount = currentCount;
-      }
-    },
-    exportJSON(topicId){
-      const data = topicId ? { topics: state.data.topics.filter(t=>t.id===topicId), cards: state.data.cards.filter(c=>c.topicId===topicId) } : { folders: state.data.folders, topics: state.data.topics, cards: state.data.cards };
-      const json = JSON.stringify(data, null, 2);
-      const blob = new Blob([json], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      const name = topicId ? `lernKarten_${getTopicName(topicId)}.json` : `lernKarten_export.json`;
-      a.download = name;
-      a.click();
-      URL.revokeObjectURL(url);
-    }
-  };
-
-  const Drive = {
-    accessToken: null,
-    isSignedIn: false,
-    fileName: 'lernkarten_backup.json',
-    fileId: null,
-
-    init(){
-      // Google API wird asynchron geladen
-      if(typeof gapi === 'undefined'){
-        console.warn('Google API nicht geladen');
-        return;
-      }
-    },
-
-    auth(){
-      const clientId = state.data.settings.drive.clientId;
-      if(!clientId){
-        $('#drive-status').textContent = 'Bitte OAuth Client ID eingeben';
-        return;
-      }
-
-      // OAuth 2.0 Flow mit Google Identity Services
-      const client = google.accounts.oauth2.initTokenClient({
-        client_id: clientId,
-        scope: 'https://www.googleapis.com/auth/drive.file',
-        callback: (response) => {
-          if (response.access_token) {
-            this.accessToken = response.access_token;
-            this.isSignedIn = true;
-            $('#drive-status').textContent = '✓ Angemeldet bei Google Drive';
-            this.findBackupFile();
-          }
-        },
-      });
-      client.requestAccessToken();
-    },
-
-    signout(){
-      if(this.accessToken){
-        google.accounts.oauth2.revoke(this.accessToken);
-        this.accessToken = null;
-        this.isSignedIn = false;
-        this.fileId = null;
-        $('#drive-status').textContent = 'Abgemeldet';
-      }
-    },
-
-    async findBackupFile(){
-      if(!this.accessToken) return null;
-      try {
+    $('#tts-test').addEventListener('click', ()=>{
+      const text = 'Stimmtest. Dies ist eine kurze Probe.';
+      TTS.speakDirect(text);
+    });
+  }
         const response = await fetch(
           `https://www.googleapis.com/drive/v3/files?q=name='${this.fileName}' and trashed=false&spaces=drive&fields=files(id,name)`,
           { headers: { 'Authorization': `Bearer ${this.accessToken}` } }
@@ -364,6 +281,7 @@
     speak(text){
       const ttsMode = $('#tts-mode')?.value || 'none';
       if(ttsMode === 'none') return;
+      this.cancel(); // stop anything currently playing before starting new
       this.speakDirect(text);
     },
     
@@ -460,10 +378,15 @@
           const costEl = $('#tts-usage-cost');
           if(costEl) costEl.textContent = this.calculateCost(state.data.settings.tts.charsUsed || 0).toFixed(4);
           
+          if(this.currentAudio){
+            this.currentAudio.pause();
+            this.currentAudio = null;
+          }
           const audio = new Audio(`data:audio/mpeg;base64,${data.audioContent}`);
+          this.currentAudio = audio;
           audio.onplay = () => this.updateTTSStatus(`Cloud TTS - ${voiceType}`, true);
-          audio.onended = () => this.updateTTSStatus(null, false);
-          audio.onerror = () => this.updateTTSStatus(null, false);
+          audio.onended = () => { this.updateTTSStatus(null, false); this.currentAudio = null; };
+          audio.onerror = () => { this.updateTTSStatus(null, false); this.currentAudio = null; };
           await audio.play();
         } else {
           this.updateTTSStatus(null, false);
@@ -679,7 +602,9 @@
     },
     cancel(){
       try{ if(this._ssmlTimer) clearTimeout(this._ssmlTimer); }catch(e){}
+      try{ if(this.currentAudio){ this.currentAudio.pause(); this.currentAudio = null; } }catch(e){}
       try{ if('speechSynthesis' in window) window.speechSynthesis.cancel(); }catch(e){}
+      this.updateTTSStatus(null, false);
     }
   };
 
