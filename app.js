@@ -413,6 +413,7 @@
       const rate = state.data.settings.tts.rate || 1.0;
       const voiceTypeRaw = $('#google-voice-type')?.value || 'Standard';
       const voiceType = this.normalizeVoiceType(voiceTypeRaw);
+      const voiceLangForName = this.getVoiceNameLanguage(lang);
       this.updateTTSStatus(`Cloud TTS - ${voiceType}`, true);
       
       try {
@@ -421,8 +422,8 @@
         const requestBody = {
           input: { text }, // Send as plain text or SSML directly
           voice: {
-            languageCode: lang,
-            name: state.data.settings.tts.googleVoiceName || this.getGoogleVoiceForLang(lang)
+            languageCode: voiceLangForName,
+            name: state.data.settings.tts.googleVoiceName || this.getGoogleVoiceForLang(voiceLangForName)
           },
           audioConfig: {
             audioEncoding: 'MP3',
@@ -437,7 +438,11 @@
           body: JSON.stringify(requestBody)
         });
         
-        if(!response.ok) throw new Error('Google TTS failed');
+        if(!response.ok){
+          const msg = `Google TTS failed (${response.status})`;
+          this.updateTTSStatus(msg, false);
+          throw new Error(msg);
+        }
         const data = await response.json();
         
         if(data.audioContent){
@@ -508,13 +513,21 @@
       if(raw.toLowerCase() === 'neural2') return 'Neural2';
       return 'Standard';
     },
+
+    // Some locales (e.g., de-AT) don't have direct Google voices; map to closest supported
+    getVoiceNameLanguage(lang){
+      if(!lang) return 'de-DE';
+      const lower = lang.toLowerCase();
+      if(lower === 'de-at') return 'de-DE';
+      return lang;
+    },
     
     getGoogleVoiceForLang(lang){
       const voiceType = this.normalizeVoiceType($('#google-voice-type')?.value || 'Standard');
       const variant = ($('#google-voice-variant')?.value || 'A');
       
       // Extract base language code (e.g., 'de-DE' -> 'de-DE')
-      const baseLang = lang || 'de-DE';
+      const baseLang = this.getVoiceNameLanguage(lang || 'de-DE');
       
       // Build voice name: e.g., 'de-DE-Standard-A' or 'de-DE-WaveNet-A'
       return `${baseLang}-${voiceType}-${variant}`;
