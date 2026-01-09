@@ -303,7 +303,11 @@
 						<h2>Sprache & Stimme</h2>
 						<div class="row">
 							<label for="google-tts-key">Google Cloud TTS API Key (optional)</label>
-							<input id="google-tts-key" type="password" placeholder="AIzaSy..." />
+							<div style="display: flex; gap: 8px;">
+								<input id="google-tts-key" type="password" placeholder="AIzaSy..." style="flex: 1;" />
+								<button id="test-google-key" class="ghost" style="white-space: nowrap;">Key testen</button>
+							</div>
+							<small id="google-key-status" style="display:block; margin-top:4px;"></small>
 							<small style="display:block; color:#666; margin-top:4px;">Für konsistente Stimmen auf allen Geräten. <a href="https://cloud.google.com/text-to-speech" target="_blank" style="color:#0066cc;">Google API aktivieren</a></small>
 						</div>
 						<div class="row two">

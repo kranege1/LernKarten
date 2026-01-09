@@ -3030,6 +3030,68 @@
     $('#tts-rate').addEventListener('input', (e)=>{ state.data.settings.tts.rate = parseFloat(e.target.value); Storage.save(); });
     $('#google-tts-key').addEventListener('input', (e)=>{ state.data.settings.tts.googleKey = e.target.value; Storage.save(); });
 
+    // Test Google API Key
+    $('#test-google-key').addEventListener('click', async () => {
+      const googleKey = ($('#google-tts-key')?.value || '').trim();
+      const statusEl = $('#google-key-status');
+      const testBtn = $('#test-google-key');
+      
+      if(!googleKey){
+        statusEl.style.color = '#d9534f';
+        statusEl.textContent = '❌ Bitte zuerst API Key eingeben';
+        return;
+      }
+      
+      testBtn.disabled = true;
+      testBtn.textContent = 'Teste...';
+      statusEl.style.color = '#666';
+      statusEl.textContent = '⏳ API Key wird geprüft...';
+      
+      try {
+        const response = await fetch('/api/tts-google', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            text: 'Test',
+            languageCode: 'de-DE',
+            voiceName: 'de-DE-Standard-A',
+            rate: 1.0,
+            apiKey: googleKey
+          })
+        });
+        
+        if(response.ok){
+          const data = await response.json();
+          if(data.audioContent){
+            statusEl.style.color = '#5cb85c';
+            statusEl.textContent = '✅ API Key ist gültig und funktioniert!';
+          } else {
+            statusEl.style.color = '#d9534f';
+            statusEl.textContent = '❌ Ungültige Antwort von Google API';
+          }
+        } else {
+          const errorData = await response.json().catch(() => ({}));
+          statusEl.style.color = '#d9534f';
+          
+          if(response.status === 400){
+            statusEl.textContent = '❌ API Key ungültig oder Text-to-Speech API nicht aktiviert';
+          } else if(response.status === 403){
+            statusEl.textContent = '❌ API Key hat keine Berechtigung für Text-to-Speech API';
+          } else if(response.status === 429){
+            statusEl.textContent = '⚠️ Zu viele Anfragen - bitte später nochmal versuchen';
+          } else {
+            statusEl.textContent = `❌ Fehler ${response.status}: ${errorData.error || 'Unbekannter Fehler'}`;
+          }
+        }
+      } catch(e){
+        statusEl.style.color = '#d9534f';
+        statusEl.textContent = '❌ Netzwerkfehler - ist der Server gestartet?';
+      } finally {
+        testBtn.disabled = false;
+        testBtn.textContent = 'Key testen';
+      }
+    });
+
     // Initialize and update TTS usage display
     function updateUsageDisplay(){
       const charsUsed = state.data.settings.tts.charsUsed || 0;
