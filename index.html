@@ -436,24 +436,9 @@
 					<label for="card-desc">Umschreibung</label>
 					<textarea id="card-desc" rows="3" placeholder="Erkläre den Begriff ohne ihn zu nennen…"></textarea>
 				</div>
-				<div id="mc-options-area">
-					<h4>Antworten (1 = richtige Antwort)</h4>
-					<div class="row">
-						<label for="card-mc-option-1">Antwort 1</label>
-						<input id="card-mc-option-1" placeholder="Antwort 1" />
-					</div>
-					<div class="row">
-						<label for="card-mc-option-2">Antwort 2</label>
-						<input id="card-mc-option-2" placeholder="Antwort 2" />
-					</div>
-					<div class="row">
-						<label for="card-mc-option-3">Antwort 3</label>
-						<input id="card-mc-option-3" placeholder="Antwort 3" />
-					</div>
-					<div class="row">
-						<label for="card-mc-option-4">Antwort 4</label>
-						<input id="card-mc-option-4" placeholder="Antwort 4" />
-					</div>
+				<div class="row">
+					<label for="card-answer">Antwort</label>
+					<input id="card-answer" placeholder="Richtige Antwort" />
 				</div>
 				<menu class="dialog-menu">
 					<button type="button" value="cancel" class="ghost" onclick="document.getElementById('card-dialog').close()">Abbrechen</button>
@@ -611,7 +596,6 @@
 									<th>Begriff</th>
 									<th>Umschreibung</th>
 									<th>Antwort</th>
-									<th>MC-Optionen</th>
 								</tr>
 							</thead>
 							<tbody id="result-preview"></tbody>
