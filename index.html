@@ -301,17 +301,20 @@
 				<div class="panel-grid">
 					<div class="card">
 						<h2>Sprache & Stimme</h2>
-						<div class="row">
-							<label for="google-tts-key">Google Cloud TTS API Key (optional)</label>
+					
+					<div class="row">
+						<label for="google-tts-key">Google Cloud TTS API Key (optional)</label>
 						<input id="google-tts-key" type="password" placeholder="AIzaSy..." />
 					</div>
 					<div style="display: flex; gap: 8px; margin: -4px 0 8px 0;">
 						<button id="test-google-key" class="ghost" style="flex: 0 0 auto;">Key testen</button>
 						<small id="google-key-status" style="flex: 1; line-height: 1.8;"></small>
 					</div>
-					<small class="muted" style="display:block; margin-bottom: 12px;">Für konsistente Stimmen auf allen Geräten. <a href="https://cloud.google.com/text-to-speech" target="_blank" style="color: var(--primary-2);">Google API aktivieren</a></small>
+					<small class="muted" style="display:block; margin-bottom: 16px;">Für konsistente Stimmen auf allen Geräten. <a href="https://cloud.google.com/text-to-speech" target="_blank" style="color: var(--primary-2);">Google API aktivieren</a></small>
 					
 					<h3 style="margin: 16px 0 12px 0; font-size: 14px; color: var(--primary-2);">🌐 Google Cloud Stimmen</h3>
+					
+					<div class="row">
 						<label for="google-voice-type">Stimm-Typ</label>
 						<select id="google-voice-type">
 							<option value="Standard">Standard ($4/Mio.)</option>
@@ -328,25 +331,29 @@
 							<option value="C">C (weiblich)</option>
 							<option value="D">D (männlich)</option>
 						</select>
-						</div>
-						
-						<div class="row">
-							<label for="tts-lang">TTS Sprache</label>
-							<select id="tts-lang"></select>
-						</div>
-						<div class="row">
-							<label for="tts-voice">Browser-Stimme (Fallback)</label>
-							<select id="tts-voice"></select>
-						</div>
-						<div class="row">
-							<label for="tts-rate">Geschwindigkeit</label>
-							<input id="tts-rate" type="range" min="0.5" max="1.75" step="0.05" value="1" />
-						</div>
+					</div>
+					
+					<div class="row">
+						<label for="tts-lang">TTS Sprache</label>
+						<select id="tts-lang"></select>
+					</div>
+					
+					<div class="row">
+						<label for="tts-voice">Browser-Stimme (Fallback)</label>
+						<select id="tts-voice"></select>
+					</div>
+					
+					<div class="row">
+						<label for="tts-rate">Geschwindigkeit</label>
+						<input id="tts-rate" type="range" min="0.5" max="1.75" step="0.05" value="1" />
+					</div>
+					
 					<div class="row" style="flex-direction: column; align-items: stretch;">
 						<label for="tts-sample" style="font-weight:600; margin-bottom:6px;">Beispieltext (SSML editierbar)</label>
 						<textarea id="tts-sample" rows="5" style="font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;"></textarea>
-						</div>
-<div class="row">
+					</div>
+					
+					<div class="row">
 						<label for="tts-preset">Vorlage</label>
 						<select id="tts-preset">
 							<option value="">-- auswählen --</option>
@@ -357,10 +364,10 @@
 							<option value="quiz">Quiz: Frage → Antwort</option>
 						</select>
 					</div>
+					
 					<div style="display: flex; gap: 8px; margin-top: 8px;">
 						<button id="tts-insert-sample" class="ghost" style="flex: 1;">Vorlage übernehmen</button>
 						<button id="tts-test" class="primary" style="flex: 1;">Stimme testen</button>
-						</div>
 
 					<div style="border-top: 1px solid var(--border); padding-top: 16px; margin-top: 16px;">
 						<h3 style="margin: 0 0 12px 0; font-size: 14px; color: var(--primary-2);">Google TTS Verbrauch</h3>
