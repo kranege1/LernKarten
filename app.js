@@ -256,6 +256,12 @@
     $('#google-tts-key').value = state.data.settings.tts.googleKey || '';
     $('#google-voice-type').value = state.data.settings.tts.googleVoiceType || 'Standard';
     $('#google-voice-variant').value = state.data.settings.tts.googleVoiceVariant || 'A';
+    
+    // Show/hide Google voice section based on saved key
+    if(state.data.settings.tts.googleKey){
+      const section = $('#google-voice-section');
+      if(section) section.style.display = 'block';
+    }
 
     // Version im Footer anzeigen
     showDeployedVersion();
