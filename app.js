@@ -389,9 +389,18 @@
     speakDirectFallback(text){
       // Use Web Speech API (native browser voices)
       if(!('speechSynthesis' in window)) return;
+      
+      const voiceSelect = $('#tts-voice');
+      const voiceName = voiceSelect?.selectedOptions[0]?.text || 'Browser-Stimme';
+      this.updateTTSStatus(`Local TTS - ${voiceName}`, true);
+      
       const u = new SpeechSynthesisUtterance(text);
       u.lang = state.data.settings.tts.lang || 'de-DE';
       u.rate = state.data.settings.tts.rate || 0.7;
+      
+      u.onend = () => this.updateTTSStatus(null, false);
+      u.onerror = () => this.updateTTSStatus(null, false);
+      
       window.speechSynthesis.cancel();
       window.speechSynthesis.speak(u);
     },
@@ -402,6 +411,9 @@
       
       const lang = state.data.settings.tts.lang || 'de-DE';
       const rate = state.data.settings.tts.rate || 1.0;
+      
+      const voiceType = $('#google-voice-type')?.value || 'Standard';
+      this.updateTTSStatus(`Cloud TTS - ${voiceType}`, true);
       
       try {
         // Call Google Cloud TTS API directly (works on GitHub Pages)
@@ -444,10 +456,15 @@
           if(costEl) costEl.textContent = this.calculateCost(state.data.settings.tts.charsUsed || 0).toFixed(4);
           
           const audio = new Audio(`data:audio/mpeg;base64,${data.audioContent}`);
+          audio.onended = () => this.updateTTSStatus(null, false);
+          audio.onerror = () => this.updateTTSStatus(null, false);
           await audio.play();
+        } else {
+          this.updateTTSStatus(null, false);
         }
       } catch(e){
         console.warn('Google TTS error, falling back to Web Speech:', e);
+        this.updateTTSStatus(null, false);
         // Fallback to Web Speech API
         if(!('speechSynthesis' in window)) return;
         const u = new SpeechSynthesisUtterance(text);
@@ -462,6 +479,26 @@
       // Standard voice: $4 per 1M chars
       const standardRate = 4 / 1000000;
       return charsUsed * standardRate;
+    },
+    
+    updateTTSStatus(text, isSpeaking){
+      const statusEl = $('#tts-status');
+      const statusTextEl = $('#tts-status-text');
+      
+      if(!statusEl || !statusTextEl) return;
+      
+      if(text && isSpeaking){
+        statusTextEl.textContent = text;
+        statusEl.style.display = 'flex';
+        statusEl.classList.add('speaking');
+      } else {
+        statusEl.classList.remove('speaking');
+        setTimeout(() => {
+          if(!statusEl.classList.contains('speaking')){
+            statusEl.style.display = 'none';
+          }
+        }, 500);
+      }
     },
     
     getGoogleVoiceForLang(lang){
