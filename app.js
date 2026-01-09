@@ -448,6 +448,8 @@
       const standardRate = 4 / 1000000;
       return charsUsed * standardRate;
     },
+    
+    getGoogleVoiceForLang(lang){
       const voiceMap = {
         'de-DE': 'de-DE-Standard-A',
         'de-AT': 'de-AT-Standard-A',
