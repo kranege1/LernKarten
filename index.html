@@ -303,37 +303,31 @@
 						<h2>Sprache & Stimme</h2>
 						<div class="row">
 							<label for="google-tts-key">Google Cloud TTS API Key (optional)</label>
-							<div style="display: flex; gap: 8px;">
-								<input id="google-tts-key" type="password" placeholder="AIzaSy..." style="flex: 1;" />
-								<button id="test-google-key" class="ghost" style="white-space: nowrap;">Key testen</button>
-							</div>
-							<small id="google-key-status" style="display:block; margin-top:4px;"></small>
-							<small style="display:block; color:#666; margin-top:4px;">Für konsistente Stimmen auf allen Geräten. <a href="https://cloud.google.com/text-to-speech" target="_blank" style="color:#0066cc;">Google API aktivieren</a></small>
-						</div>
-						
-						<div id="google-voice-section" style="padding: 12px; background: #e8f5e9; border-left: 4px solid #4caf50; margin-bottom: 12px; border-radius: 4px;">
-							<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
-								<span style="font-weight: 700; color: #2e7d32; font-size: 14px;">🌐 Google Cloud Stimmen</span>
-							</div>
-							<div style="display: flex; flex-direction: column; gap: 12px;">
-								<div>
-									<label for="google-voice-type" style="font-size: 12px; font-weight: 600; color: #1b5e20; display: block; margin-bottom: 4px;">Stimm-Typ</label>
-									<select id="google-voice-type" style="width: 100%; padding: 6px; border: 1px solid #81c784; border-radius: 4px;">
-										<option value="Standard">Standard ($4/Mio.)</option>
-										<option value="WaveNet">WaveNet ($16/Mio.)</option>
-										<option value="Neural2">Neural2 ($16/Mio.)</option>
-									</select>
-								</div>
-								<div>
-									<label for="google-voice-variant" style="font-size: 12px; font-weight: 600; color: #1b5e20; display: block; margin-bottom: 4px;">Variante</label>
-									<select id="google-voice-variant" style="width: 100%; padding: 6px; border: 1px solid #81c784; border-radius: 4px;">
-										<option value="A">A (weiblich/neutral)</option>
-										<option value="B">B (männlich/neutral)</option>
-										<option value="C">C (weiblich)</option>
-										<option value="D">D (männlich)</option>
-									</select>
-								</div>
-							</div>
+						<input id="google-tts-key" type="password" placeholder="AIzaSy..." />
+					</div>
+					<div style="display: flex; gap: 8px; margin: -4px 0 8px 0;">
+						<button id="test-google-key" class="ghost" style="flex: 0 0 auto;">Key testen</button>
+						<small id="google-key-status" style="flex: 1; line-height: 1.8;"></small>
+					</div>
+					<small class="muted" style="display:block; margin-bottom: 12px;">Für konsistente Stimmen auf allen Geräten. <a href="https://cloud.google.com/text-to-speech" target="_blank" style="color: var(--primary-2);">Google API aktivieren</a></small>
+					
+					<h3 style="margin: 16px 0 12px 0; font-size: 14px; color: var(--primary-2);">🌐 Google Cloud Stimmen</h3>
+						<label for="google-voice-type">Stimm-Typ</label>
+						<select id="google-voice-type">
+							<option value="Standard">Standard ($4/Mio.)</option>
+							<option value="WaveNet">WaveNet ($16/Mio.)</option>
+							<option value="Neural2">Neural2 ($16/Mio.)</option>
+						</select>
+					</div>
+					
+					<div class="row">
+						<label for="google-voice-variant">Variante</label>
+						<select id="google-voice-variant">
+							<option value="A">A (weiblich/neutral)</option>
+							<option value="B">B (männlich/neutral)</option>
+							<option value="C">C (weiblich)</option>
+							<option value="D">D (männlich)</option>
+						</select>
 						</div>
 						
 						<div class="row">
@@ -348,42 +342,43 @@
 							<label for="tts-rate">Geschwindigkeit</label>
 							<input id="tts-rate" type="range" min="0.5" max="1.75" step="0.05" value="1" />
 						</div>
-						<div class="row">
-							<label for="tts-sample" style="display:block; font-weight:600; margin-bottom:6px;">Beispieltext (SSML editierbar)</label>
-							<textarea id="tts-sample" rows="5" style="width:100%; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace; resize: vertical;"></textarea>
+					<div class="row" style="flex-direction: column; align-items: stretch;">
+						<label for="tts-sample" style="font-weight:600; margin-bottom:6px;">Beispieltext (SSML editierbar)</label>
+						<textarea id="tts-sample" rows="5" style="font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;"></textarea>
 						</div>
-						<div class="row" style="gap:8px; align-items: center;">
-							<label for="tts-preset">Vorlage</label>
-							<select id="tts-preset">
-								<option value="">-- auswählen --</option>
-								<option value="vokabel">Deutsch: Vokabel</option>
-								<option value="mathe">Mathe: Schritt-für-Schritt</option>
-								<option value="dialog">Englisch: Dialog</option>
-								<option value="langsam">Langsam & deutlich</option>
-								<option value="quiz">Quiz: Frage → Antwort</option>
-							</select>
-							<button id="tts-insert-sample" class="ghost">Vorlage übernehmen</button>
-							<button id="tts-test" class="primary">Stimme testen</button>
+<div class="row">
+						<label for="tts-preset">Vorlage</label>
+						<select id="tts-preset">
+							<option value="">-- auswählen --</option>
+							<option value="vokabel">Deutsch: Vokabel</option>
+							<option value="mathe">Mathe: Schritt-für-Schritt</option>
+							<option value="dialog">Englisch: Dialog</option>
+							<option value="langsam">Langsam & deutlich</option>
+							<option value="quiz">Quiz: Frage → Antwort</option>
+						</select>
+					</div>
+					<div style="display: flex; gap: 8px; margin-top: 8px;">
+						<button id="tts-insert-sample" class="ghost" style="flex: 1;">Vorlage übernehmen</button>
+						<button id="tts-test" class="primary" style="flex: 1;">Stimme testen</button>
 						</div>
 
-						<div style="border-top: 1px solid #ddd; padding-top: 12px; margin-top: 12px;">
-							<h3 style="margin: 0 0 8px 0; font-size: 14px;">Google TTS Verbrauch</h3>
-							<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 13px;">
-								<div style="padding: 8px; background: #f5f5f5; border-radius: 4px;">
-									<div style="color: #666; margin-bottom: 2px;">Zeichen</div>
-									<div style="font-size: 18px; font-weight: bold; color: #333;"><span id="tts-usage-chars">0</span></div>
-								</div>
-								<div style="padding: 8px; background: #f5f5f5; border-radius: 4px;">
-									<div style="color: #666; margin-bottom: 2px;">Kosten (USD)</div>
-									<div style="font-size: 18px; font-weight: bold; color: #d9534f;">$<span id="tts-usage-cost">0.0000</span></div>
+					<div style="border-top: 1px solid var(--border); padding-top: 16px; margin-top: 16px;">
+						<h3 style="margin: 0 0 12px 0; font-size: 14px; color: var(--primary-2);">Google TTS Verbrauch</h3>
+						<div style="display: flex; gap: 12px;">
+							<div style="flex: 1; padding: 12px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px;">
+								<div class="muted" style="margin-bottom: 4px; font-size: 12px;">Zeichen</div>
+								<div style="font-size: 20px; font-weight: bold; color: var(--text);"><span id="tts-usage-chars">0</span></div>
+							</div>
+							<div style="flex: 1; padding: 12px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px;">
+								<div class="muted" style="margin-bottom: 4px; font-size: 12px;">Kosten (USD)</div>
+								<div style="font-size: 20px; font-weight: bold; color: var(--primary-2);">$<span id="tts-usage-cost">0.0000</span></div>
 								</div>
 							</div>
-							<div style="margin-top: 10px; padding: 8px; background: #f9f9f9; border-left: 3px solid #5cb85c; font-size: 12px; color: #555;">
-								<strong>Kostenlos:</strong> 1.000.000 Zeichen/Monat | <strong>Standard:</strong> $4/Mio. Zeichen | <strong>WaveNet:</strong> $16/Mio. Zeichen
-							</div>
-							<button id="tts-reset-usage" class="ghost" style="margin-top: 8px; width: 100%;">Verbrauch zurücksetzen</button>
+						<div class="muted" style="margin-top: 10px; padding: 10px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 8px; font-size: 12px; line-height: 1.5;">
+							<strong>Kostenlos:</strong> 1.000.000 Zeichen/Monat<br>
+							<strong>Standard:</strong> $4/Mio. | <strong>WaveNet:</strong> $16/Mio. | <strong>Neural2:</strong> $16/Mio.
 						</div>
-					</div>
+						<button id="tts-reset-usage" class="ghost" style="margin-top: 10px; width: 100%;">Verbrauch zurücksetzen</button>
 
 					<div class="card">
 						<h2>KI Umschreibung (optional)</h2>
