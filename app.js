@@ -253,6 +253,7 @@
     }
     // Initialisiere UI-Werte für Settings
     $('#tts-rate').value = state.data.settings.tts.rate || 0.7;
+    $('#google-tts-key').value = state.data.settings.tts.googleKey || '';
 
     // Version im Footer anzeigen
     showDeployedVersion();
@@ -376,12 +377,81 @@
     },
     
     speakDirectFallback(text){
+      const googleKey = ($('#google-tts-key')?.value || '').trim();
+      if(googleKey){
+        // Use Google Cloud TTS if API key is available
+        this.speakGoogle(text);
+        return;
+      }
+      
+      // Fallback to Web Speech API
       if(!('speechSynthesis' in window)) return;
       const u = new SpeechSynthesisUtterance(text);
       u.lang = state.data.settings.tts.lang || 'de-DE';
       u.rate = state.data.settings.tts.rate || 0.7;
       window.speechSynthesis.cancel();
       window.speechSynthesis.speak(u);
+    },
+    
+    async speakGoogle(text){
+      const googleKey = ($('#google-tts-key')?.value || '').trim();
+      if(!googleKey) return;
+      
+      const lang = state.data.settings.tts.lang || 'de-DE';
+      const rate = state.data.settings.tts.rate || 1.0;
+      
+      try {
+        const response = await fetch('/api/tts-google', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            text,
+            languageCode: lang,
+            voiceName: state.data.settings.tts.googleVoiceName || this.getGoogleVoiceForLang(lang),
+            rate,
+            apiKey: googleKey
+          })
+        });
+        
+        if(!response.ok) throw new Error('Google TTS failed');
+        const data = await response.json();
+        
+        if(data.audioContent){
+          const audio = new Audio(`data:audio/mpeg;base64,${data.audioContent}`);
+          await audio.play();
+        }
+      } catch(e){
+        console.warn('Google TTS error, falling back to Web Speech:', e);
+        // Fallback to Web Speech API
+        if(!('speechSynthesis' in window)) return;
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = state.data.settings.tts.lang || 'de-DE';
+        u.rate = state.data.settings.tts.rate || 0.7;
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(u);
+      }
+    },
+    
+    getGoogleVoiceForLang(lang){
+      const voiceMap = {
+        'de-DE': 'de-DE-Standard-A',
+        'de-AT': 'de-AT-Standard-A',
+        'de-CH': 'de-CH-Standard-A',
+        'en-US': 'en-US-Neural2-C',
+        'en-GB': 'en-GB-Standard-A',
+        'en-AU': 'en-AU-Standard-A',
+        'en-IN': 'en-IN-Standard-A',
+        'fr-FR': 'fr-FR-Standard-A',
+        'es-ES': 'es-ES-Standard-A',
+        'it-IT': 'it-IT-Standard-A',
+        'nl-NL': 'nl-NL-Standard-A',
+        'pl-PL': 'pl-PL-Standard-A',
+        'pt-BR': 'pt-BR-Standard-A',
+        'ru-RU': 'ru-RU-Standard-A',
+        'ja-JP': 'ja-JP-Standard-A',
+        'zh-CN': 'zh-CN-Standard-A'
+      };
+      return voiceMap[lang] || 'de-DE-Standard-A';
     },
     
     // Hilfsfunktion: Text mit SSML Pausen formatieren
@@ -2943,6 +3013,7 @@
     $('#tts-lang').addEventListener('change', (e)=>{ state.data.settings.tts.lang = e.target.value; Storage.save(); refreshVoiceSelectors(); });
     $('#tts-voice').addEventListener('change', (e)=>{ state.data.settings.tts.voiceURI = e.target.value; Storage.save(); });
     $('#tts-rate').addEventListener('input', (e)=>{ state.data.settings.tts.rate = parseFloat(e.target.value); Storage.save(); });
+    $('#google-tts-key').addEventListener('input', (e)=>{ state.data.settings.tts.googleKey = e.target.value; Storage.save(); });
 
     // KI-Auswahl und Felder initialisieren
     $('#ai-provider').value = state.data.settings.ai.provider || 'openai';

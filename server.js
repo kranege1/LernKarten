@@ -1,4 +1,5 @@
 const http = require('http');
+const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
@@ -14,6 +15,64 @@ const server = http.createServer((req, res) => {
   if (req.method === 'OPTIONS') {
     res.writeHead(200);
     res.end();
+    return;
+  }
+  
+  // Handle Google Cloud TTS API endpoint
+  if (req.url === '/api/tts-google' && req.method === 'POST') {
+    let body = '';
+    req.on('data', chunk => { body += chunk.toString(); });
+    req.on('end', () => {
+      try {
+        const { text, languageCode, voiceName, rate, apiKey } = JSON.parse(body);
+        
+        if (!apiKey) {
+          res.writeHead(400, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: 'API key required' }));
+          return;
+        }
+        
+        const googleUrl = 'https://texttospeech.googleapis.com/v1/text:synthesize?key=' + encodeURIComponent(apiKey);
+        const payload = JSON.stringify({
+          input: { text },
+          voice: {
+            languageCode: languageCode || 'de-DE',
+            name: voiceName || 'de-DE-Standard-A'
+          },
+          audioConfig: {
+            audioEncoding: 'MP3',
+            pitch: 0,
+            speakingRate: rate || 1.0
+          }
+        });
+        
+        const googleReq = https.request(googleUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Content-Length': Buffer.byteLength(payload)
+          }
+        }, (googleRes) => {
+          let googleBody = '';
+          googleRes.on('data', chunk => { googleBody += chunk; });
+          googleRes.on('end', () => {
+            res.writeHead(googleRes.statusCode, { 'Content-Type': 'application/json' });
+            res.end(googleBody);
+          });
+        });
+        
+        googleReq.on('error', (e) => {
+          res.writeHead(500, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ error: e.message }));
+        });
+        
+        googleReq.write(payload);
+        googleReq.end();
+      } catch (e) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: e.message }));
+      }
+    });
     return;
   }
   
