@@ -3100,6 +3100,7 @@
     function updateGoogleVoiceSection(){
       const googleKey = ($('#google-tts-key')?.value || '').trim();
       const section = $('#google-voice-section');
+      console.log('updateGoogleVoiceSection called:', { googleKey: !!googleKey, sectionExists: !!section });
       if(section){
         section.style.display = googleKey ? 'block' : 'none';
       }
@@ -3107,6 +3108,7 @@
     updateGoogleVoiceSection();
     
     $('#google-tts-key').addEventListener('input', (e) => { 
+      console.log('Google key input changed:', e.target.value.substring(0, 10) + '...');
       state.data.settings.tts.googleKey = e.target.value; 
       Storage.save(); 
       updateGoogleVoiceSection();
