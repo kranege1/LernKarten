@@ -5,7 +5,7 @@
   const $$ = s => document.querySelectorAll(s);
 
   const state = {
-    data: { folders: [], topics: [], cards: [], settings: { tts: { lang: 'de-DE', voiceURI: '', rate: 0.7 }, ai: { provider: 'openai', keyOpenai: '', keyGrok: '', endpoint: '', apiKey: '' }, drive: { clientId: '' } } },
+    data: { folders: [], topics: [], cards: [], settings: { tts: { lang: 'de-DE', voiceURI: '', rate: 0.7, charsUsed: 0, requestsUsed: 0, lastResetDate: new Date().toISOString().split('T')[0] }, ai: { provider: 'openai', keyOpenai: '', keyGrok: '', endpoint: '', apiKey: '' }, drive: { clientId: '' } } },
     session: { active: false, topicId: null, mode: 'beschreibung', answered: 0, correct: 0, current: null, multipleChoiceCorrect: null, maxCards: null, selectedCardCount: null },
     ui: { selectedFolderId: null, selectedTopicId: null, selectedStatsId: null, selectedStatsType: null, collapsedFolders: {} },
     voices: []
@@ -417,6 +417,17 @@
         const data = await response.json();
         
         if(data.audioContent){
+          // Track usage: increment character count and request count
+          state.data.settings.tts.charsUsed = (state.data.settings.tts.charsUsed || 0) + text.length;
+          state.data.settings.tts.requestsUsed = (state.data.settings.tts.requestsUsed || 0) + 1;
+          Storage.save();
+          
+          // Update usage display if visible
+          const usageEl = $('#tts-usage-chars');
+          if(usageEl) usageEl.textContent = (state.data.settings.tts.charsUsed || 0).toLocaleString();
+          const costEl = $('#tts-usage-cost');
+          if(costEl) costEl.textContent = this.calculateCost(state.data.settings.tts.charsUsed || 0).toFixed(4);
+          
           const audio = new Audio(`data:audio/mpeg;base64,${data.audioContent}`);
           await audio.play();
         }
@@ -432,7 +443,11 @@
       }
     },
     
-    getGoogleVoiceForLang(lang){
+    calculateCost(charsUsed){
+      // Standard voice: $4 per 1M chars
+      const standardRate = 4 / 1000000;
+      return charsUsed * standardRate;
+    },
       const voiceMap = {
         'de-DE': 'de-DE-Standard-A',
         'de-AT': 'de-AT-Standard-A',
@@ -3014,6 +3029,25 @@
     $('#tts-voice').addEventListener('change', (e)=>{ state.data.settings.tts.voiceURI = e.target.value; Storage.save(); });
     $('#tts-rate').addEventListener('input', (e)=>{ state.data.settings.tts.rate = parseFloat(e.target.value); Storage.save(); });
     $('#google-tts-key').addEventListener('input', (e)=>{ state.data.settings.tts.googleKey = e.target.value; Storage.save(); });
+
+    // Initialize and update TTS usage display
+    function updateUsageDisplay(){
+      const charsUsed = state.data.settings.tts.charsUsed || 0;
+      const costUsed = TTS.calculateCost(charsUsed);
+      $('#tts-usage-chars').textContent = charsUsed.toLocaleString();
+      $('#tts-usage-cost').textContent = costUsed.toFixed(4);
+    }
+    updateUsageDisplay();
+    
+    $('#tts-reset-usage').addEventListener('click', () => {
+      if(confirm('TTS-Verbrauch wirklich zurücksetzen?')){
+        state.data.settings.tts.charsUsed = 0;
+        state.data.settings.tts.requestsUsed = 0;
+        state.data.settings.tts.lastResetDate = new Date().toISOString().split('T')[0];
+        Storage.save();
+        updateUsageDisplay();
+      }
+    });
 
     // KI-Auswahl und Felder initialisieren
     $('#ai-provider').value = state.data.settings.ai.provider || 'openai';
