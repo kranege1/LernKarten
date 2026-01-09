@@ -401,15 +401,21 @@
       const rate = state.data.settings.tts.rate || 1.0;
       
       try {
-        const response = await fetch('/api/tts-google', {
+        // Call Google Cloud TTS API directly (works on GitHub Pages)
+        const response = await fetch(`https://texttospeech.googleapis.com/v1/text:synthesize?key=${encodeURIComponent(googleKey)}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            text,
-            languageCode: lang,
-            voiceName: state.data.settings.tts.googleVoiceName || this.getGoogleVoiceForLang(lang),
-            rate,
-            apiKey: googleKey
+            input: { text },
+            voice: {
+              languageCode: lang,
+              name: state.data.settings.tts.googleVoiceName || this.getGoogleVoiceForLang(lang)
+            },
+            audioConfig: {
+              audioEncoding: 'MP3',
+              pitch: 0,
+              speakingRate: rate
+            }
           })
         });
         
@@ -3050,15 +3056,21 @@
       statusEl.textContent = '⏳ API Key wird geprüft...';
       
       try {
-        const response = await fetch('/api/tts-google', {
+        // Call Google Cloud TTS API directly
+        const response = await fetch(`https://texttospeech.googleapis.com/v1/text:synthesize?key=${encodeURIComponent(googleKey)}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            text: 'Test',
-            languageCode: 'de-DE',
-            voiceName: 'de-DE-Standard-A',
-            rate: 1.0,
-            apiKey: googleKey
+            input: { text: 'Test' },
+            voice: {
+              languageCode: 'de-DE',
+              name: 'de-DE-Standard-A'
+            },
+            audioConfig: {
+              audioEncoding: 'MP3',
+              pitch: 0,
+              speakingRate: 1.0
+            }
           })
         });
         
@@ -3087,7 +3099,7 @@
         }
       } catch(e){
         statusEl.style.color = '#d9534f';
-        statusEl.textContent = '❌ Netzwerkfehler - ist der Server gestartet?';
+        statusEl.textContent = '❌ Netzwerkfehler: ' + e.message;
       } finally {
         testBtn.disabled = false;
         testBtn.textContent = 'Key testen';
