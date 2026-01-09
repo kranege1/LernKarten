@@ -254,6 +254,8 @@
     // Initialisiere UI-Werte für Settings
     $('#tts-rate').value = state.data.settings.tts.rate || 0.7;
     $('#google-tts-key').value = state.data.settings.tts.googleKey || '';
+    $('#google-voice-type').value = state.data.settings.tts.googleVoiceType || 'Standard';
+    $('#google-voice-variant').value = state.data.settings.tts.googleVoiceVariant || 'A';
 
     // Version im Footer anzeigen
     showDeployedVersion();
@@ -456,25 +458,14 @@
     },
     
     getGoogleVoiceForLang(lang){
-      const voiceMap = {
-        'de-DE': 'de-DE-Standard-A',
-        'de-AT': 'de-AT-Standard-A',
-        'de-CH': 'de-CH-Standard-A',
-        'en-US': 'en-US-Neural2-C',
-        'en-GB': 'en-GB-Standard-A',
-        'en-AU': 'en-AU-Standard-A',
-        'en-IN': 'en-IN-Standard-A',
-        'fr-FR': 'fr-FR-Standard-A',
-        'es-ES': 'es-ES-Standard-A',
-        'it-IT': 'it-IT-Standard-A',
-        'nl-NL': 'nl-NL-Standard-A',
-        'pl-PL': 'pl-PL-Standard-A',
-        'pt-BR': 'pt-BR-Standard-A',
-        'ru-RU': 'ru-RU-Standard-A',
-        'ja-JP': 'ja-JP-Standard-A',
-        'zh-CN': 'zh-CN-Standard-A'
-      };
-      return voiceMap[lang] || 'de-DE-Standard-A';
+      const voiceType = ($('#google-voice-type')?.value || 'Standard');
+      const variant = ($('#google-voice-variant')?.value || 'A');
+      
+      // Extract base language code (e.g., 'de-DE' -> 'de-DE')
+      const baseLang = lang || 'de-DE';
+      
+      // Build voice name: e.g., 'de-DE-Standard-A' or 'de-DE-WaveNet-A'
+      return `${baseLang}-${voiceType}-${variant}`;
     },
     
     // Hilfsfunktion: Text mit SSML Pausen formatieren
@@ -3036,7 +3027,6 @@
     $('#tts-lang').addEventListener('change', (e)=>{ state.data.settings.tts.lang = e.target.value; Storage.save(); refreshVoiceSelectors(); });
     $('#tts-voice').addEventListener('change', (e)=>{ state.data.settings.tts.voiceURI = e.target.value; Storage.save(); });
     $('#tts-rate').addEventListener('input', (e)=>{ state.data.settings.tts.rate = parseFloat(e.target.value); Storage.save(); });
-    $('#google-tts-key').addEventListener('input', (e)=>{ state.data.settings.tts.googleKey = e.target.value; Storage.save(); });
 
     // Test Google API Key
     $('#test-google-key').addEventListener('click', async () => {
@@ -3104,6 +3094,32 @@
         testBtn.disabled = false;
         testBtn.textContent = 'Key testen';
       }
+    });
+
+    // Toggle Google voice section visibility based on API key
+    function updateGoogleVoiceSection(){
+      const googleKey = ($('#google-tts-key')?.value || '').trim();
+      const section = $('#google-voice-section');
+      if(section){
+        section.style.display = googleKey ? 'block' : 'none';
+      }
+    }
+    updateGoogleVoiceSection();
+    
+    $('#google-tts-key').addEventListener('input', (e) => { 
+      state.data.settings.tts.googleKey = e.target.value; 
+      Storage.save(); 
+      updateGoogleVoiceSection();
+    });
+    
+    $('#google-voice-type').addEventListener('change', (e) => { 
+      state.data.settings.tts.googleVoiceType = e.target.value; 
+      Storage.save(); 
+    });
+    
+    $('#google-voice-variant').addEventListener('change', (e) => { 
+      state.data.settings.tts.googleVoiceVariant = e.target.value; 
+      Storage.save(); 
     });
 
     // Initialize and update TTS usage display

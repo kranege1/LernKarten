@@ -310,13 +310,39 @@
 							<small id="google-key-status" style="display:block; margin-top:4px;"></small>
 							<small style="display:block; color:#666; margin-top:4px;">Für konsistente Stimmen auf allen Geräten. <a href="https://cloud.google.com/text-to-speech" target="_blank" style="color:#0066cc;">Google API aktivieren</a></small>
 						</div>
+						
+						<div id="google-voice-section" style="display:none; padding: 12px; background: #e8f5e9; border-left: 3px solid #4caf50; margin-bottom: 12px;">
+							<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+								<span style="font-weight: 600; color: #2e7d32;">🌐 Google Cloud TTS aktiv</span>
+							</div>
+							<div class="row two">
+								<div>
+									<label for="google-voice-type">Stimm-Typ</label>
+									<select id="google-voice-type">
+										<option value="Standard">Standard ($4/Mio.)</option>
+										<option value="WaveNet">WaveNet ($16/Mio.)</option>
+										<option value="Neural2">Neural2 ($16/Mio.)</option>
+									</select>
+								</div>
+								<div>
+									<label for="google-voice-variant">Variante</label>
+									<select id="google-voice-variant">
+										<option value="A">A (weiblich/neutral)</option>
+										<option value="B">B (männlich/neutral)</option>
+										<option value="C">C (weiblich)</option>
+										<option value="D">D (männlich)</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						
 						<div class="row two">
 							<div>
 								<label for="tts-lang">TTS Sprache</label>
 								<select id="tts-lang"></select>
 							</div>
 							<div>
-								<label for="tts-voice">Stimme</label>
+								<label for="tts-voice">Browser-Stimme (Fallback)</label>
 								<select id="tts-voice"></select>
 							</div>
 						</div>
