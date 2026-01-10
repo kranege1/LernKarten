@@ -180,6 +180,168 @@ button:disabled { opacity: 0.6; cursor: not-allowed; }
 .list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
 .list li { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; padding: 8px 10px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 
+/* Tree View Styles */
+#folder-tree {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tree-folder {
+  margin-bottom: 4px;
+}
+
+.tree-folder-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: linear-gradient(135deg, rgba(124,58,237,0.08), rgba(124,58,237,0.03));
+  border: 1px solid rgba(124,58,237,0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tree-folder-row:hover {
+  background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(124,58,237,0.08));
+  border-color: rgba(124,58,237,0.4);
+  transform: translateX(2px);
+}
+
+.tree-folder-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.tree-toggle {
+  font-size: 10px;
+  color: var(--primary);
+  transition: transform 0.2s ease;
+}
+
+.tree-icon {
+  font-size: 16px;
+}
+
+.tree-name {
+  color: var(--text);
+}
+
+.tree-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  background: rgba(124,58,237,0.2);
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--primary-2);
+}
+
+.tree-actions {
+  display: flex;
+  gap: 4px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.tree-folder-row:hover .tree-actions {
+  opacity: 1;
+}
+
+.tree-children {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0 0;
+  padding-left: 24px;
+  border-left: 2px solid rgba(124,58,237,0.15);
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 1000px;
+  }
+}
+
+.tree-topic {
+  margin-bottom: 4px;
+  position: relative;
+}
+
+.tree-topic::before {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: 50%;
+  width: 16px;
+  height: 1px;
+  background: rgba(124,58,237,0.2);
+}
+
+.tree-topic-root {
+  margin-left: 0;
+}
+
+.tree-topic-root::before {
+  display: none;
+}
+
+.tree-topic-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tree-topic-row:hover {
+  background: rgba(124,58,237,0.08);
+  border-color: rgba(124,58,237,0.3);
+  transform: translateX(2px);
+}
+
+.tree-selected .tree-topic-row {
+  background: rgba(124,58,237,0.15);
+  border-color: var(--primary);
+  border-width: 2px;
+  padding: 7px 11px;
+}
+
+.tree-topic-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  font-size: 13px;
+}
+
+.tree-topic-row:hover .tree-actions {
+  opacity: 1;
+}
+
+button.ghost.small {
+  padding: 4px 8px;
+  font-size: 14px;
+}
+
 /* Statistik Boxes */
 .stat-box { text-align: center; padding: 16px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 10px; }
 .stat-value { font-size: 32px; font-weight: 700; color: var(--primary-2); margin-bottom: 4px; }
