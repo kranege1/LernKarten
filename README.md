@@ -11,7 +11,7 @@ Ein modernes, lokales Lernkartensystem mit verschiedenen Fragemodi (Text, Sprach
 - Statistik mit Charts (Chart.js): Fällige Karten, schwierigste Karten, Box-Übersicht
 - Import (CSV/TSV/JSON/Textliste) und Export (JSON/CSV)
 - OCR (Tesseract.js) um Text aus Bildern zu extrahieren (de/en)
-- Daten lokal im Browser (localStorage); Exportdateien z.B. in Google Drive speicherbar. Optional: Google Drive-Hooks (konfigurierbar)
+- Daten lokal im Browser (localStorage); Exportdateien können für Backups gesichert werden.
 
 ## Schnellstart
 1. Öffne `index.html` im Browser (oder starte einen lokalen Server).
@@ -35,9 +35,6 @@ Dann im Browser: http://localhost:5173
 ## KI-Umschreibung (optional)
 - Einstellungen: `OpenAI-kompatibler Endpoint` und `API Key` eintragen (z.B. eigener Server mit OpenAI-kompatiblem API).
 - Button "Testanfrage" prüft die Konfiguration.
-
-## Google Drive (optional)
-- In den Einstellungen `OAuth Client ID` hinterlegen. Die bereitgestellten Buttons sind Platzhalter; eine vollständige Integration erfordert OAuth-Setup in der Google Cloud Console.
 
 ## Hinweise
 - TTS erfordert einen unterstützten Browser (Chromium/Edge/Chrome, Safari).
