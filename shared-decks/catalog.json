@@ -55,7 +55,21 @@
       "cardCount": 49,
       "url": "https://raw.githubusercontent.com/kranege1/LernKarten/gh-pages/shared-decks/deutsch-begriffe.json",
       "createdAt": "2026-01-10T13:22:11.727Z"
+    },
+    {
+      "id": "mk8gs95pmfn4s2y3ocl",
+      "title": "Wirtschaft-Fragen",
+      "description": "Ein Kartenset zum Thema Wirtschafts Begriffe",
+      "difficulty": "MITTEL",
+      "category": "Sonstiges",
+      "author": "Gerald",
+      "tags": [
+        "Wirtschaft"
+      ],
+      "cardCount": 50,
+      "url": "https://raw.githubusercontent.com/kranege1/LernKarten/gh-pages/shared-decks/wirtschaft-fragen.json",
+      "createdAt": "2026-01-10T15:33:00.045Z"
     }
   ],
-  "lastUpdated": "2026-01-10T13:22:11.727Z"
+  "lastUpdated": "2026-01-10T15:33:00.045Z"
 }
