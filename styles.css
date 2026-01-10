@@ -862,6 +862,27 @@ dialog { border: 1px solid var(--border); border-radius: 12px; padding: 0; backg
   padding: 8px;
 }
 
+.form-group select[multiple] {
+  padding: 4px;
+}
+
+.form-group select[multiple] option {
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin: 2px 0;
+  cursor: pointer;
+}
+
+.form-group select[multiple] option:hover {
+  background: rgba(124, 58, 237, 0.1);
+}
+
+.form-group select[multiple] option:checked {
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+}
+
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
