@@ -1,0 +1,1054 @@
+{
+  "metadata": {
+    "id": "mk8c41g3tod5tsv918",
+    "title": "Deutsch-Begriffe",
+    "description": "Ein Kartenset zum Thema Deutsch-Begriffe",
+    "difficulty": "LEICHT",
+    "category": "Sprachen",
+    "author": "Gerald",
+    "tags": [
+      "Rechtschreibung"
+    ],
+    "createdAt": "2026-01-10T13:22:10.131Z",
+    "cardCount": 49
+  },
+  "topics": [
+    {
+      "id": "mk5j3u00i23lu2q6es",
+      "name": "Deutsch-Begriffe",
+      "folderId": "mk5j3u00tun7vbc15v",
+      "answerMode": "multiple-choice"
+    }
+  ],
+  "cards": [
+    {
+      "term": "Apfel",
+      "description": "Rundes, süßes Obst in Rot",
+      "answer": "Apfel",
+      "mcOptions": [
+        "Ein roter oder grüner Obst, das auf Bäumen wächst und oft roh gegessen wird.",
+        "Eine tropische Frucht mit gelber Schale und süßem Fruchtfleisch.",
+        "Ein Gemüse, das unter der Erde wächst und oft gekocht wird.",
+        "Eine Beere, die in kleinen Trauben wächst und sauer schmeckt."
+      ],
+      "id": "mk5j3u00usbarjnzj4o",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Banane",
+      "description": "Gelbe, gebogene süße Frucht",
+      "answer": "Banane",
+      "mcOptions": [
+        "Eine gelbe, gebogene Frucht, die reich an Kalium ist.",
+        "Ein rotes, rundes Obst, das oft in Säften verwendet wird.",
+        "Eine grüne, knackige Gemüseart, die roh gegessen wird.",
+        "Eine braune, knollige Wurzel, die gekocht wird."
+      ],
+      "id": "mk5j3u00dakq48zvace",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Haus",
+      "description": "Gebäude zum Wohnen",
+      "answer": "Haus",
+      "mcOptions": [
+        "Ein Gebäude, in dem Menschen wohnen.",
+        "Ein Fahrzeug, das auf Rädern fährt.",
+        "Ein Möbelstück, das zum Sitzen dient.",
+        "Ein Gerät, das zur Küchenarbeit verwendet wird."
+      ],
+      "id": "mk5j3u00rt9zg342pm",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Straße",
+      "description": "Weg für Autos und Menschen",
+      "answer": "Straße",
+      "mcOptions": [
+        "Eine asphaltierte oder gepflasterte Fläche, die dem Verkehr von Fahrzeugen und Fußgängern dient.",
+        "Ein Gebäude, in dem Menschen wohnen.",
+        "Ein Gewässer, das für den Transport genutzt wird.",
+        "Ein öffentlicher Park mit Bäumen und Bänken."
+      ],
+      "id": "mk5j3u00jvfnsegdwrs",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Auto",
+      "description": "Motorisiertes Fahrzeug mit Rädern",
+      "answer": "Auto",
+      "mcOptions": [
+        "Ein Fahrzeug mit vier Rädern, das von einem Motor angetrieben wird.",
+        "Ein großes Schiff, das auf dem Meer fährt.",
+        "Ein Flugzeug, das Passagiere transportiert.",
+        "Ein Zweirad, das mit Pedalen betrieben wird."
+      ],
+      "id": "mk5j3u00j5u8b4h2cke",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Hund",
+      "description": "Treues Haustier, bellt oft",
+      "answer": "Hund",
+      "mcOptions": [
+        "Ein domestiziertes Tier, das oft als Haustier gehalten wird und bellt.",
+        "Ein wildlebendes Tier, das in Rudeln jagt und heult.",
+        "Ein kleines Nagetier, das in Käfigen gehalten wird.",
+        "Ein Vogel, der in Bäumen nistet und singt."
+      ],
+      "id": "mk5j3u00fr1lr8kdcrr",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Katze",
+      "description": "Kleines Haustier, miaut gerne",
+      "answer": "Katze",
+      "mcOptions": [
+        "Ein domestiziertes Haustier, das oft als Stubentiger bezeichnet wird und für seine Unabhängigkeit bekannt ist.",
+        "Ein großes Raubtier aus der Familie der Hunde, das in Rudeln lebt.",
+        "Ein kleines Nagetier, das häufig in Häusern als Schädling vorkommt.",
+        "Ein Vogel, der für seine bunten Federn und seinen Gesang bekannt ist."
+      ],
+      "id": "mk5j3u00vnbvlzgp67j",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Baum",
+      "description": "Große Pflanze mit Stamm",
+      "answer": "Baum",
+      "mcOptions": [
+        "Ein großes, mehrjähriges Gewächs mit Stamm, Ästen und Blättern, das oft in Wäldern wächst.",
+        "Ein kleines, krautiges Gewächs, das jährlich neu wächst und meist in Gärten zu finden ist.",
+        "Ein künstliches Gebilde aus Metall, das zur Dekoration dient.",
+        "Ein fließendes Gewässer, das durch Landschaften verläuft."
+      ],
+      "id": "mk5j3u00dv3p559ffre",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Blume",
+      "description": "Bunte Pflanze mit Blüten",
+      "answer": "Blume",
+      "mcOptions": [
+        "Eine Pflanze mit oft farbigen Blüten, die zur Fortpflanzung dient.",
+        "Ein kleines Insekt, das in Gärten lebt.",
+        "Ein Werkzeug zum Graben im Boden.",
+        "Ein Möbelstück für den Außenbereich."
+      ],
+      "id": "mk5j3u00uxbln6ffxp",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Tisch",
+      "description": "Möbel zum Essen oder Arbeiten",
+      "answer": "Tisch",
+      "mcOptions": [
+        "Ein Möbelstück, auf dem man essen oder arbeiten kann.",
+        "Ein Gerät zum Kochen von Speisen.",
+        "Ein Werkzeug zum Schneiden von Holz.",
+        "Ein Behälter zur Aufbewahrung von Gegenständen."
+      ],
+      "id": "mk5j3u00sd0gqcaho2h",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Stuhl",
+      "description": "Sitzmöbel mit Lehne",
+      "answer": "Stuhl",
+      "mcOptions": [
+        "Ein Möbelstück zum Sitzen mit einer Rückenlehne",
+        "Ein Gerät zum Kochen von Speisen",
+        "Ein Werkzeug zum Schneiden von Holz",
+        "Ein Behälter zur Aufbewahrung von Gegenständen"
+      ],
+      "id": "mk5j3u00zk415ukf4l",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Lampe",
+      "description": "Gerät für künstliches Licht",
+      "answer": "Lampe",
+      "mcOptions": [
+        "Ein Beleuchtungsgerät, das Licht erzeugt.",
+        "Ein Möbelstück zum Sitzen.",
+        "Ein Gerät zum Kochen von Speisen.",
+        "Ein Werkzeug zum Schneiden von Holz."
+      ],
+      "id": "mk5j3u00dhdndiymoim",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Buch",
+      "description": "Gebundene Seiten zum Lesen",
+      "answer": "Buch",
+      "mcOptions": [
+        "Ein gedrucktes oder digitales Werk, das aus Seiten mit Text und/oder Bildern besteht.",
+        "Ein Gerät zum Kochen von Speisen.",
+        "Ein Werkzeug zum Schreiben von Notizen.",
+        "Ein Möbelstück zur Aufbewahrung von Gegenständen."
+      ],
+      "id": "mk5j3u00k5gwvhen30m",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Heft",
+      "description": "Dünnes Schreibmaterial mit Seiten",
+      "answer": "Heft",
+      "mcOptions": [
+        "Ein Heft ist ein gebundenes oder geheftetes Druckwerk, meist aus Papier, das für Notizen oder als Schulmaterial dient.",
+        "Ein Heft ist ein Werkzeug zum Schneiden von Papier.",
+        "Ein Heft ist ein Behälter für Flüssigkeiten.",
+        "Ein Heft ist ein Kleidungsstück für den Oberkörper."
+      ],
+      "id": "mk5j3u00nos3mlwn8mm",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Stift",
+      "description": "Werkzeug zum Schreiben",
+      "answer": "Stift",
+      "mcOptions": [
+        "Ein Schreibgerät zum Schreiben oder Zeichnen mit Tinte oder Mine.",
+        "Ein Werkzeug zum Schneiden von Holz.",
+        "Ein Gerät zum Messen von Entfernungen.",
+        "Ein Behälter für Flüssigkeiten."
+      ],
+      "id": "mk5j3u00eabknewtf48",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Papier",
+      "description": "Dünnes Material zum Schreiben",
+      "answer": "Papier",
+      "mcOptions": [
+        "Ein Material aus Zellstoff, das zum Schreiben oder Drucken verwendet wird.",
+        "Ein Metall, das für Werkzeuge verwendet wird.",
+        "Ein Stoff, der zum Nähen von Kleidung genutzt wird.",
+        "Ein Kunststoff, der für Verpackungen geeignet ist."
+      ],
+      "id": "mk5j3u00rdqr3mjtmf",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Fenster",
+      "description": "Öffnung im Haus für Licht",
+      "answer": "Fenster",
+      "mcOptions": [
+        "Eine Öffnung in der Wand eines Gebäudes, die Licht und Luft hereinlässt und oft verglast ist.",
+        "Ein Möbelstück, das zur Aufbewahrung von Gegenständen dient.",
+        "Ein Gerät zur Regulierung der Raumtemperatur.",
+        "Ein Bauteil, das als Eingang oder Ausgang eines Hauses fungiert."
+      ],
+      "id": "mk5j3u00bvymr5x0r7h",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Tür",
+      "description": "Eingang oder Ausgang eines Raums",
+      "answer": "Tür",
+      "mcOptions": [
+        "Eine bewegliche Barriere, die den Zugang zu einem Raum öffnet oder schließt.",
+        "Ein Möbelstück, das zur Aufbewahrung dient.",
+        "Ein Gerät zur Temperaturregelung in Räumen.",
+        "Ein Werkzeug zum Befestigen von Gegenständen."
+      ],
+      "id": "mk5j3u00lxwvna468l",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Wand",
+      "description": "Vertikale Begrenzung eines Raums",
+      "answer": "Wand",
+      "mcOptions": [
+        "Eine vertikale Struktur, die Räume trennt oder ein Gebäude stützt.",
+        "Ein horizontaler Bodenbelag in einem Raum.",
+        "Ein dekoratives Element, das nur zur Verschönerung dient.",
+        "Ein beweglicher Vorhang, der Räume abtrennt."
+      ],
+      "id": "mk5j3u00nu5enp5ycfa",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Boden",
+      "description": "Untere Fläche eines Raums",
+      "answer": "Boden",
+      "mcOptions": [
+        "Der oberste Teil der Erdoberfläche, der aus Erde, Sand oder Gestein besteht und Pflanzenwachstum ermöglicht.",
+        "Ein Möbelstück, das zum Sitzen verwendet wird.",
+        "Eine Art von Wandverkleidung in Gebäuden.",
+        "Ein Gerät zur Messung von Temperaturen."
+      ],
+      "id": "mk5j3u00gffg5r4enf",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Decke",
+      "description": "Obere Begrenzung eines Raums",
+      "answer": "Decke",
+      "mcOptions": [
+        "Eine horizontale Fläche, die einen Raum nach oben abschließt.",
+        "Ein Möbelstück, auf dem man sitzt.",
+        "Ein Gegenstand, der zum Schlafen verwendet wird.",
+        "Ein Bauteil, das den Boden eines Raumes bildet."
+      ],
+      "id": "mk5j3u00psw0v7vbvnb",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Himmel",
+      "description": "Blaue Weite über der Erde",
+      "answer": "Himmel",
+      "mcOptions": [
+        "Der Himmel ist der Raum über der Erde, in dem sich Wolken, Sonne und Sterne befinden.",
+        "Der Himmel ist ein großer Ozean, der die Erde umgibt.",
+        "Der Himmel ist eine feste Kuppel über der Erde, die uns schützt.",
+        "Der Himmel ist ein unterirdisches Reich, in dem die Götter leben."
+      ],
+      "id": "mk5j3u00dgnaqsucs5o",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Sonne",
+      "description": "Heller Stern, spendet Wärme",
+      "answer": "Sonne",
+      "mcOptions": [
+        "Ein Stern, der die Erde mit Licht und Wärme versorgt.",
+        "Ein Planet, der die Erde umkreist.",
+        "Ein Mond, der nachts leuchtet.",
+        "Ein Komet, der regelmäßig am Himmel erscheint."
+      ],
+      "id": "mk5j3u00hzpvwo2vz",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Mond",
+      "description": "Nachts sichtbar, rund oder sichelförmig",
+      "answer": "Mond",
+      "mcOptions": [
+        "Ein natürlicher Satellit der Erde, der den Planeten umkreist.",
+        "Ein heller Stern am Nachthimmel.",
+        "Ein künstlicher Satellit, der Daten zur Erde sendet.",
+        "Ein Planet in unserem Sonnensystem."
+      ],
+      "id": "mk5j3u000vt2x9loqzrc",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Stern",
+      "description": "Leuchtender Punkt am Nachthimmel",
+      "answer": "Stern",
+      "mcOptions": [
+        "Ein selbstleuchtendes Himmelsobjekt, das aus heißem Gas besteht und Energie durch Kernfusion erzeugt.",
+        "Ein künstlicher Satellit, der die Erde umkreist.",
+        "Ein kleiner Planet, der keine Atmosphäre hat.",
+        "Ein Meteoroid, der in der Erdatmosphäre verglüht."
+      ],
+      "id": "mk5j3u00fl366d0ft9",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Regen",
+      "description": "Wasser fällt vom Himmel",
+      "answer": "Regen",
+      "mcOptions": [
+        "Niederschlag in Form von Wassertropfen, der aus Wolken fällt.",
+        "Starker Wind, der Bäume umknicken kann.",
+        "Schnee, der in kalten Regionen fällt.",
+        "Nebel, der die Sicht auf wenige Meter reduziert."
+      ],
+      "id": "mk5j3u00ovmnjagpbg",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Schnee",
+      "description": "Weiße Flocken bei Kälte",
+      "answer": "Schnee",
+      "mcOptions": [
+        "Schnee ist gefrorenes Wasser in Form von weißen Kristallen, das bei niedrigen Temperaturen vom Himmel fällt.",
+        "Schnee ist eine Art von Regen, der nur bei starkem Wind entsteht.",
+        "Schnee ist eine flüssige Niederschlagsform, die bei hohen Temperaturen vorkommt.",
+        "Schnee ist ein Bodensediment, das durch Erosion entsteht."
+      ],
+      "id": "mk5j3u00b0uczn0svmr",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Wind",
+      "description": "Bewegte Luft, unsichtbar spürbar",
+      "answer": "Wind",
+      "mcOptions": [
+        "Eine Bewegung von Luftmassen in der Atmosphäre, verursacht durch Druckunterschiede.",
+        "Ein Niederschlag in Form von Regentropfen.",
+        "Eine Temperaturänderung in der Umgebungsluft.",
+        "Eine Art von Wolkenbildung am Himmel."
+      ],
+      "id": "mk5j3u00fgb1vuux9qi",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Berg",
+      "description": "Hohe, massive Erhebung",
+      "answer": "Berg",
+      "mcOptions": [
+        "Ein hoher, natürlicher Erhebung der Erdoberfläche, oft mit steilen Hängen.",
+        "Ein flaches, weites Landgebiet ohne nennenswerte Erhebungen.",
+        "Ein tiefer, von Wasser umgebener Einschnitt in der Erde.",
+        "Ein künstlich errichteter Hügel aus Erde oder Schutt."
+      ],
+      "id": "mk5j3u00ne0nwn8tyxp",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Tal",
+      "description": "Tiefe Senke zwischen Bergen",
+      "answer": "Tal",
+      "mcOptions": [
+        "Ein längliches, von Bergen oder Hügeln umgebenes Tiefland, oft mit einem Fluss.",
+        "Ein hoher Berggipfel mit schneebedeckter Spitze.",
+        "Eine weite, flache Ebene ohne Erhebungen.",
+        "Ein steiler Abhang oder eine Klippe am Meer."
+      ],
+      "id": "mk5j3u002hknpb0ug38",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Fluss",
+      "description": "Fließendes Wasser durch Landschaft",
+      "answer": "Fluss",
+      "mcOptions": [
+        "Ein natürlicher Wasserlauf, der durch das Land fließt und meist ins Meer mündet.",
+        "Ein künstlicher Kanal, der zur Bewässerung von Feldern dient.",
+        "Ein stehendes Gewässer, wie ein See oder Teich.",
+        "Eine unterirdische Wasserquelle, die nur bei Regen sichtbar wird."
+      ],
+      "id": "mk5j3u00vx9i6ewtl78",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "See",
+      "description": "Große, stehende Wasserfläche",
+      "answer": "See",
+      "mcOptions": [
+        "Ein großes, von Land umgebenes Gewässer, das oft tief und mit Süß- oder Salzwasser gefüllt ist.",
+        "Ein kleiner Fluss, der durch eine Stadt fließt.",
+        "Ein künstlicher Teich im Garten.",
+        "Eine flache Wasseransammlung, die bei Regen entsteht."
+      ],
+      "id": "mk5j3u00doxguexeiq",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Meer",
+      "description": "Riesige salzige Wasserfläche",
+      "answer": "Meer",
+      "mcOptions": [
+        "Ein großer, zusammenhängender Salzwasserbereich, der einen bedeutenden Teil der Erdoberfläche bedeckt.",
+        "Ein kleiner, isolierter Süßwassersee in den Bergen.",
+        "Ein künstlich angelegter Wasserweg für den Schiffsverkehr.",
+        "Ein unterirdischer Wasserlauf, der Höhlen durchzieht."
+      ],
+      "id": "mk5j3u005gbjhuswusd",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Wald",
+      "description": "Gebiet mit vielen Bäumen",
+      "answer": "Wald",
+      "mcOptions": [
+        "Ein großes Gebiet mit vielen Bäumen und Sträuchern, das ein eigenes Ökosystem bildet.",
+        "Ein offenes Feld, das hauptsächlich für die Landwirtschaft genutzt wird.",
+        "Ein Gewässer mit vielen Fischen und Wasserpflanzen.",
+        "Ein städtisches Gebiet mit hohen Gebäuden und Straßen."
+      ],
+      "id": "mk5j3u00w5awznhwa7o",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Feld",
+      "description": "Offene Fläche für Landwirtschaft",
+      "answer": "Feld",
+      "mcOptions": [
+        "Ein abgegrenztes Stück Land, das landwirtschaftlich genutzt wird.",
+        "Ein Raum, in dem ausschließlich Bäume wachsen.",
+        "Ein Bereich, der nur für den Bau von Häusern vorgesehen ist.",
+        "Ein Ort, an dem ausschließlich Sportveranstaltungen stattfinden."
+      ],
+      "id": "mk5j3u00k3uycguzili",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Strauch",
+      "description": "Kleine, buschige Pflanze",
+      "answer": "Strauch",
+      "mcOptions": [
+        "Ein mehrjähriges, verholztes Gewächs, das kleiner als ein Baum ist und mehrere Stämme bildet.",
+        "Eine einjährige Pflanze, die jedes Jahr neu wächst.",
+        "Ein großes, verholztes Gewächs mit einem einzigen Stamm und einer Krone.",
+        "Eine krautige Pflanze ohne verholzte Teile."
+      ],
+      "id": "mk5j3u00eszvwd87oyc",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Blatt",
+      "description": "Grünes Teil einer Pflanze",
+      "answer": "Blatt",
+      "mcOptions": [
+        "Ein flaches, grünes Organ einer Pflanze, das für die Photosynthese verantwortlich ist.",
+        "Ein kleines Stück Metall, das in Werkzeugen verwendet wird.",
+        "Ein Teil eines Tieres, das zur Fortbewegung dient.",
+        "Ein dünnes Material, das zum Schreiben von Notizen dient."
+      ],
+      "id": "mk5j3u00jl02emn557s",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Wurzel",
+      "description": "Unterirdischer Teil einer Pflanze",
+      "answer": "Wurzel",
+      "mcOptions": [
+        "Eine Pflanzenstruktur, die Wasser und Nährstoffe aus dem Boden aufnimmt.",
+        "Ein oberirdischer Teil der Pflanze, der für die Photosynthese verantwortlich ist.",
+        "Ein Fortpflanzungsorgan der Pflanze, das Samen produziert.",
+        "Ein Teil der Pflanze, der hauptsächlich zur Speicherung von Zucker dient."
+      ],
+      "id": "mk5j3u00td9j9uvf2th",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Zweig",
+      "description": "Dünner Ast eines Baumes",
+      "answer": "Zweig",
+      "mcOptions": [
+        "Ein Ast oder eine kleinere Abzweigung eines Baumes.",
+        "Ein Blatt, das an einem Baum wächst.",
+        "Der Stamm eines Baumes.",
+        "Die Wurzel eines Baumes."
+      ],
+      "id": "mk5j3u000c1i9st9z11f",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Vogel",
+      "description": "Fliegendes Tier mit Federn",
+      "answer": "Vogel",
+      "mcOptions": [
+        "Ein Tier mit Federn, das fliegen kann und Eier legt.",
+        "Ein kleines Nagetier, das in Höhlen lebt.",
+        "Ein Meerestier mit Flossen und Kiemen.",
+        "Ein Insekt mit sechs Beinen und Fühlern."
+      ],
+      "id": "mk5j3u00duog9rj4c0l",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Fisch",
+      "description": "Wassertier mit Flossen",
+      "answer": "Fisch",
+      "mcOptions": [
+        "Ein Wirbeltier, das im Wasser lebt und Kiemen zum Atmen hat.",
+        "Ein Säugetier, das auf Bäumen lebt und Früchte frisst.",
+        "Ein Reptil, das in der Wüste lebt und sich sonnt.",
+        "Ein Vogel, der über das Meer fliegt und nach Beute taucht."
+      ],
+      "id": "mk5j3u00vaz0vkqaqbe",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Maus",
+      "description": "Kleines Nagetier, oft grau",
+      "answer": "Maus",
+      "mcOptions": [
+        "Ein kleines Nagetier, das oft in Häusern lebt.",
+        "Ein großes Raubtier aus der Familie der Katzen.",
+        "Ein Vogel, der in Wäldern nistet.",
+        "Ein Fisch, der in Süßwasser lebt."
+      ],
+      "id": "mk5j3u00gqk3c2602gl",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Löwe",
+      "description": "Große Katze, König der Tiere",
+      "answer": "Löwe",
+      "mcOptions": [
+        "Ein großes Raubtier aus der Familie der Katzen, das in Afrika lebt und als \"König der Tiere\" bekannt ist.",
+        "Ein kleiner Singvogel, der in Wäldern lebt und für seinen schönen Gesang bekannt ist.",
+        "Ein Meeresbewohner mit Flossen, der in Korallenriffen schwimmt.",
+        "Ein Nagetier, das in Wiesen lebt und unterirdische Gänge gräbt."
+      ],
+      "id": "mk5j3u00ugg2lff0s4",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Elefant",
+      "description": "Großes Tier mit Rüssel",
+      "answer": "Elefant",
+      "mcOptions": [
+        "Ein großes, graues Tier mit Rüssel, das in Afrika und Asien lebt.",
+        "Ein kleiner, flinker Vogel mit buntem Gefieder.",
+        "Ein Meeressäuger mit Flossen und einer dicken Fettschicht.",
+        "Ein reptilartiges Tier mit schuppiger Haut und kaltem Blut."
+      ],
+      "id": "mk5j3u00ussw24qdoo",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-09",
+        "nextDue": "2026-01-11"
+      }
+    },
+    {
+      "term": "Giraffe",
+      "description": "Hohes Tier mit langem Hals",
+      "answer": "Giraffe",
+      "mcOptions": [
+        "Ein großes, afrikanisches Säugetier mit langem Hals und geflecktem Fell, das hauptsächlich Blätter von hohen Bäumen frisst.",
+        "Ein kleiner, flinker Vogel, der in Schwärmen lebt und bunte Federn hat.",
+        "Ein Meeresbewohner mit langen Tentakeln, der in Korallenriffen lebt.",
+        "Ein kräftiges, behaartes Tier mit Hufen, das in Herden auf Graslandschaften lebt."
+      ],
+      "id": "mk5j3u000vef3q3fh0j",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-09",
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Zebra",
+      "description": "Pferdeartiges Tier mit Streifen",
+      "answer": "Zebra",
+      "mcOptions": [
+        "Ein gestreiftes Pferd aus Afrika, das in Herden lebt.",
+        "Ein kleiner Vogel mit buntem Gefieder.",
+        "Ein Fisch mit leuchtenden Schuppen.",
+        "Ein Nagetier, das in Wüsten lebt."
+      ],
+      "id": "mk5j3u004tzbddjw827",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-09",
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Pferd",
+      "description": "Großes Tier zum Reiten",
+      "answer": "Pferd",
+      "mcOptions": [
+        "Ein domestiziertes Tier, das oft für Reiten und Arbeit genutzt wird.",
+        "Ein kleiner Nagetier, das in Wäldern lebt.",
+        "Ein Meeresbewohner mit Flossen und Schuppen.",
+        "Ein Vogel, der in Schwärmen fliegt."
+      ],
+      "id": "mk5j3u00ce50fx319uv",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-09",
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Kuh",
+      "description": "Großes Nutztier, gibt Milch",
+      "answer": "Kuh",
+      "mcOptions": [
+        "Ein domestiziertes Tier, das Milch produziert und oft auf Bauernhöfen gehalten wird.",
+        "Ein kleiner Vogel, der in Wäldern lebt.",
+        "Ein Meeresbewohner mit Flossen und Schuppen.",
+        "Ein Nagetier, das in Häusern nach Nahrung sucht."
+      ],
+      "id": "mk5j3u00n6nkeud9b",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-09",
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Schaf",
+      "description": "Tier mit wolligem Fell",
+      "answer": "Schaf",
+      "mcOptions": [
+        "Ein domestiziertes Tier, das Wolle liefert und oft auf Weiden gehalten wird.",
+        "Ein großer Raubvogel, der in bergigen Regionen lebt.",
+        "Ein Meeresbewohner, der in Korallenriffen vorkommt.",
+        "Ein Nagetier, das in Wäldern und Feldern lebt."
+      ],
+      "id": "mk5j3u0056zvpghdioi",
+      "topicId": "mk5j3u00i23lu2q6es",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-09",
+        "nextDue": "2026-01-11"
+      }
+    }
+  ]
+}
