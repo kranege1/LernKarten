@@ -769,12 +769,12 @@ dialog { border: 1px solid var(--border); border-radius: 12px; padding: 0; backg
 
 .modal {
   position: fixed;
-  top: 50%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;
   max-width: 90vw;
-  max-height: 95vh;
+  max-height: 85vh;
   width: 500px;
   border: 1px solid var(--border);
   border-radius: 12px;
