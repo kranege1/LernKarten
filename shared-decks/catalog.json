@@ -97,7 +97,22 @@
       "cardCount": 41,
       "url": "https://raw.githubusercontent.com/kranege1/LernKarten/gh-pages/shared-decks/deutsch-rs-langes-i.json",
       "createdAt": "2026-01-10T17:24:14.665Z"
+    },
+    {
+      "id": "mk8l4tx0x1a4yape4c",
+      "title": "English 5.Klasse",
+      "description": "Ein Kartenset zum Thema English 5.Klasse",
+      "difficulty": "LEICHT",
+      "category": "Sprachen",
+      "author": "Anonym",
+      "tags": [
+        "Vokabeln",
+        "Schule"
+      ],
+      "cardCount": 60,
+      "url": "https://raw.githubusercontent.com/kranege1/LernKarten/gh-pages/shared-decks/english-5-klasse.json",
+      "createdAt": "2026-01-10T17:34:45.293Z"
     }
   ],
-  "lastUpdated": "2026-01-10T17:24:14.665Z"
+  "lastUpdated": "2026-01-10T17:34:45.293Z"
 }
