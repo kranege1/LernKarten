@@ -165,6 +165,7 @@
 									<button id="add-card" class="primary" disabled title="Neue Karte">➕</button>
 									<button id="ai-fill-fields" class="ghost" disabled title="KI-Felder füllen">🤖</button>
 									<button id="ai-generate-terms" class="ghost" title="KI-Begriffe generieren">🤖➕</button>
+									<button id="share-community" class="ghost" disabled title="Zu Community hochladen">📤</button>
 								</div>
 							</div>
 						</div>
@@ -648,6 +649,81 @@
 					<button type="button" class="ghost" id="mapping-back-3">← Zurück</button>
 					<button type="button" id="confirm-import" class="primary" style="font-weight: 600;">🚀 Jetzt importieren!</button>
 				</menu>
+			</div>
+		</div>
+	</dialog>
+
+	<!-- Community Upload Modal -->
+	<dialog id="community-upload-dialog" class="modal">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2>📤 Zu Community hochladen</h2>
+				<button type="button" class="close-btn" aria-label="Schließen">✕</button>
+			</div>
+			<div class="modal-body">
+				<p class="muted" style="margin-bottom: 16px;">Teile dein Kartenset mit der Community und helfe anderen beim Lernen.</p>
+				
+				<!-- GitHub Token -->
+				<div class="form-group">
+					<label for="github-token">GitHub Personal Access Token *</label>
+					<input type="password" id="github-token" placeholder="ghp_..." required>
+					<p class="hint">🔗 <a href="https://github.com/settings/tokens" target="_blank">Token erstellen</a> (Bereiche: repo, content)</p>
+				</div>
+
+				<!-- Deck Metadata -->
+				<div class="form-group">
+					<label for="deck-title">Titel des Kartensets *</label>
+					<input type="text" id="deck-title" placeholder="z.B. Geschichte: Mittelalter in Europa" required>
+				</div>
+
+				<div class="form-group">
+					<label for="deck-description">Beschreibung *</label>
+					<textarea id="deck-description" placeholder="Kurze Beschreibung der Inhalte..." rows="3" required></textarea>
+				</div>
+
+				<div class="row two">
+					<div class="form-group">
+						<label for="deck-difficulty">Schwierigkeitsgrad *</label>
+						<select id="deck-difficulty" required>
+							<option value="">-- Wählen --</option>
+							<option value="LEICHT">🟢 Leicht</option>
+							<option value="MITTEL">🟡 Mittel</option>
+							<option value="SCHWER">🔴 Schwer</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label for="deck-author">Autor/in *</label>
+						<input type="text" id="deck-author" placeholder="Dein Name" required>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="deck-tags">Tags (kommagetrennt) *</label>
+					<input type="text" id="deck-tags" placeholder="z.B. Geschichte, Mittelalter, Europa" required>
+				</div>
+
+				<div class="form-group">
+					<label for="deck-category">Kategorie *</label>
+					<select id="deck-category" required>
+						<option value="">-- Wählen --</option>
+						<option value="Sprachen">🌍 Sprachen</option>
+						<option value="Naturwissenschaften">🔬 Naturwissenschaften</option>
+						<option value="Geschichte">📚 Geschichte</option>
+						<option value="Mathematik">🧮 Mathematik</option>
+						<option value="Programmierung">💻 Programmierung</option>
+						<option value="Sonstiges">📌 Sonstiges</option>
+					</select>
+				</div>
+
+				<!-- Upload Status -->
+				<div id="upload-status" class="form-group" style="display: none; padding: 12px; border-radius: 4px; background: #f0f0f0;">
+				</div>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="ghost" id="upload-cancel">Abbrechen</button>
+				<button type="button" id="upload-submit" class="primary">📤 Hochladen</button>
 			</div>
 		</div>
 	</dialog>
