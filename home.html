@@ -645,6 +645,9 @@
 						<button class="btn-download" onclick="downloadDeck(event, '${deck.downloadUrl}', '${deck.fileName}')">
 							💾 Herunterladen
 						</button>
+						<button class="btn-download" style="background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);" onclick="openInApp('${deck.downloadUrl}')">
+							📱 In App öffnen
+						</button>
 					</div>
 				</div>
 			`).join('');
@@ -707,6 +710,12 @@
 			});
 			
 			renderDecks(filtered);
+		}
+		
+		function openInApp(deckUrl) {
+			// Navigiere zur App mit Deck-URL als Parameter
+			window.location.href = `index.html?deck-url=${encodeURIComponent(deckUrl)}`;
+		}
 		}
 		
 		document.getElementById('search-input').addEventListener('input', applyFilters);
