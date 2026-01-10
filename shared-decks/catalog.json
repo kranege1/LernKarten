@@ -1,15 +1,15 @@
 {
   "version": "1.0",
-  "lastUpdated": "2026-01-10",
+  "lastUpdated": "2026-01-10T12:00:00Z",
   "decks": [
     {
       "id": "biologie-zellbiologie",
       "title": "Biologie: Zellbiologie Grundlagen",
       "description": "Die wichtigsten Begriffe aus der Zellbiologie: Zellorganellen, Prozesse und Funktionen",
-      "category": "Biologie",
+      "category": "Naturwissenschaften",
       "language": "de",
       "cardCount": 15,
-      "difficulty": "mittel",
+      "difficulty": "MITTEL",
       "author": "LernKarten Community",
       "tags": ["Biologie", "Zellen", "Naturwissenschaft"],
       "fileName": "biologie-zellbiologie.json",
@@ -23,7 +23,7 @@
       "category": "Geschichte",
       "language": "de",
       "cardCount": 20,
-      "difficulty": "mittel",
+      "difficulty": "MITTEL",
       "author": "LernKarten Community",
       "tags": ["Geschichte", "Mittelalter", "Europa"],
       "fileName": "geschichte-mittelalter.json",
@@ -37,22 +37,48 @@
       "category": "Programmierung",
       "language": "de",
       "cardCount": 25,
-      "difficulty": "einfach",
+      "difficulty": "LEICHT",
       "author": "LernKarten Community",
       "tags": ["Python", "Programmierung", "IT"],
       "fileName": "programmierung-python-basics.json",
       "downloadUrl": "https://kranege1.github.io/LernKarten/shared-decks/programmierung-python-basics.json",
       "created": "2026-01-10"
+    },
+    {
+      "id": "mathe-aufgaben-2-klasse",
+      "title": "Mathe Aufgaben 2. Klasse",
+      "description": "Mathematik Grundlagen für die 2. Klasse",
+      "category": "Mathematik",
+      "language": "de",
+      "cardCount": 20,
+      "difficulty": "LEICHT",
+      "author": "Community User",
+      "tags": ["Mathematik", "Grundschule", "2. Klasse"],
+      "fileName": "mathe-aufgaben-2-klasse.json",
+      "downloadUrl": "https://kranege1.github.io/LernKarten/shared-decks/mathe-aufgaben-2-klasse.json",
+      "created": "2026-01-10"
+    },
+    {
+      "id": "english-5-klasse",
+      "title": "English 5. Klasse",
+      "description": "Englisch Vokabeln und Grammatik für die 5. Klasse",
+      "category": "Sprachen",
+      "language": "de",
+      "cardCount": 30,
+      "difficulty": "LEICHT",
+      "author": "Community User",
+      "tags": ["Englisch", "Sprachen", "5. Klasse"],
+      "fileName": "english-5-klasse.json",
+      "downloadUrl": "https://kranege1.github.io/LernKarten/shared-decks/english-5-klasse.json",
+      "created": "2026-01-10"
     }
   ],
   "categories": [
-    "Biologie",
+    "Naturwissenschaften",
     "Geschichte",
     "Programmierung",
     "Mathematik",
     "Sprachen",
-    "Geographie",
-    "Physik",
-    "Chemie"
+    "Sonstiges"
   ]
 }
