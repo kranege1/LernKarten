@@ -69,7 +69,21 @@
       "cardCount": 50,
       "url": "https://raw.githubusercontent.com/kranege1/LernKarten/gh-pages/shared-decks/wirtschaft-fragen.json",
       "createdAt": "2026-01-10T15:33:00.045Z"
+    },
+    {
+      "id": "mk8kp0rqgre4yn5rgxp",
+      "title": "Deutsch-RS-langes I",
+      "description": "Ein Kartenset zum Thema Deutsch-RS-langes I",
+      "difficulty": "LEICHT",
+      "category": "Sprachen",
+      "author": "Gerald",
+      "tags": [
+        "Rechtschreibung"
+      ],
+      "cardCount": 41,
+      "url": "https://raw.githubusercontent.com/kranege1/LernKarten/gh-pages/shared-decks/deutsch-rs-langes-i.json",
+      "createdAt": "2026-01-10T17:22:27.391Z"
     }
   ],
-  "lastUpdated": "2026-01-10T15:33:00.045Z"
+  "lastUpdated": "2026-01-10T17:22:27.391Z"
 }
