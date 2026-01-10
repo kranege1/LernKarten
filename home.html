@@ -1,0 +1,708 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>LernKarten – Intelligentes Karteikarten-Lernsystem</title>
+	<link rel="stylesheet" href="styles.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		
+		body {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			min-height: 100vh;
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+		}
+		
+		/* Header */
+		.landing-header {
+			background: rgba(255, 255, 255, 0.95);
+			backdrop-filter: blur(10px);
+			padding: 16px 0;
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+			box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+		}
+		
+		.nav-container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 24px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		
+		.logo-area {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+		}
+		
+		.logo-icon {
+			width: 48px;
+			height: 48px;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			border-radius: 12px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 24px;
+			font-weight: bold;
+			color: white;
+		}
+		
+		.logo-text h1 {
+			font-size: 1.5rem;
+			color: #1a202c;
+		}
+		
+		.nav-buttons {
+			display: flex;
+			gap: 12px;
+		}
+		
+		.btn {
+			padding: 12px 24px;
+			border-radius: 8px;
+			text-decoration: none;
+			font-weight: 600;
+			transition: all 0.3s ease;
+			border: none;
+			cursor: pointer;
+			font-size: 1rem;
+		}
+		
+		.btn-primary {
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+		}
+		
+		.btn-primary:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
+		}
+		
+		.btn-secondary {
+			background: white;
+			color: #667eea;
+			border: 2px solid #667eea;
+		}
+		
+		.btn-secondary:hover {
+			background: #667eea;
+			color: white;
+		}
+		
+		/* Hero Section */
+		.hero {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 80px 24px;
+			text-align: center;
+			color: white;
+		}
+		
+		.hero h2 {
+			font-size: 3.5rem;
+			margin-bottom: 24px;
+			animation: fadeInUp 0.8s ease-out;
+		}
+		
+		.hero p {
+			font-size: 1.4rem;
+			margin-bottom: 40px;
+			opacity: 0.95;
+			animation: fadeInUp 1s ease-out;
+		}
+		
+		.hero-buttons {
+			display: flex;
+			gap: 16px;
+			justify-content: center;
+			flex-wrap: wrap;
+			animation: fadeInUp 1.2s ease-out;
+		}
+		
+		.hero .btn {
+			font-size: 1.2rem;
+			padding: 16px 32px;
+		}
+		
+		/* Features */
+		.features {
+			background: white;
+			padding: 80px 24px;
+		}
+		
+		.section-title {
+			text-align: center;
+			font-size: 2.5rem;
+			margin-bottom: 60px;
+			color: #1a202c;
+		}
+		
+		.features-grid {
+			max-width: 1200px;
+			margin: 0 auto;
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 40px;
+		}
+		
+		.feature-card {
+			text-align: center;
+			padding: 32px;
+			border-radius: 16px;
+			transition: all 0.3s ease;
+			background: #f7fafc;
+		}
+		
+		.feature-card:hover {
+			transform: translateY(-8px);
+			box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+		}
+		
+		.feature-icon {
+			font-size: 4rem;
+			margin-bottom: 20px;
+			animation: bounce 2s infinite;
+		}
+		
+		.feature-card:nth-child(1) .feature-icon { animation-delay: 0s; }
+		.feature-card:nth-child(2) .feature-icon { animation-delay: 0.2s; }
+		.feature-card:nth-child(3) .feature-icon { animation-delay: 0.4s; }
+		.feature-card:nth-child(4) .feature-icon { animation-delay: 0.6s; }
+		
+		.feature-card h3 {
+			font-size: 1.5rem;
+			margin-bottom: 12px;
+			color: #2d3748;
+		}
+		
+		.feature-card p {
+			color: #4a5568;
+			line-height: 1.6;
+		}
+		
+		/* How It Works */
+		.how-it-works {
+			background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+			padding: 80px 24px;
+			color: white;
+		}
+		
+		.steps {
+			max-width: 900px;
+			margin: 0 auto;
+		}
+		
+		.step {
+			display: flex;
+			gap: 24px;
+			margin-bottom: 48px;
+			align-items: flex-start;
+		}
+		
+		.step-number {
+			width: 60px;
+			height: 60px;
+			background: rgba(255, 255, 255, 0.2);
+			backdrop-filter: blur(10px);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 1.8rem;
+			font-weight: bold;
+			flex-shrink: 0;
+		}
+		
+		.step-content h3 {
+			font-size: 1.6rem;
+			margin-bottom: 8px;
+		}
+		
+		.step-content p {
+			font-size: 1.1rem;
+			opacity: 0.95;
+		}
+		
+		/* Deck Library */
+		.deck-library {
+			background: #f7fafc;
+			padding: 80px 24px;
+		}
+		
+		.deck-filters {
+			max-width: 1200px;
+			margin: 0 auto 40px;
+			display: flex;
+			gap: 16px;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+		
+		.deck-filters input,
+		.deck-filters select {
+			padding: 12px 20px;
+			border: 2px solid #e2e8f0;
+			border-radius: 8px;
+			font-size: 1rem;
+			min-width: 200px;
+		}
+		
+		.deck-grid {
+			max-width: 1200px;
+			margin: 0 auto;
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+			gap: 24px;
+		}
+		
+		.deck-card {
+			background: white;
+			border-radius: 16px;
+			padding: 28px;
+			box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+			transition: all 0.3s ease;
+			cursor: pointer;
+			border: 2px solid transparent;
+		}
+		
+		.deck-card:hover {
+			transform: translateY(-6px);
+			box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+			border-color: #667eea;
+		}
+		
+		.deck-header {
+			margin-bottom: 16px;
+		}
+		
+		.deck-title {
+			font-size: 1.4rem;
+			color: #1a202c;
+			margin-bottom: 8px;
+		}
+		
+		.deck-meta {
+			display: flex;
+			gap: 12px;
+			font-size: 0.9rem;
+			color: #718096;
+		}
+		
+		.deck-description {
+			color: #4a5568;
+			line-height: 1.6;
+			margin-bottom: 16px;
+			min-height: 48px;
+		}
+		
+		.deck-tags {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+			margin-bottom: 20px;
+		}
+		
+		.tag {
+			background: rgba(102, 126, 234, 0.1);
+			color: #667eea;
+			padding: 6px 12px;
+			border-radius: 20px;
+			font-size: 0.85rem;
+			font-weight: 500;
+		}
+		
+		.deck-actions {
+			display: flex;
+			gap: 8px;
+		}
+		
+		.btn-download {
+			flex: 1;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			color: white;
+			padding: 12px;
+			border: none;
+			border-radius: 8px;
+			font-weight: 600;
+			cursor: pointer;
+			transition: all 0.3s ease;
+		}
+		
+		.btn-download:hover {
+			transform: scale(1.05);
+			box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+		}
+		
+		.difficulty-badge {
+			padding: 4px 12px;
+			border-radius: 12px;
+			font-size: 0.75rem;
+			font-weight: 600;
+			text-transform: uppercase;
+		}
+		
+		.difficulty-einfach { background: rgba(76, 175, 80, 0.2); color: #4CAF50; }
+		.difficulty-mittel { background: rgba(255, 193, 7, 0.2); color: #FFC107; }
+		.difficulty-schwer { background: rgba(244, 67, 54, 0.2); color: #F44336; }
+		
+		/* Footer */
+		.footer {
+			background: #1a202c;
+			color: white;
+			padding: 40px 24px;
+			text-align: center;
+		}
+		
+		.footer p {
+			opacity: 0.8;
+		}
+		
+		/* Animations */
+		@keyframes fadeInUp {
+			from {
+				opacity: 0;
+				transform: translateY(30px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+		
+		@keyframes bounce {
+			0%, 100% {
+				transform: translateY(0);
+			}
+			50% {
+				transform: translateY(-10px);
+			}
+		}
+		
+		@keyframes pulse {
+			0%, 100% {
+				transform: scale(1);
+			}
+			50% {
+				transform: scale(1.05);
+			}
+		}
+		
+		.stats {
+			max-width: 1200px;
+			margin: -60px auto 0;
+			padding: 0 24px;
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			gap: 24px;
+			position: relative;
+			z-index: 10;
+		}
+		
+		.stat-card {
+			background: white;
+			padding: 32px;
+			border-radius: 16px;
+			box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+			text-align: center;
+		}
+		
+		.stat-value {
+			font-size: 3rem;
+			font-weight: bold;
+			background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			margin-bottom: 8px;
+		}
+		
+		.stat-label {
+			color: #4a5568;
+			font-size: 1rem;
+		}
+		
+		@media (max-width: 768px) {
+			.hero h2 {
+				font-size: 2.5rem;
+			}
+			
+			.hero p {
+				font-size: 1.1rem;
+			}
+			
+			.section-title {
+				font-size: 2rem;
+			}
+		}
+	</style>
+</head>
+<body>
+	<!-- Header -->
+	<header class="landing-header">
+		<div class="nav-container">
+			<div class="logo-area">
+				<div class="logo-icon">LK</div>
+				<div class="logo-text">
+					<h1>LernKarten</h1>
+				</div>
+			</div>
+			<div class="nav-buttons">
+				<a href="index.html" class="btn btn-primary">🚀 App starten</a>
+			</div>
+		</div>
+	</header>
+	
+	<!-- Hero Section -->
+	<section class="hero">
+		<h2>📚 Lernen mit System</h2>
+		<p>Intelligentes Karteikarten-Lernsystem mit Spaced Repetition, TTS und KI-Unterstützung</p>
+		<div class="hero-buttons">
+			<a href="index.html" class="btn btn-primary">App starten</a>
+			<a href="#decks" class="btn btn-secondary">Decks durchsuchen</a>
+		</div>
+	</section>
+	
+	<!-- Stats -->
+	<div class="stats">
+		<div class="stat-card">
+			<div class="stat-value" id="total-decks">3</div>
+			<div class="stat-label">Community Decks</div>
+		</div>
+		<div class="stat-card">
+			<div class="stat-value" id="total-cards">60</div>
+			<div class="stat-label">Lernkarten</div>
+		</div>
+		<div class="stat-card">
+			<div class="stat-value" id="total-categories">3</div>
+			<div class="stat-label">Kategorien</div>
+		</div>
+	</div>
+	
+	<!-- Features -->
+	<section class="features">
+		<h2 class="section-title">✨ Warum LernKarten?</h2>
+		<div class="features-grid">
+			<div class="feature-card">
+				<div class="feature-icon">🧠</div>
+				<h3>Spaced Repetition</h3>
+				<p>Intelligentes 5-Box-System optimiert deine Wiederholungen automatisch</p>
+			</div>
+			<div class="feature-card">
+				<div class="feature-icon">🔊</div>
+				<h3>Text-to-Speech</h3>
+				<p>Lerne mit Google Cloud TTS in 40+ Sprachen – perfekt für Audio-Lerner</p>
+			</div>
+			<div class="feature-card">
+				<div class="feature-icon">🤖</div>
+				<h3>KI-Unterstützung</h3>
+				<p>Automatische Generierung von Umschreibungen und Begriffen mit OpenAI/Grok</p>
+			</div>
+			<div class="feature-card">
+				<div class="feature-icon">🎯</div>
+				<h3>3 Lernmodi</h3>
+				<p>Tippen, Multiple Choice oder Richtig/Falsch – du entscheidest</p>
+			</div>
+			<div class="feature-card">
+				<div class="feature-icon">💾</div>
+				<h3>100% Lokal</h3>
+				<p>Alle Daten in deinem Browser – keine Registrierung nötig</p>
+			</div>
+			<div class="feature-card">
+				<div class="feature-icon">☁️</div>
+				<h3>Optional Cloud</h3>
+				<p>Sync mit Google Drive für Backup und Geräte-Sync</p>
+			</div>
+		</div>
+	</section>
+	
+	<!-- How it Works -->
+	<section class="how-it-works">
+		<h2 class="section-title">🎓 So funktioniert's</h2>
+		<div class="steps">
+			<div class="step">
+				<div class="step-number">1</div>
+				<div class="step-content">
+					<h3>Deck auswählen oder erstellen</h3>
+					<p>Wähle ein fertiges Community-Deck oder erstelle eigene Karten mit Begriff, Umschreibung und Antwort</p>
+				</div>
+			</div>
+			<div class="step">
+				<div class="step-number">2</div>
+				<div class="step-content">
+					<h3>Lernsession starten</h3>
+					<p>Wähle Thema, Lernmodus (Tippen/Judge/Multiple Choice) und optional TTS-Vorlesen</p>
+				</div>
+			</div>
+			<div class="step">
+				<div class="step-number">3</div>
+				<div class="step-content">
+					<h3>Karten beantworten</h3>
+					<p>Beantworte die Fragen – richtige Antworten wandern in höhere Boxen, falsche zurück</p>
+				</div>
+			</div>
+			<div class="step">
+				<div class="step-number">4</div>
+				<div class="step-content">
+					<h3>Fortschritt verfolgen</h3>
+					<p>Statistiken zeigen dir genau, welche Karten du gemeistert hast und was noch geübt werden muss</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Deck Library -->
+	<section class="deck-library" id="decks">
+		<h2 class="section-title">📚 Community Decks</h2>
+		
+		<div class="deck-filters">
+			<input type="text" id="search-input" placeholder="🔍 Decks durchsuchen..." />
+			<select id="category-filter">
+				<option value="">Alle Kategorien</option>
+			</select>
+			<select id="difficulty-filter">
+				<option value="">Alle Schwierigkeiten</option>
+				<option value="einfach">Einfach</option>
+				<option value="mittel">Mittel</option>
+				<option value="schwer">Schwer</option>
+			</select>
+		</div>
+		
+		<div id="deck-grid" class="deck-grid"></div>
+	</section>
+	
+	<!-- Footer -->
+	<footer class="footer">
+		<p>© 2026 LernKarten – Lokal speicherbar, optional Cloud & KI</p>
+		<p style="margin-top: 12px;">Open Source auf <a href="https://github.com/kranege1/LernKarten" target="_blank" style="color: #667eea;">GitHub</a></p>
+	</footer>
+	
+	<script>
+		const CATALOG_URL = 'shared-decks/catalog.json';
+		let allDecks = [];
+		
+		// Katalog laden
+		async function loadCatalog() {
+			try {
+				const response = await fetch(CATALOG_URL);
+				const catalog = await response.json();
+				allDecks = catalog.decks || [];
+				
+				updateStats();
+				populateCategoryFilter();
+				renderDecks(allDecks);
+			} catch (error) {
+				console.error('Katalog-Fehler:', error);
+			}
+		}
+		
+		function updateStats() {
+			document.getElementById('total-decks').textContent = allDecks.length;
+			const totalCards = allDecks.reduce((sum, deck) => sum + (deck.cardCount || 0), 0);
+			document.getElementById('total-cards').textContent = totalCards;
+			const categories = new Set(allDecks.map(d => d.category));
+			document.getElementById('total-categories').textContent = categories.size;
+		}
+		
+		function populateCategoryFilter() {
+			const categories = [...new Set(allDecks.map(d => d.category))].sort();
+			const select = document.getElementById('category-filter');
+			categories.forEach(cat => {
+				const option = document.createElement('option');
+				option.value = cat;
+				option.textContent = cat;
+				select.appendChild(option);
+			});
+		}
+		
+		function renderDecks(decks) {
+			const grid = document.getElementById('deck-grid');
+			grid.innerHTML = decks.map(deck => `
+				<div class="deck-card">
+					<div class="deck-header">
+						<h3 class="deck-title">${deck.title}</h3>
+						<div class="deck-meta">
+							<span>📊 ${deck.cardCount} Karten</span>
+							<span class="difficulty-badge difficulty-${deck.difficulty}">${deck.difficulty}</span>
+						</div>
+					</div>
+					<p class="deck-description">${deck.description}</p>
+					<div class="deck-tags">
+						${(deck.tags || []).map(tag => `<span class="tag">${tag}</span>`).join('')}
+					</div>
+					<div class="deck-actions">
+						<button class="btn-download" onclick="downloadDeck('${deck.downloadUrl}', '${deck.fileName}')">
+							💾 Herunterladen
+						</button>
+					</div>
+				</div>
+			`).join('');
+		}
+		
+		async function downloadDeck(url, filename) {
+			try {
+				const response = await fetch(url);
+				const data = await response.json();
+				const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+				const downloadUrl = URL.createObjectURL(blob);
+				const a = document.createElement('a');
+				a.href = downloadUrl;
+				a.download = filename;
+				document.body.appendChild(a);
+				a.click();
+				document.body.removeChild(a);
+				URL.revokeObjectURL(downloadUrl);
+				
+				const btn = event.target;
+				const originalText = btn.textContent;
+				btn.textContent = '✅ Heruntergeladen!';
+				btn.style.background = '#4CAF50';
+				setTimeout(() => {
+					btn.textContent = originalText;
+					btn.style.background = '';
+				}, 2000);
+			} catch (error) {
+				console.error('Download-Fehler:', error);
+				alert('Fehler beim Herunterladen.');
+			}
+		}
+		
+		function applyFilters() {
+			const searchTerm = document.getElementById('search-input').value.toLowerCase();
+			const selectedCategory = document.getElementById('category-filter').value;
+			const selectedDifficulty = document.getElementById('difficulty-filter').value;
+			
+			const filtered = allDecks.filter(deck => {
+				const matchesSearch = !searchTerm || 
+					deck.title.toLowerCase().includes(searchTerm) ||
+					deck.description.toLowerCase().includes(searchTerm) ||
+					(deck.tags || []).some(tag => tag.toLowerCase().includes(searchTerm));
+				
+				const matchesCategory = !selectedCategory || deck.category === selectedCategory;
+				const matchesDifficulty = !selectedDifficulty || deck.difficulty === selectedDifficulty;
+				
+				return matchesSearch && matchesCategory && matchesDifficulty;
+			});
+			
+			renderDecks(filtered);
+		}
+		
+		document.getElementById('search-input').addEventListener('input', applyFilters);
+		document.getElementById('category-filter').addEventListener('change', applyFilters);
+		document.getElementById('difficulty-filter').addEventListener('change', applyFilters);
+		
+		loadCatalog();
+	</script>
+</body>
+</html>

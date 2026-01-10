@@ -1,0 +1,170 @@
+{
+  "metadata": {
+    "title": "Programmierung: Python Grundlagen",
+    "description": "Grundlegende Python-Konzepte für Einsteiger",
+    "category": "Programmierung",
+    "author": "LernKarten Community",
+    "version": "1.0",
+    "created": "2026-01-10"
+  },
+  "topics": [
+    {
+      "id": "topic-python-basics",
+      "name": "Python Grundlagen",
+      "folderId": null,
+      "answerMode": "type"
+    }
+  ],
+  "cards": [
+    {
+      "term": "Variable",
+      "description": "Container zum Speichern von Werten, z.B. x = 10",
+      "answer": "Variable",
+      "topicId": "topic-python-basics"
+    },
+    {
+      "term": "Integer",
+      "description": "Ganzzahlen-Datentyp in Python, z.B. 42, -7, 0",
+      "answer": "Integer",
+      "topicId": "topic-python-basics"
+    },
+    {
+      "term": "String",
+      "description": "Text-Datentyp, definiert mit Anführungszeichen: 'Hallo' oder \"Welt\"",
+      "answer": "String",
+      "topicId": "topic-python-basics"
+    },
+    {
+      "term": "List",
+      "description": "Veränderbare Sammlung von Elementen: [1, 2, 3, 'vier']",
+      "answer": "List",
+      "topicId": "topic-python-basics"
+    },
+    {
+      "term": "Dictionary",
+      "description": "Key-Value Paare: {'name': 'Anna', 'alter': 25}",
+      "answer": "Dictionary",
+      "topicId": "topic-python-basics"
+    },
+    {
+      "term": "if-Statement",
+      "description": "Bedingte Anweisung: if bedingung: code_ausführen",
+      "answer": "if-Statement",
+      "topicId": "topic-python-basics"
+    },
+    {
+      "term": "for-Loop",
+      "description": "Schleife zur Iteration: for item in liste: print(item)",
+      "answer": "for-Loop",
+      "topicId": "topic-python-basics"
+    },
+    {
+      "term": "while-Loop",
+      "description": "Schleife, die läuft solange Bedingung wahr ist: while x < 10: x += 1",
+      "answer": "while-Loop",
+      "topicId": "topic-python-basics"
+    },
+    {
+      "term": "Function",
+      "description": "Wiederverwendbarer Codeblock: def meine_funktion(parameter): return ergebnis",
+      "answer": "Function",
+      "topicId": "topic-python-basics"
+    },
+    {
+      "term": "return",
+      "description": "Gibt Wert aus Funktion zurück: return x * 2",
+      "answer": "return",
+      "topicId": "topic-python-basics"
+    },
+    {
+      "term": "print()",
+      "description": "Funktion zur Ausgabe von Werten in der Konsole",
+      "answer": "print()",
+      "topicId": "topic-python-basics"
+    },
+    {
+      "term": "input()",
+      "description": "Funktion zum Einlesen von Benutzereingaben: name = input('Dein Name: ')",
+      "answer": "input()",
+      "topicId": "topic-python-basics"
+    },
+    {
+      "term": "len()",
+      "description": "Gibt Länge einer Liste oder eines Strings zurück: len([1,2,3]) → 3",
+      "answer": "len()",
+      "topicId": "topic-python-basics"
+    },
+    {
+      "term": "range()",
+      "description": "Erzeugt Zahlenfolge: range(5) → 0,1,2,3,4",
+      "answer": "range()",
+      "topicId": "topic-python-basics"
+    },
+    {
+      "term": "Index",
+      "description": "Position eines Elements in einer Liste: liste[0] ist das erste Element",
+      "answer": "Index",
+      "topicId": "topic-python-basics"
+    },
+    {
+      "term": "Slicing",
+      "description": "Teil einer Liste extrahieren: liste[1:3] gibt Elemente 1 und 2 zurück",
+      "answer": "Slicing",
+      "topicId": "topic-python-basics"
+    },
+    {
+      "term": "append()",
+      "description": "Fügt Element am Ende einer Liste hinzu: liste.append(10)",
+      "answer": "append()",
+      "topicId": "topic-python-basics"
+    },
+    {
+      "term": "Boolean",
+      "description": "Wahrheitswert: True oder False",
+      "answer": "Boolean",
+      "topicId": "topic-python-basics"
+    },
+    {
+      "term": "Comparison Operators",
+      "description": "Vergleichsoperatoren: ==, !=, <, >, <=, >=",
+      "answer": "Comparison Operators",
+      "topicId": "topic-python-basics"
+    },
+    {
+      "term": "and/or/not",
+      "description": "Logische Operatoren zur Verknüpfung von Bedingungen",
+      "answer": "and/or/not",
+      "topicId": "topic-python-basics"
+    },
+    {
+      "term": "try/except",
+      "description": "Fehlerbehandlung: try: code except Error: handle_error",
+      "answer": "try/except",
+      "topicId": "topic-python-basics"
+    },
+    {
+      "term": "import",
+      "description": "Lädt externe Module: import math, from datetime import date",
+      "answer": "import",
+      "topicId": "topic-python-basics"
+    },
+    {
+      "term": "None",
+      "description": "Spezialwert für 'kein Wert' oder 'nichts'",
+      "answer": "None",
+      "topicId": "topic-python-basics"
+    },
+    {
+      "term": "Indentation",
+      "description": "Einrückung zur Definition von Codeblöcken (4 Leerzeichen oder Tab)",
+      "answer": "Indentation",
+      "topicId": "topic-python-basics"
+    },
+    {
+      "term": "Comments",
+      "description": "Kommentare im Code: # einzeiliger Kommentar oder '''mehrzeilig'''",
+      "answer": "Comments",
+      "topicId": "topic-python-basics"
+    }
+  ]
+}
