@@ -729,25 +729,16 @@
 			</div>
 
 			<div class="form-group">
-				<label for="deck-tags">Tags *</label>
-				<select id="deck-tags" multiple size="5" required>
-					<option value="Anfänger">Anfänger</option>
-					<option value="Fortgeschritten">Fortgeschritten</option>
-					<option value="Experte">Experte</option>
-					<option value="Prüfungsvorbereitung">Prüfungsvorbereitung</option>
-					<option value="Vokabeln">Vokabeln</option>
-					<option value="Grammatik">Grammatik</option>
-					<option value="Schule">Schule</option>
-					<option value="Studium">Studium</option>
-					<option value="Beruf">Beruf</option>
-					<option value="Grundlagen">Grundlagen</option>
-					<option value="Übungen">Übungen</option>
-				</select>
-				<small class="muted" style="display: block; margin-top: 6px;">Mehrfachauswahl: Strg+Klick (Windows) / Cmd+Klick (Mac)</small>
-				<div style="display: flex; gap: 8px; margin-top: 8px;">
+				<label>Tags *</label>
+				<div id="tags-container" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; min-height: 38px; align-items: center;">
+					<!-- Tag-Buttons werden hier eingefügt -->
+				</div>
+				<div style="display: flex; gap: 8px;">
 					<input type="text" id="new-tag" placeholder="Neuen Tag hinzufügen" style="flex: 1;">
 					<button type="button" id="add-tag-btn" class="secondary" style="padding: 0 16px;">+ Tag</button>
 				</div>
+				<input type="hidden" id="deck-tags" required>
+			</div>
 
 				<div class="form-group">
 					<label for="deck-category">Kategorie *</label>

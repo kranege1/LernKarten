@@ -882,7 +882,35 @@ dialog { border: 1px solid var(--border); border-radius: 12px; padding: 0; backg
   color: white;
   font-weight: 600;
 }
+/* Tag-Buttons */
+.tag-btn {
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel-2);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
 
+.tag-btn:hover {
+  border-color: var(--primary);
+  background: rgba(124, 58, 237, 0.1);
+}
+
+.tag-btn.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.tag-btn.custom {
+  background: rgba(124, 58, 237, 0.2);
+  border-color: var(--primary);
+}
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
