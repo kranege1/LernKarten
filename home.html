@@ -642,7 +642,7 @@
 						${(deck.tags || []).map(tag => `<span class="tag">${tag}</span>`).join('')}
 					</div>
 					<div class="deck-actions">
-						<button class="btn-download" onclick="downloadDeck('${deck.downloadUrl}', '${deck.fileName}')">
+						<button class="btn-download" onclick="downloadDeck(event, '${deck.downloadUrl}', '${deck.fileName}')">
 							💾 Herunterladen
 						</button>
 					</div>
@@ -650,8 +650,14 @@
 			`).join('');
 		}
 		
-		async function downloadDeck(url, filename) {
+		async function downloadDeck(event, url, filename) {
+			const btn = event.target;
+			const originalText = btn.textContent;
+			
 			try {
+				btn.textContent = '⏳ Lädt...';
+				btn.disabled = true;
+				
 				const response = await fetch(url);
 				const data = await response.json();
 				const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
@@ -664,17 +670,22 @@
 				document.body.removeChild(a);
 				URL.revokeObjectURL(downloadUrl);
 				
-				const btn = event.target;
-				const originalText = btn.textContent;
 				btn.textContent = '✅ Heruntergeladen!';
 				btn.style.background = '#4CAF50';
 				setTimeout(() => {
 					btn.textContent = originalText;
 					btn.style.background = '';
+					btn.disabled = false;
 				}, 2000);
 			} catch (error) {
 				console.error('Download-Fehler:', error);
-				alert('Fehler beim Herunterladen.');
+				btn.textContent = '❌ Fehler';
+				btn.style.background = '#F44336';
+				setTimeout(() => {
+					btn.textContent = originalText;
+					btn.style.background = '';
+					btn.disabled = false;
+				}, 2000);
 			}
 		}
 		
