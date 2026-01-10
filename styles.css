@@ -187,6 +187,13 @@ button:disabled { opacity: 0.6; cursor: not-allowed; }
   margin: 0;
 }
 
+#folder-tree li {
+  background: none;
+  border: none;
+  padding: 0;
+  display: block;
+}
+
 .tree-folder {
   margin-bottom: 4px;
 }
