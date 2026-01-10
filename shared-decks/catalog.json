@@ -83,7 +83,21 @@
       "cardCount": 41,
       "url": "https://raw.githubusercontent.com/kranege1/LernKarten/gh-pages/shared-decks/deutsch-rs-langes-i.json",
       "createdAt": "2026-01-10T17:22:27.391Z"
+    },
+    {
+      "id": "mk8krbl3dwz3iswrbb7",
+      "title": "Deutsch-RS-langes I",
+      "description": "Ein Kartenset zum Thema Deutsch-RS-langes I",
+      "difficulty": "LEICHT",
+      "category": "Sprachen",
+      "author": "Gerald",
+      "tags": [
+        "Deutsch"
+      ],
+      "cardCount": 41,
+      "url": "https://raw.githubusercontent.com/kranege1/LernKarten/gh-pages/shared-decks/deutsch-rs-langes-i.json",
+      "createdAt": "2026-01-10T17:24:14.665Z"
     }
   ],
-  "lastUpdated": "2026-01-10T17:22:27.391Z"
+  "lastUpdated": "2026-01-10T17:24:14.665Z"
 }
