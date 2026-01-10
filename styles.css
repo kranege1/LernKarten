@@ -769,12 +769,12 @@ dialog { border: 1px solid var(--border); border-radius: 12px; padding: 0; backg
 
 .modal {
   position: fixed;
-  top: 20%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;
   max-width: 90vw;
-  max-height: 75vh;
+  max-height: 95vh;
   width: 500px;
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -782,6 +782,7 @@ dialog { border: 1px solid var(--border); border-radius: 12px; padding: 0; backg
   background: var(--panel);
   color: var(--text);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
 }
 
 .modal:modal {
@@ -827,6 +828,7 @@ dialog { border: 1px solid var(--border); border-radius: 12px; padding: 0; backg
   padding: 16px 20px;
   overflow-y: auto;
   flex: 1;
+  max-height: calc(95vh - 140px);
 }
 
 .modal-footer {
