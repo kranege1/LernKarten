@@ -1,0 +1,385 @@
+{
+  "metadata": {
+    "id": "mk89mbtprkbw687hnip",
+    "title": "Mittelalter",
+    "description": "Ein Kartenset zum Thema Mittelalter",
+    "difficulty": "LEICHT",
+    "category": "Geschichte",
+    "author": "Gerald",
+    "tags": [
+      "Geschichte"
+    ],
+    "createdAt": "2026-01-10T12:12:24.541Z",
+    "cardCount": 24
+  },
+  "topics": [
+    {
+      "id": "topic-geschichte-mittelalter",
+      "name": "Mittelalter",
+      "folderId": "mk807y2fb3t1m9kwqid",
+      "answerMode": "type"
+    }
+  ],
+  "cards": [
+    {
+      "term": "Epoche von ca. 500-1000 n.Chr., geprägt durch Völkerwanderung und Christianisierung",
+      "description": "Epoche von ca. 500-1000 n.Chr., geprägt durch Völkerwanderung und Christianisierung",
+      "answer": "Frühmittelalter",
+      "id": "mk8062shdg7kyo2bbw",
+      "topicId": "topic-geschichte-mittelalter",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Epoche von ca. 1000-1250, Blütezeit der Ritter, Kreuzzüge und Kathedralen",
+      "description": "Epoche von ca. 1000-1250, Blütezeit der Ritter, Kreuzzüge und Kathedralen",
+      "answer": "Hochmittelalter",
+      "id": "mk8062sh204x385ch2z",
+      "topicId": "topic-geschichte-mittelalter",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Epoche von ca. 1250-1500, geprägt durch Pest, Hundertjähriger Krieg, Beginn der Renaissance",
+      "description": "Epoche von ca. 1250-1500, geprägt durch Pest, Hundertjähriger Krieg, Beginn der Renaissance",
+      "answer": "Spätmittelalter",
+      "id": "mk8062shgnvda33an9e",
+      "topicId": "topic-geschichte-mittelalter",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Gesellschaftssystem basierend auf Lehnswesen und persönlicher Abhängigkeit",
+      "description": "Gesellschaftssystem basierend auf Lehnswesen und persönlicher Abhängigkeit",
+      "answer": "Feudalismus",
+      "id": "mk8062shnyfv0nefy6",
+      "topicId": "topic-geschichte-mittelalter",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Fränkischer König und Kaiser (768-814), einte Westeuropa, Kaiserkrönung 800",
+      "description": "Fränkischer König und Kaiser (768-814), einte Westeuropa, Kaiserkrönung 800",
+      "answer": "Karl der Große",
+      "id": "mk8062shyckjk8cibae",
+      "topicId": "topic-geschichte-mittelalter",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Militärische Expeditionen (1095-1291) zur Eroberung des Heiligen Landes",
+      "description": "Militärische Expeditionen (1095-1291) zur Eroberung des Heiligen Landes",
+      "answer": "Kreuzzüge",
+      "id": "mk8062sh0y137n23ltlg",
+      "topicId": "topic-geschichte-mittelalter",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Machtkampf zwischen Papst und Kaiser um die Einsetzung von Bischöfen (11./12. Jh.)",
+      "description": "Machtkampf zwischen Papst und Kaiser um die Einsetzung von Bischöfen (11./12. Jh.)",
+      "answer": "Investiturstreit",
+      "id": "mk8062sh235l94nv52h",
+      "topicId": "topic-geschichte-mittelalter",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Englisches Verfassungsdokument von 1215, begrenzte königliche Macht",
+      "description": "Englisches Verfassungsdokument von 1215, begrenzte königliche Macht",
+      "answer": "Magna Carta",
+      "id": "mk8062shzqsi4rppsd",
+      "topicId": "topic-geschichte-mittelalter",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Pestepidemie (1347-1353), tötete etwa ein Drittel der europäischen Bevölkerung",
+      "description": "Pestepidemie (1347-1353), tötete etwa ein Drittel der europäischen Bevölkerung",
+      "answer": "Schwarzer Tod",
+      "id": "mk8062sh2dym0zej7qz",
+      "topicId": "topic-geschichte-mittelalter",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Konflikt zwischen England und Frankreich (1337-1453)",
+      "description": "Konflikt zwischen England und Frankreich (1337-1453)",
+      "answer": "Hundertjähriger Krieg",
+      "id": "mk8062sho1sc77jq1bp",
+      "topicId": "topic-geschichte-mittelalter",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Französische Nationalheldin, führte im Hundertjährigen Krieg Truppen, verbrannt 1431",
+      "description": "Französische Nationalheldin, führte im Hundertjährigen Krieg Truppen, verbrannt 1431",
+      "answer": "Jeanne d'Arc",
+      "id": "mk8062shn5kfvgzha4",
+      "topicId": "topic-geschichte-mittelalter",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "System persönlicher Bindungen zwischen Lehnsherr und Vasall",
+      "description": "System persönlicher Bindungen zwischen Lehnsherr und Vasall",
+      "answer": "Lehnswesen",
+      "id": "mk8062shu1xf20585hh",
+      "topicId": "topic-geschichte-mittelalter",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Mittelalterliche Denkweise, die Vernunft und Glauben zu vereinen suchte",
+      "description": "Mittelalterliche Denkweise, die Vernunft und Glauben zu vereinen suchte",
+      "answer": "Scholastik",
+      "id": "mk8062shbg8lt1r8qj",
+      "topicId": "topic-geschichte-mittelalter",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Architekturstil (ab 12. Jh.) mit Spitzbögen, Rippengewölben und großen Fenstern",
+      "description": "Architekturstil (ab 12. Jh.) mit Spitzbögen, Rippengewölben und großen Fenstern",
+      "answer": "Gotik",
+      "id": "mk8062sh3e8p7fz27zn",
+      "topicId": "topic-geschichte-mittelalter",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Religiöse Gemeinschaft, Zentren von Bildung und Kultur im Mittelalter",
+      "description": "Religiöse Gemeinschaft, Zentren von Bildung und Kultur im Mittelalter",
+      "answer": "Kloster",
+      "id": "mk8062sh1p5gfvsadk5i",
+      "topicId": "topic-geschichte-mittelalter",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Berittener Krieger des Adels, gebunden an Ehrenkodex der Ritterlichkeit",
+      "description": "Berittener Krieger des Adels, gebunden an Ehrenkodex der Ritterlichkeit",
+      "answer": "Ritter",
+      "id": "mk8062shszk4rqmajld",
+      "topicId": "topic-geschichte-mittelalter",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Handwerkervereinigung zur Regelung von Ausbildung und Handel",
+      "description": "Handwerkervereinigung zur Regelung von Ausbildung und Handel",
+      "answer": "Zunft",
+      "id": "mk8062sh8n96yxhbzb",
+      "topicId": "topic-geschichte-mittelalter",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Kaufmannsbund norddeutscher Städte (13.-17. Jh.) zur Förderung des Handels",
+      "description": "Kaufmannsbund norddeutscher Städte (13.-17. Jh.) zur Förderung des Handels",
+      "answer": "Hanse",
+      "id": "mk8062shnmqd7ljwxbh",
+      "topicId": "topic-geschichte-mittelalter",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Religiöse Gemeinschaft, Zentren von Bildung und Kultur im Mittelalter",
+      "description": "Religiöse Gemeinschaft, Zentren von Bildung und Kultur im Mittelalter",
+      "answer": "Kloster",
+      "id": "mk807hh418rx6pew5n7",
+      "topicId": "topic-geschichte-mittelalter",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Berittener Krieger des Adels, gebunden an Ehrenkodex der Ritterlichkeit",
+      "description": "Berittener Krieger des Adels, gebunden an Ehrenkodex der Ritterlichkeit",
+      "answer": "Ritter",
+      "id": "mk807hh4eeiykwqegqf",
+      "topicId": "topic-geschichte-mittelalter",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Handwerkervereinigung zur Regelung von Ausbildung und Handel",
+      "description": "Handwerkervereinigung zur Regelung von Ausbildung und Handel",
+      "answer": "Zunft",
+      "id": "mk807hh4oeb1srppxw",
+      "topicId": "topic-geschichte-mittelalter",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Kaufmannsbund norddeutscher Städte (13.-17. Jh.) zur Förderung des Handels",
+      "description": "Kaufmannsbund norddeutscher Städte (13.-17. Jh.) zur Förderung des Handels",
+      "answer": "Hanse",
+      "id": "mk807hh4gbgfnfx3sa5",
+      "topicId": "topic-geschichte-mittelalter",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Höfische Liebeslyrik des Hochmittelalters",
+      "description": "Höfische Liebeslyrik des Hochmittelalters",
+      "answer": "Minnesang",
+      "id": "mk807hh4cbu5ojmr88v",
+      "topicId": "topic-geschichte-mittelalter",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Kirchliche Gerichtsbarkeit zur Verfolgung von Ketzerei (ab 13. Jh.)",
+      "description": "Kirchliche Gerichtsbarkeit zur Verfolgung von Ketzerei (ab 13. Jh.)",
+      "answer": "Inquisition",
+      "id": "mk807hh430bgrwf2k77",
+      "topicId": "topic-geschichte-mittelalter",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    }
+  ]
+}
