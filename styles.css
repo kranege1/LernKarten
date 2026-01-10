@@ -90,12 +90,12 @@ body {
 
 .row { display: flex; align-items: center; gap: 10px; margin: 10px 0; }
 .row.two > * { flex: 1; }
-.row label { min-width: 120px; color: var(--muted); display: flex; align-items: center; font-size: 14px; }
-.row select,
-.row input[type="text"],
-.row input[type="file"],
-.row textarea { flex: 1; font-size: 14px; }
-.row button { height: 42px; }
+#import-section .row label { min-width: 130px; color: var(--muted); display: flex; align-items: center; font-size: 14px; }
+#import-section .row select,
+#import-section .row input[type="text"],
+#import-section .row textarea { flex: 1; font-size: 14px; }
+#import-section .row button { height: 42px; flex: 0 0 auto; }
+#import-file-row input[type="file"] { width: 100%; }
 #import-file-row input[type="file"] { width: 100%; }
 .row.three { flex-wrap: wrap; }
 .row.three > * { flex: 1; min-width: 220px; }

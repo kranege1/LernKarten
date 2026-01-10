@@ -214,15 +214,13 @@
 							</a>
 						</div>
 						<div class="row">
-							<label>Import von URL</label>
-							<div style="display: flex; gap: 8px;">
-								<input id="import-url" type="text" placeholder="https://example.com/deck.json" style="flex: 1;" />
-								<button id="import-from-url" class="primary">Von URL laden</button>
-							</div>
+							<label for="import-url">Import von URL</label>
+							<input id="import-url" type="text" placeholder="https://example.com/deck.json" />
+							<button id="import-from-url" class="primary">Von URL laden</button>
 						</div>
 						<div style="text-align: center; margin: 16px 0; color: var(--muted); font-size: 0.9rem;">oder</div>
 						<div class="row">
-							<label>Format wählen</label>
+							<label for="import-format">Format wählen</label>
 							<select id="import-format">
 								<option value="json">JSON</option>
 								<option value="csv">CSV/TSV</option>
@@ -231,13 +229,15 @@
 							<button id="detect-import" class="primary" style="white-space: nowrap; background: linear-gradient(135deg, var(--primary), #06b6d4); border: none; color: #fff;">Inhalt erkennen</button>
 						</div>
 						<div class="row" id="import-file-row">
+							<label for="import-file">Datei auswählen</label>
 							<input id="import-file" type="file" accept=".csv,.tsv,.txt,.json" />
 						</div>
 						<div class="row" id="import-list-row" style="display:none">
+							<label for="import-list">Liste eingeben</label>
 							<textarea id="import-list" rows="3" placeholder="Beispiel Dreifach-Modus: Photosynthese, Umwandlung von Licht in Energie, Photosynthese, Mitochondrium, Kraftwerk der Zelle, Mitochondrium"></textarea>
 						</div>
 						<div class="row" id="import-list-mode-row" style="display:none">
-							<label>Listenmodus:</label>
+							<label for="import-list-mode">Listenmodus</label>
 							<select id="import-list-mode">
 								<option value="same">Jedes Wort = Frage & Antwort</option>
 								<option value="pair">Paarweise: 1. Frage, 2. Antwort, 3. Frage, ...</option>
@@ -245,9 +245,12 @@
 								<option value="mc">4 Antworten: 1. Begriff, 2. Umschreibung, 3. Antwort1, 4. Antwort2, 5. Antwort3, 6. Antwort4, ...</option>
 							</select>
 						</div>
-						<div class="row two">
+						<div class="row">
+							<label for="import-topic">Ziel-Thema</label>
 							<select id="import-topic"></select>
-							<button id="run-import" class="primary">Schnellimport (ohne Mapping)</button>
+						</div>
+						<div style="display: flex; gap: 8px; margin-top: 8px;">
+							<button id="run-import" class="primary" style="flex: 1;">Schnellimport (ohne Mapping)</button>
 						</div>
 						<div class="muted small">Hinweis: Schnellimport versucht gängige Spalten automatisch zuzuordnen. "Inhalt erkennen" öffnet den Mapping-Dialog. Für Textlisten bitte "Liste" wählen.</div>
 						<div class="muted small" id="import-status"></div>
@@ -255,15 +258,19 @@
 
 					<div class="card">
 						<h2>Export</h2>
-						<div class="row two">
+						<div class="row">
+							<label for="export-topic">Thema/Ordner</label>
 							<select id="export-topic"></select>
+						</div>
+						<div class="row">
+							<label for="export-format">Format</label>
 							<select id="export-format">
 								<option value="json">JSON</option>
 								<option value="csv">CSV</option>
 							</select>
 						</div>
-						<div class="row">
-							<button id="run-export" class="ghost">Exportieren</button>
+						<div style="display: flex; gap: 8px; margin-top: 8px;">
+							<button id="run-export" class="primary" style="flex: 1;">Exportieren</button>
 						</div>
 
 					</div>
