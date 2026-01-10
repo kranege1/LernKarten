@@ -346,6 +346,106 @@
 			box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
 		}
 		
+		.btn-preview {
+			flex: 0 0 auto;
+			width: 48px;
+			padding: 12px;
+			background: rgba(102, 126, 234, 0.1);
+			border: 2px solid #667eea;
+			color: #667eea;
+			font-weight: 600;
+			cursor: pointer;
+			border-radius: 8px;
+			transition: all 0.3s ease;
+			font-size: 1rem;
+		}
+		
+		.btn-preview:hover {
+			background: #667eea;
+			color: white;
+		}
+		
+		/* Modal */
+		.preview-modal {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.5);
+			z-index: 2000;
+			align-items: center;
+			justify-content: center;
+		}
+		
+		.preview-modal.active {
+			display: flex;
+		}
+		
+		.preview-content {
+			background: white;
+			border-radius: 16px;
+			max-width: 900px;
+			width: 90%;
+			max-height: 80vh;
+			overflow-y: auto;
+			box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+		}
+		
+		.preview-header {
+			padding: 24px;
+			border-bottom: 1px solid #e2e8f0;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		
+		.preview-header h2 {
+			margin: 0;
+			color: #1a202c;
+		}
+		
+		.close-btn {
+			background: none;
+			border: none;
+			font-size: 1.5rem;
+			cursor: pointer;
+			color: #4a5568;
+		}
+		
+		.preview-body {
+			padding: 24px;
+		}
+		
+		.cards-table {
+			width: 100%;
+			border-collapse: collapse;
+		}
+		
+		.cards-table th {
+			background: #f7fafc;
+			padding: 12px;
+			text-align: left;
+			border-bottom: 2px solid #e2e8f0;
+			font-weight: 600;
+			color: #2d3748;
+		}
+		
+		.cards-table td {
+			padding: 12px;
+			border-bottom: 1px solid #e2e8f0;
+		}
+		
+		.cards-table tr:hover {
+			background: #f7fafc;
+		}
+		
+		.card-cell {
+			color: #4a5568;
+			font-size: 0.95rem;
+		}
+
 		.difficulty-badge {
 			padding: 4px 12px;
 			border-radius: 12px;
@@ -449,6 +549,31 @@
 	</style>
 </head>
 <body>
+	<!-- Preview Modal -->
+	<div id="preview-modal" class="preview-modal">
+		<div class="preview-content">
+			<div class="preview-header">
+				<h2 id="preview-title">Karten Vorschau</h2>
+				<button class="close-btn" onclick="closePreview()">✕</button>
+			</div>
+			<div class="preview-body">
+				<div id="preview-loading" style="text-align: center; padding: 40px; color: #718096;">
+					⏳ Lädt Karten...
+				</div>
+				<table id="preview-table" class="cards-table" style="display: none;">
+					<thead>
+						<tr>
+							<th style="width: 30%;">Begriff</th>
+							<th style="width: 40%;">Umschreibung</th>
+							<th style="width: 30%;">Antwort</th>
+						</tr>
+					</thead>
+					<tbody id="preview-tbody"></tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
 	<!-- Header -->
 	<header class="landing-header">
 		<div class="nav-container">
@@ -648,6 +773,9 @@
 						<button class="btn-download" style="background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);" onclick="openInApp('${deck.downloadUrl}')">
 							📱 In App öffnen
 						</button>
+						<button class="btn-preview" onclick="previewDeck('${deck.downloadUrl}', '${deck.title}')">
+							👁️
+						</button>
 					</div>
 				</div>
 			`).join('');
@@ -716,6 +844,63 @@
 			// Navigiere zur App mit Deck-URL als Parameter
 			window.location.href = `index.html?deck-url=${encodeURIComponent(deckUrl)}`;
 		}
+		
+		async function previewDeck(deckUrl, deckTitle) {
+			const modal = document.getElementById('preview-modal');
+			const loading = document.getElementById('preview-loading');
+			const table = document.getElementById('preview-table');
+			const tbody = document.getElementById('preview-tbody');
+			
+			// Modal öffnen
+			modal.classList.add('active');
+			document.getElementById('preview-title').textContent = deckTitle;
+			tbody.innerHTML = '';
+			loading.style.display = 'block';
+			table.style.display = 'none';
+			
+			try {
+				const response = await fetch(deckUrl);
+				const deckData = await response.json();
+				
+				// Sammle alle Karten
+				const cards = deckData.cards || [];
+				
+				if (cards.length === 0) {
+					loading.innerHTML = '<p style="color: #718096;">Keine Karten in diesem Deck</p>';
+					return;
+				}
+				
+				// Fülle Tabelle mit Karten
+				tbody.innerHTML = cards.map(card => `
+					<tr>
+						<td class="card-cell"><strong>${card.term || '-'}</strong></td>
+						<td class="card-cell">${card.description || '-'}</td>
+						<td class="card-cell">${card.answer || '-'}</td>
+					</tr>
+				`).join('');
+				
+				loading.style.display = 'none';
+				table.style.display = 'table';
+				
+			} catch (error) {
+				console.error('Fehler beim Laden der Vorschau:', error);
+				loading.innerHTML = '<p style="color: #f44336;">Fehler beim Laden der Karten</p>';
+			}
+		}
+		
+		function closePreview() {
+			document.getElementById('preview-modal').classList.remove('active');
+		}
+		
+		// Schließe Modal beim Klick außerhalb
+		document.addEventListener('DOMContentLoaded', () => {
+			const modal = document.getElementById('preview-modal');
+			modal.addEventListener('click', (e) => {
+				if (e.target === modal) {
+					closePreview();
+				}
+			});
+		});
 		}
 		
 		document.getElementById('search-input').addEventListener('input', applyFilters);
