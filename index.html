@@ -161,11 +161,23 @@
 							<h2>Karten verwalten</h2>
 							<div class="row two">
 								<div id="manage-selected" class="muted small">Bitte Thema im Baum auswählen</div>
-								<div style="display: flex; gap: 8px;">
-									<button id="add-card" class="primary" disabled title="Neue Karte">➕</button>
-									<button id="ai-fill-fields" class="ghost" disabled title="KI-Felder füllen">🤖</button>
-									<button id="ai-generate-terms" class="ghost" title="KI-Begriffe generieren">🤖➕</button>
-									<button id="share-community" class="ghost" disabled title="Zu Community hochladen">📤</button>
+								<div style="display: flex; gap: 10px; align-items: center;">
+									<button id="add-card" class="primary action-btn" disabled title="Neue Karte hinzufügen">
+										<span class="btn-icon">➕</span>
+										<span class="btn-label">Neu</span>
+									</button>
+									<button id="ai-fill-fields" class="ghost action-btn" disabled title="KI füllt leere Felder automatisch">
+										<span class="btn-icon">🤖</span>
+										<span class="btn-label">KI-Füllen</span>
+									</button>
+									<button id="ai-generate-terms" class="ghost action-btn" title="KI generiert neue Begriffe">
+										<span class="btn-icon">🤖➕</span>
+										<span class="btn-label">KI-Generieren</span>
+									</button>
+									<button id="share-community" class="ghost action-btn" disabled title="Deck zur Community hochladen">
+										<span class="btn-icon">📤</span>
+										<span class="btn-label">Teilen</span>
+									</button>
 								</div>
 							</div>
 						</div>

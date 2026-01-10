@@ -132,6 +132,33 @@ button.danger { background: rgba(239,68,68,0.15); border-color: #8b2b2b; }
 button.ghost { background: transparent; }
 button:disabled { opacity: 0.6; cursor: not-allowed; }
 
+/* Action buttons with icons and labels */
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.action-btn .btn-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.action-btn .btn-label {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .action-btn .btn-label {
+    display: none;
+  }
+}
+
+
 /* Antworten-Bereich im Dialog */
 #mc-options-area h4 {
   margin: 16px 0 8px 0;
