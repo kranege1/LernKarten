@@ -144,14 +144,18 @@
 			<section id="tab-verwalten" class="tab-panel" aria-labelledby="verwalten">
 				<div class="panel-grid" style="display: flex; flex-direction: column; gap: 16px;">
 					<div class="card">
-						<h2>Ordner & Themen</h2>
-						<div class="row add-inline">
-							<input id="new-folder-name" type="text" placeholder="Neuer Ordner…" />
-							<button id="add-folder" class="primary" title="Ordner hinzufügen">📁</button>
-						</div>
-						<div class="row add-inline">
-							<input id="new-topic-name" type="text" placeholder="Neues Thema…" />
-							<button id="add-topic" class="primary" title="Thema hinzufügen">📝</button>
+						<div class="header-row" style="align-items: center;">
+							<h2 style="margin: 0;">Ordner & Themen</h2>
+							<div style="display: flex; gap: 8px; margin-left: auto;">
+								<button id="add-folder" class="primary action-btn" title="Ordner hinzufügen">
+									<span class="btn-icon">📁</span>
+									<span class="btn-label">Ordner</span>
+								</button>
+								<button id="add-topic" class="primary action-btn" title="Thema hinzufügen">
+									<span class="btn-icon">📝</span>
+									<span class="btn-label">Thema</span>
+								</button>
+							</div>
 						</div>
 						<ul id="folder-tree"></ul>
 					</div>
