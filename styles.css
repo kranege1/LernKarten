@@ -774,13 +774,16 @@ dialog { border: 1px solid var(--border); border-radius: 12px; padding: 0; backg
   transform: translate(-50%, -50%);
   z-index: 9999;
   max-width: 90vw;
-  max-height: 90vh;
+  max-height: 95vh;
+  width: 500px;
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 0;
   background: var(--panel);
   color: var(--text);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
 }
 
 .modal::backdrop {
@@ -818,9 +821,9 @@ dialog { border: 1px solid var(--border); border-radius: 12px; padding: 0; backg
 }
 
 .modal-body {
-  padding: 20px;
-  max-height: 60vh;
+  padding: 16px 20px;
   overflow-y: auto;
+  flex: 1;
 }
 
 .modal-footer {
@@ -832,8 +835,8 @@ dialog { border: 1px solid var(--border); border-radius: 12px; padding: 0; backg
   background: rgba(0, 0, 0, 0.2);
 }
 
-.form-group {
-  margin-bottom: 16px;
+.modal .form-group {
+  margin-bottom: 12px;
 }
 
 .form-group label {
