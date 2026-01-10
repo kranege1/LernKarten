@@ -41,7 +41,21 @@
       "cardCount": 34,
       "url": "https://raw.githubusercontent.com/kranege1/LernKarten/gh-pages/shared-decks/deutsch-rs-stummes-h.json",
       "createdAt": "2026-01-10T12:18:49.982Z"
+    },
+    {
+      "id": "mk8c41g3tod5tsv918",
+      "title": "Deutsch-Begriffe",
+      "description": "Ein Kartenset zum Thema Deutsch-Begriffe",
+      "difficulty": "LEICHT",
+      "category": "Sprachen",
+      "author": "Gerald",
+      "tags": [
+        "Rechtschreibung"
+      ],
+      "cardCount": 49,
+      "url": "https://raw.githubusercontent.com/kranege1/LernKarten/gh-pages/shared-decks/deutsch-begriffe.json",
+      "createdAt": "2026-01-10T13:22:11.727Z"
     }
   ],
-  "lastUpdated": "2026-01-10T12:18:49.982Z"
+  "lastUpdated": "2026-01-10T13:22:11.727Z"
 }
