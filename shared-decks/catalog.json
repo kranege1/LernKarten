@@ -112,7 +112,23 @@
       "cardCount": 60,
       "url": "https://raw.githubusercontent.com/kranege1/LernKarten/gh-pages/shared-decks/english-5-klasse.json",
       "createdAt": "2026-01-10T17:34:45.293Z"
+    },
+    {
+      "id": "mk8m4xcj3ggublwjak",
+      "title": "Deutsch-RS-Stummes H",
+      "description": "Ein Kartenset zum Thema Deutsch-RS-Stummes H",
+      "category": "Sprachen",
+      "language": "de",
+      "cardCount": 34,
+      "difficulty": "LEICHT",
+      "author": "Anonym",
+      "tags": [
+        "Rechtschreibung"
+      ],
+      "fileName": "deutsch-rs-stummes-h.json",
+      "downloadUrl": "https://kranege1.github.io/LernKarten/shared-decks/deutsch-rs-stummes-h.json",
+      "created": "2026-01-10"
     }
   ],
-  "lastUpdated": "2026-01-10T17:34:45.293Z"
+  "lastUpdated": "2026-01-10T18:02:49.582Z"
 }
