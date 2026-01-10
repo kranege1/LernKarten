@@ -1,0 +1,640 @@
+{
+  "metadata": {
+    "id": "mk8kp0rqgre4yn5rgxp",
+    "title": "Deutsch-RS-langes I",
+    "description": "Ein Kartenset zum Thema Deutsch-RS-langes I",
+    "difficulty": "LEICHT",
+    "category": "Sprachen",
+    "author": "Gerald",
+    "tags": [
+      "Rechtschreibung"
+    ],
+    "createdAt": "2026-01-10T17:22:25.958Z",
+    "cardCount": 41
+  },
+  "topics": [
+    {
+      "id": "mk5j3u00652q9ldx626",
+      "name": "Deutsch-RS-langes I",
+      "folderId": "mk5j3u00tun7vbc15v",
+      "answerMode": "type"
+    }
+  ],
+  "cards": [
+    {
+      "term": "mir",
+      "description": "",
+      "answer": "mir",
+      "id": "mk5j3u00qp843k36be",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "dir",
+      "description": "",
+      "answer": "dir",
+      "id": "mk5j3u00p6r4gkg7bx",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "wir",
+      "description": "",
+      "answer": "wir",
+      "id": "mk5j3u00ojgb3d8cif",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "ihr",
+      "description": "",
+      "answer": "ihr",
+      "id": "mk5j3u00psm03zqk1l",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "ihm",
+      "description": "",
+      "answer": "ihm",
+      "id": "mk5j3u00e5ebwdwuwhi",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Ihnen",
+      "description": "",
+      "answer": "Ihnen",
+      "id": "mk5j3u00d2lpt0emo4g",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Bier",
+      "description": "",
+      "answer": "Bier",
+      "id": "mk5j3u000x4h9ne9huno",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Tier",
+      "description": "",
+      "answer": "Tier",
+      "id": "mk5j3u006n4ru6pe0vg",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Vier",
+      "description": "",
+      "answer": "Vier",
+      "id": "mk5j3u00ioroc9h280f",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "hier",
+      "description": "",
+      "answer": "hier",
+      "id": "mk5j3u00zl1q0fcsn6",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Lied",
+      "description": "",
+      "answer": "Lied",
+      "id": "mk5j3u00lc71a1x7a3",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Brief",
+      "description": "",
+      "answer": "Brief",
+      "id": "mk5j3u00scl8jwdsego",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Dieb",
+      "description": "",
+      "answer": "Dieb",
+      "id": "mk5j3u009apg2m12ta8",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "fliegen",
+      "description": "",
+      "answer": "fliegen",
+      "id": "mk5j3u00xdxps9n943",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "liegen",
+      "description": "",
+      "answer": "liegen",
+      "id": "mk5j3u00tq6eltwpyrq",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "siegen",
+      "description": "",
+      "answer": "siegen",
+      "id": "mk5j3u00zpupx65c4i",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "wiegen",
+      "description": "",
+      "answer": "wiegen",
+      "id": "mk5j3u00e2wcemibcda",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Knie",
+      "description": "",
+      "answer": "Knie",
+      "id": "mk5j3u00cwpe0vrj5u",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "sie",
+      "description": "",
+      "answer": "sie",
+      "id": "mk5j3u00s9af6zf601e",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "die",
+      "description": "",
+      "answer": "die",
+      "id": "mk5j3u0091y7tds5aec",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "wie",
+      "description": "",
+      "answer": "wie",
+      "id": "mk5j3u008d19rt206xs",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "nie",
+      "description": "",
+      "answer": "nie",
+      "id": "mk5j3u00g9r8mgjfs28",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "viel",
+      "description": "",
+      "answer": "viel",
+      "id": "mk5j3u00hxlxcjdknv8",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "wenig",
+      "description": "",
+      "answer": "wenig",
+      "id": "mk5j3u00m71rwnj8l2",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "lieb",
+      "description": "",
+      "answer": "lieb",
+      "id": "mk5j3u00hlzj8owsr6",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Liebling",
+      "description": "",
+      "answer": "Liebling",
+      "id": "mk5j3u000e37kkb1aotn",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Ziel",
+      "description": "",
+      "answer": "Ziel",
+      "id": "mk5j3u00p83hjtus7h8",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Frieden",
+      "description": "",
+      "answer": "Frieden",
+      "id": "mk5j3u002qexzegqlw",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Glied",
+      "description": "",
+      "answer": "Glied",
+      "id": "mk5j3u006qsvmfqptm2",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "sieben",
+      "description": "",
+      "answer": "sieben",
+      "id": "mk5j3u00ptbbppl20e",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "siebzig",
+      "description": "",
+      "answer": "siebzig",
+      "id": "mk5j3u00x3t6e5hl7b",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "vierzig",
+      "description": "",
+      "answer": "vierzig",
+      "id": "mk5j3u006luzz6pe018",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "vielleicht",
+      "description": "",
+      "answer": "vielleicht",
+      "id": "mk5j3u004dqmqrpe3b",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Familie",
+      "description": "",
+      "answer": "Familie",
+      "id": "mk5j3u00hbyab2h7ov",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Serie",
+      "description": "",
+      "answer": "Serie",
+      "id": "mk5j3u00057dabpd6ond",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "ziehen",
+      "description": "",
+      "answer": "ziehen",
+      "id": "mk5j3u00rr1ih7263vh",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "fliehen",
+      "description": "",
+      "answer": "fliehen",
+      "id": "mk5j3u002oxtv8qw1cy",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Vieh",
+      "description": "",
+      "answer": "Vieh",
+      "id": "mk5j3u0064vrgutsgq",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "sieh",
+      "description": "",
+      "answer": "sieh",
+      "id": "mk5j3u00fizxdcyvfeu",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "wiehern",
+      "description": "",
+      "answer": "wiehern",
+      "id": "mk5j3u00hd5v2f83vnd",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Paradies",
+      "description": "",
+      "answer": "Paradies",
+      "id": "mk5j3u00wpq3ifsi348",
+      "topicId": "mk5j3u00652q9ldx626",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    }
+  ]
+}
