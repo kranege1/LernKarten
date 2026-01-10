@@ -1,0 +1,924 @@
+{
+  "metadata": {
+    "id": "mk81y6magi1ld94ednc",
+    "title": "English 5.Klasse",
+    "description": "Ein Kartenset zum Thema English 5.Klasse",
+    "difficulty": "LEICHT",
+    "category": "Mathematik",
+    "author": "Gerald",
+    "tags": [
+      "Mathematik"
+    ],
+    "createdAt": "2026-01-10T08:37:40.738Z",
+    "cardCount": 60
+  },
+  "topics": [
+    {
+      "id": "mk7w4ojljbi8sluqvbr",
+      "name": "English 5.Klasse",
+      "folderId": "mk7w5fzbroswyupch97"
+    }
+  ],
+  "cards": [
+    {
+      "term": "Was heißt „house“ auf Deutsch?",
+      "description": "",
+      "answer": "das Haus",
+      "id": "mk7w4ojmsnc2p29ou5",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was heißt „die Familie“ auf Englisch?",
+      "description": "",
+      "answer": "the family",
+      "id": "mk7w4ojmml0561hj3b",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was heißt „mother“ auf Deutsch?",
+      "description": "",
+      "answer": "die Mutter",
+      "id": "mk7w4ojmn3knaoimtfb",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was heißt „der Vater“ auf Englisch?",
+      "description": "",
+      "answer": "the father",
+      "id": "mk7w4ojmla4ylmeved",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was heißt „brother“ auf Deutsch?",
+      "description": "",
+      "answer": "der Bruder",
+      "id": "mk7w4ojma49hy26hj8r",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was heißt „die Schwester“ auf Englisch?",
+      "description": "",
+      "answer": "the sister",
+      "id": "mk7w4ojmehpr5e0tpyu",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was heißt „friend“ auf Deutsch?",
+      "description": "",
+      "answer": "der Freund / die Freundin",
+      "id": "mk7w4ojmrbcsz50tdjs",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was heißt „der beste Freund“ auf Englisch?",
+      "description": "",
+      "answer": "the best friend",
+      "id": "mk7w4ojm7p263ocjh9a",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was heißt „school“ auf Deutsch?",
+      "description": "",
+      "answer": "die Schule",
+      "id": "mk7w4ojm7pa89kl850r",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was heißt „das Klassenzimmer“ auf Englisch?",
+      "description": "",
+      "answer": "the classroom",
+      "id": "mk7w4ojmoceqlvycqid",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-11"
+      }
+    },
+    {
+      "term": "Was heißt „teacher“ auf Deutsch?",
+      "description": "",
+      "answer": "der Lehrer / die Lehrerin",
+      "id": "mk7w4ojmk5h72fcono",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-11"
+      }
+    },
+    {
+      "term": "Was heißt „die Schülerin“ auf Englisch?",
+      "description": "",
+      "answer": "the pupil / the student",
+      "id": "mk7w4ojmhb3jvci7r7i",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-11"
+      }
+    },
+    {
+      "term": "Was heißt „book“ auf Deutsch?",
+      "description": "",
+      "answer": "das Buch",
+      "id": "mk7w4ojmt4i42mrmfag",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-11"
+      }
+    },
+    {
+      "term": "Was heißt „der Stift“ auf Englisch?",
+      "description": "",
+      "answer": "the pen",
+      "id": "mk7w4ojm3fse2vuc7uq",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Was heißt „backpack“ auf Deutsch?",
+      "description": "",
+      "answer": "der Rucksack",
+      "id": "mk7w4ojmfotyrxs1fr6",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Was heißt „die Hausaufgaben“ auf Englisch?",
+      "description": "",
+      "answer": "the homework",
+      "id": "mk7w4ojmr2gnjjvnfyr",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Was heißt „breakfast“ auf Deutsch?",
+      "description": "",
+      "answer": "das Frühstück",
+      "id": "mk7w4ojmn5ap9h5daq",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Was heißt „zu Mittag essen“ auf Englisch?",
+      "description": "",
+      "answer": "to have lunch",
+      "id": "mk7w4ojmowcbz5jzj6h",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Was heißt „play football“ auf Deutsch?",
+      "description": "",
+      "answer": "Fußball spielen",
+      "id": "mk7w4ojmxg5pqw5usbf",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Was heißt „Musik hören“ auf Englisch?",
+      "description": "",
+      "answer": "to listen to music",
+      "id": "mk7w4ojmf92atj3h6c",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-11"
+      }
+    },
+    {
+      "term": "Was heißt „hobby“ auf Deutsch?",
+      "description": "",
+      "answer": "das Hobby",
+      "id": "mk7w4ojmukxpqmi7ycr",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Was heißt „das Lieblingsfach“ auf Englisch?",
+      "description": "",
+      "answer": "the favourite subject",
+      "id": "mk7w4ojmk33otqqzu7m",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Was heißt „apple“ auf Deutsch?",
+      "description": "",
+      "answer": "der Apfel",
+      "id": "mk7w4ojm8xj89z079xu",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 3,
+        "streak": 2,
+        "total": 2,
+        "correct": 2,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-14"
+      }
+    },
+    {
+      "term": "Was heißt „das Sandwich“ auf Englisch?",
+      "description": "",
+      "answer": "the sandwich",
+      "id": "mk7w4ojmskdi3mj4m0o",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Was heißt „dog“ auf Deutsch?",
+      "description": "",
+      "answer": "der Hund",
+      "id": "mk7w4ojmrbt0p7if9wa",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-11"
+      }
+    },
+    {
+      "term": "Was heißt „die Katze“ auf Englisch?",
+      "description": "",
+      "answer": "the cat",
+      "id": "mk7w4ojm0w0rm9avtgm",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Was heißt „weather“ auf Deutsch?",
+      "description": "",
+      "answer": "das Wetter",
+      "id": "mk7w4ojmsgeht5apvc",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-11"
+      }
+    },
+    {
+      "term": "Was heißt „es regnet“ auf Englisch?",
+      "description": "",
+      "answer": "it’s raining",
+      "id": "mk7w4ojm12wu8kpb6t5k",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-11"
+      }
+    },
+    {
+      "term": "Was heißt „city“ auf Deutsch?",
+      "description": "",
+      "answer": "die Stadt",
+      "id": "mk7w4ojmx38eougcapj",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-11"
+      }
+    },
+    {
+      "term": "Was heißt „im Sommer“ auf Englisch?",
+      "description": "",
+      "answer": "in summer",
+      "id": "mk7w4ojmjsz9noi0yz9",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Ergänze das Verb in der 3. Person Singular: He (like) ice cream.",
+      "description": "",
+      "answer": "likes",
+      "id": "mk7w4ojmpm79dedepaq",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-11"
+      }
+    },
+    {
+      "term": "Ergänze das Verb in der 3. Person Singular: She (play) the piano.",
+      "description": "",
+      "answer": "plays",
+      "id": "mk7w4ojm4xc2mwtrhh4",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-11"
+      }
+    },
+    {
+      "term": "Ergänze das Verb in der 3. Person Singular: Tom (go) to school by bus.",
+      "description": "",
+      "answer": "goes",
+      "id": "mk7w4ojm7kovq52kyra",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Ergänze das Verb in der 3. Person Singular: The dog (run) very fast.",
+      "description": "",
+      "answer": "runs",
+      "id": "mk7w4ojmr1uva6emizb",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 2,
+        "correct": 0,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-11"
+      }
+    },
+    {
+      "term": "Ergänze das Verb in der 3. Person Singular: Anna (watch) TV in the evening.",
+      "description": "",
+      "answer": "watches",
+      "id": "mk7w4ojmaec3xb7c19",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-11"
+      }
+    },
+    {
+      "term": "Ergänze das Verb in der 3. Person Singular: Mike (brush) his teeth every morning.",
+      "description": "",
+      "answer": "brushes",
+      "id": "mk7w4ojmnap6zhjocs8",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Ergänze das Verb in der 3. Person Singular: The cat (catch) mice.",
+      "description": "",
+      "answer": "catches",
+      "id": "mk7w4ojmueeo615stu",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Ergänze das Verb in der 3. Person Singular: My brother (do) his homework.",
+      "description": "",
+      "answer": "does",
+      "id": "mk7w4ojmfo1bhe62muf",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-11"
+      }
+    },
+    {
+      "term": "Was heißt „Er spielt Fußball“ auf Englisch?",
+      "description": "",
+      "answer": "He plays football.",
+      "id": "mk7w4ojmd5uaeshnema",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-11"
+      }
+    },
+    {
+      "term": "Was heißt „Sie liest ein Buch“ auf Englisch?",
+      "description": "",
+      "answer": "She reads a book.",
+      "id": "mk7w4ojmbhu3ld9ivem",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Was heißt „Das Kind geht zur Schule“ auf Englisch?",
+      "description": "",
+      "answer": "The child goes to school.",
+      "id": "mk7w4ojm03c0ol6k852o",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-11"
+      }
+    },
+    {
+      "term": "Was heißt „Mein Vater arbeitet viel“ auf Englisch?",
+      "description": "",
+      "answer": "My father works a lot.",
+      "id": "mk7w4ojm4ye0g1r8dsw",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Bilde die 3. Person Singular von „live“.",
+      "description": "",
+      "answer": "lives",
+      "id": "mk7w4ojmudwaz6lo84e",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-11"
+      }
+    },
+    {
+      "term": "Bilde die 3. Person Singular von „study“.",
+      "description": "",
+      "answer": "studies",
+      "id": "mk7w4ojmr0je17h63s",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-11"
+      }
+    },
+    {
+      "term": "Bilde die 3. Person Singular von „fly“.",
+      "description": "",
+      "answer": "flies",
+      "id": "mk7w4ojmv60cfebh5o",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Bilde die 3. Person Singular von „have“.",
+      "description": "",
+      "answer": "has",
+      "id": "mk7w4ojmos6v9xy1ri",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-11"
+      }
+    },
+    {
+      "term": "Was heißt „Sie hat ein neues Handy“ auf Englisch?",
+      "description": "",
+      "answer": "She has a new phone.",
+      "id": "mk7w4ojmerhl3ggpl",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-11"
+      }
+    },
+    {
+      "term": "Frage bilden: He / like / chocolate?",
+      "description": "",
+      "answer": "Does he like chocolate?",
+      "id": "mk7w4ojm5n3so8gj2w7",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-11"
+      }
+    },
+    {
+      "term": "Negation bilden: She / play / tennis.",
+      "description": "",
+      "answer": "She doesn't play tennis.",
+      "id": "mk7w4ojm6mqi96g7quw",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Was heißt „Er mag keinen Kaffee“ auf Englisch?",
+      "description": "",
+      "answer": "He doesn't like coffee.",
+      "id": "mk7w4ojm1rfnc02u6ie",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Ergänze das Verb in der 3. Person Singular: It (rain) often in autumn.",
+      "description": "",
+      "answer": "rains",
+      "id": "mk7w4ojmymy1gnug07",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-11"
+      }
+    },
+    {
+      "term": "Ergänze das Verb in der 3. Person Singular: The teacher (explain) the lesson.",
+      "description": "",
+      "answer": "explains",
+      "id": "mk7w4ojmmanzcwbl77g",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-11"
+      }
+    },
+    {
+      "term": "Was heißt „Der Lehrer hilft den Schülern“ auf Englisch?",
+      "description": "",
+      "answer": "The teacher helps the pupils.",
+      "id": "mk7w4ojm96aq8lhh3y",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Bilde die 3. Person Singular von „kiss“.",
+      "description": "",
+      "answer": "kisses",
+      "id": "mk7w4ojm60bizqpi904",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Bilde die 3. Person Singular von „wash“.",
+      "description": "",
+      "answer": "washes",
+      "id": "mk7w4ojm61sae6q1mbt",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Was heißt „Meine Schwester tanzt gerne“ auf Englisch?",
+      "description": "",
+      "answer": "My sister likes dancing. / My sister dances a lot.",
+      "id": "mk7w4ojmo1bztdga9q",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Ergänze das Verb in der 3. Person Singular: Paul (listen) to music every day.",
+      "description": "",
+      "answer": "listens",
+      "id": "mk7w4ojmbz2zoxobmr",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-11"
+      }
+    },
+    {
+      "term": "Frage bilden: She / speak / English?",
+      "description": "",
+      "answer": "Does she speak English?",
+      "id": "mk7w4ojmvp5nooqvtnf",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-11"
+      }
+    },
+    {
+      "term": "Negation bilden: The baby / cry / at night.",
+      "description": "",
+      "answer": "The baby doesn't cry at night.",
+      "id": "mk7w4ojm4e8vuibjtl1",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Was heißt „Das Auto fährt schnell“ auf Englisch?",
+      "description": "",
+      "answer": "The car drives fast.",
+      "id": "mk7w4ojman8citjr97m",
+      "topicId": "mk7w4ojljbi8sluqvbr",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 1,
+        "correct": 0,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-11"
+      }
+    }
+  ]
+}
