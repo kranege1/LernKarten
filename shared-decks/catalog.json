@@ -27,7 +27,21 @@
       "cardCount": 24,
       "url": "https://raw.githubusercontent.com/kranege1/LernKarten/gh-pages/shared-decks/mittelalter.json",
       "createdAt": "2026-01-10T12:16:03.660Z"
+    },
+    {
+      "id": "mk89ujz4uaj8g0ozljo",
+      "title": "Deutsch-RS-Stummes H",
+      "description": "Ein Kartenset zum Thema Deutsch-RS-Stummes H",
+      "difficulty": "LEICHT",
+      "category": "Sprachen",
+      "author": "Gerald",
+      "tags": [
+        "Rechtschreibung"
+      ],
+      "cardCount": 34,
+      "url": "https://raw.githubusercontent.com/kranege1/LernKarten/gh-pages/shared-decks/deutsch-rs-stummes-h.json",
+      "createdAt": "2026-01-10T12:18:49.982Z"
     }
   ],
-  "lastUpdated": "2026-01-10T12:16:03.660Z"
+  "lastUpdated": "2026-01-10T12:18:49.982Z"
 }
