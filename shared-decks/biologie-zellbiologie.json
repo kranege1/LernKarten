@@ -1,0 +1,110 @@
+{
+  "metadata": {
+    "title": "Biologie: Zellbiologie Grundlagen",
+    "description": "Die wichtigsten Begriffe aus der Zellbiologie",
+    "category": "Biologie",
+    "author": "LernKarten Community",
+    "version": "1.0",
+    "created": "2026-01-10"
+  },
+  "topics": [
+    {
+      "id": "topic-biologie-zellen",
+      "name": "Zellbiologie",
+      "folderId": null,
+      "answerMode": "type"
+    }
+  ],
+  "cards": [
+    {
+      "term": "Mitochondrium",
+      "description": "Kraftwerk der Zelle, produziert ATP durch Zellatmung",
+      "answer": "Mitochondrium",
+      "topicId": "topic-biologie-zellen"
+    },
+    {
+      "term": "Chloroplast",
+      "description": "Organell in Pflanzenzellen, das Photosynthese durchführt",
+      "answer": "Chloroplast",
+      "topicId": "topic-biologie-zellen"
+    },
+    {
+      "term": "Zellkern",
+      "description": "Enthält die DNA und steuert alle Zellfunktionen",
+      "answer": "Zellkern",
+      "topicId": "topic-biologie-zellen"
+    },
+    {
+      "term": "Ribosom",
+      "description": "Ort der Proteinbiosynthese in der Zelle",
+      "answer": "Ribosom",
+      "topicId": "topic-biologie-zellen"
+    },
+    {
+      "term": "Endoplasmatisches Retikulum",
+      "description": "Membransystem für Proteintransport und Lipidsynthese",
+      "answer": "Endoplasmatisches Retikulum",
+      "topicId": "topic-biologie-zellen"
+    },
+    {
+      "term": "Golgi-Apparat",
+      "description": "Modifiziert und verpackt Proteine für den Transport",
+      "answer": "Golgi-Apparat",
+      "topicId": "topic-biologie-zellen"
+    },
+    {
+      "term": "Lysosom",
+      "description": "Enthält Verdauungsenzyme zum Abbau von Zellmaterial",
+      "answer": "Lysosom",
+      "topicId": "topic-biologie-zellen"
+    },
+    {
+      "term": "Zellmembran",
+      "description": "Semipermeabile Hülle, die die Zelle umgibt und schützt",
+      "answer": "Zellmembran",
+      "topicId": "topic-biologie-zellen"
+    },
+    {
+      "term": "Zytoplasma",
+      "description": "Flüssigkeit innerhalb der Zelle, enthält Organellen",
+      "answer": "Zytoplasma",
+      "topicId": "topic-biologie-zellen"
+    },
+    {
+      "term": "Vakuole",
+      "description": "Speicherorganell in Pflanzenzellen für Wasser und Nährstoffe",
+      "answer": "Vakuole",
+      "topicId": "topic-biologie-zellen"
+    },
+    {
+      "term": "Zellwand",
+      "description": "Starre Außenhülle bei Pflanzen- und Bakterienzellen",
+      "answer": "Zellwand",
+      "topicId": "topic-biologie-zellen"
+    },
+    {
+      "term": "Photosynthese",
+      "description": "Umwandlung von Lichtenergie in chemische Energie (Glucose)",
+      "answer": "Photosynthese",
+      "topicId": "topic-biologie-zellen"
+    },
+    {
+      "term": "Zellatmung",
+      "description": "Abbau von Glucose zur ATP-Gewinnung unter Sauerstoffverbrauch",
+      "answer": "Zellatmung",
+      "topicId": "topic-biologie-zellen"
+    },
+    {
+      "term": "DNA",
+      "description": "Träger der Erbinformation, Doppelhelix-Struktur",
+      "answer": "DNA",
+      "topicId": "topic-biologie-zellen"
+    },
+    {
+      "term": "Diffusion",
+      "description": "Passive Bewegung von Molekülen vom hohen zum niedrigen Konzentrationsgradienten",
+      "answer": "Diffusion",
+      "topicId": "topic-biologie-zellen"
+    }
+  ]
+}

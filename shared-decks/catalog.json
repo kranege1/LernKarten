@@ -1,0 +1,58 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-01-10",
+  "decks": [
+    {
+      "id": "biologie-zellbiologie",
+      "title": "Biologie: Zellbiologie Grundlagen",
+      "description": "Die wichtigsten Begriffe aus der Zellbiologie: Zellorganellen, Prozesse und Funktionen",
+      "category": "Biologie",
+      "language": "de",
+      "cardCount": 15,
+      "difficulty": "mittel",
+      "author": "LernKarten Community",
+      "tags": ["Biologie", "Zellen", "Naturwissenschaft"],
+      "fileName": "biologie-zellbiologie.json",
+      "downloadUrl": "https://kranege1.github.io/LernKarten/shared-decks/biologie-zellbiologie.json",
+      "created": "2026-01-10"
+    },
+    {
+      "id": "geschichte-mittelalter",
+      "title": "Geschichte: Mittelalter in Europa",
+      "description": "Wichtige Ereignisse, Personen und Epochen des Mittelalters (500-1500)",
+      "category": "Geschichte",
+      "language": "de",
+      "cardCount": 20,
+      "difficulty": "mittel",
+      "author": "LernKarten Community",
+      "tags": ["Geschichte", "Mittelalter", "Europa"],
+      "fileName": "geschichte-mittelalter.json",
+      "downloadUrl": "https://kranege1.github.io/LernKarten/shared-decks/geschichte-mittelalter.json",
+      "created": "2026-01-10"
+    },
+    {
+      "id": "programmierung-python-basics",
+      "title": "Programmierung: Python Grundlagen",
+      "description": "Grundlegende Python-Konzepte: Variablen, Datentypen, Kontrollstrukturen, Funktionen",
+      "category": "Programmierung",
+      "language": "de",
+      "cardCount": 25,
+      "difficulty": "einfach",
+      "author": "LernKarten Community",
+      "tags": ["Python", "Programmierung", "IT"],
+      "fileName": "programmierung-python-basics.json",
+      "downloadUrl": "https://kranege1.github.io/LernKarten/shared-decks/programmierung-python-basics.json",
+      "created": "2026-01-10"
+    }
+  ],
+  "categories": [
+    "Biologie",
+    "Geschichte",
+    "Programmierung",
+    "Mathematik",
+    "Sprachen",
+    "Geographie",
+    "Physik",
+    "Chemie"
+  ]
+}

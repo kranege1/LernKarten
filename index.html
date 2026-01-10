@@ -189,7 +189,20 @@
 			<section id="tab-import" class="tab-panel" aria-labelledby="import">
 				<div class="panel-grid">
 					<div class="card">
-						<h2>Import</h2>
+						<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+							<h2 style="margin: 0;">Import</h2>
+							<a href="library.html" class="ghost" style="text-decoration: none; padding: 8px 16px; border: 1px solid var(--border); border-radius: 8px; display: inline-flex; align-items: center; gap: 6px;">
+								📚 Community-Decks durchsuchen
+							</a>
+						</div>
+						<div class="row">
+							<label>Import von URL</label>
+							<div style="display: flex; gap: 8px;">
+								<input id="import-url" type="text" placeholder="https://example.com/deck.json" style="flex: 1;" />
+								<button id="import-from-url" class="primary">Von URL laden</button>
+							</div>
+						</div>
+						<div style="text-align: center; margin: 16px 0; color: var(--muted); font-size: 0.9rem;">oder</div>
 						<div class="row">
 							<label>Format wählen</label>
 							<select id="import-format">
