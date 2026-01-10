@@ -1,0 +1,774 @@
+{
+  "metadata": {
+    "id": "mk8gs95pmfn4s2y3ocl",
+    "title": "Wirtschaft-Fragen",
+    "description": "Ein Kartenset zum Thema Wirtschafts Begriffe",
+    "difficulty": "MITTEL",
+    "category": "Sonstiges",
+    "author": "Gerald",
+    "tags": [
+      "Wirtschaft"
+    ],
+    "createdAt": "2026-01-10T15:32:58.333Z",
+    "cardCount": 50
+  },
+  "topics": [
+    {
+      "id": "mk8gkbegxdyebzv6b3l",
+      "name": "Wirtschaft-Fragen",
+      "folderId": "mk8gqh28bfhqxwbdqet"
+    }
+  ],
+  "cards": [
+    {
+      "term": "Was ist Wirtschaft?",
+      "description": "",
+      "answer": "Die Gesamtheit aller Aktivitäten, die Menschen durchführen, um Bedürfnisse zu befriedigen, z. B. durch Produktion, Handel und Konsum.",
+      "id": "mk8gkbegcx9qvn89yyd",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was bedeutet Angebot?",
+      "description": "",
+      "answer": "Die Menge an Gütern oder Dienstleistungen, die Produzenten zu einem bestimmten Preis verkaufen wollen.",
+      "id": "mk8gkbeg3zge0xuzrw6",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was bedeutet Nachfrage?",
+      "description": "",
+      "answer": "Die Menge an Gütern oder Dienstleistungen, die Verbraucher zu einem bestimmten Preis kaufen wollen.",
+      "id": "mk8gkbegm31baqlln3t",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist ein Markt?",
+      "description": "",
+      "answer": "Der Ort (physisch oder virtuell), an dem Angebot und Nachfrage aufeinandertreffen und Preise entstehen.",
+      "id": "mk8gkbeg6zttfxs3n93",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist ein Preis?",
+      "description": "",
+      "answer": "Der Geldbetrag, den man für ein Gut oder eine Dienstleistung bezahlen muss.",
+      "id": "mk8gkbegj88ea9joq8",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist ein Unternehmen?",
+      "description": "",
+      "answer": "Eine Organisation, die Güter produziert oder Dienstleistungen anbietet, um Gewinn zu machen.",
+      "id": "mk8gkbegab989htp36i",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist Gewinn?",
+      "description": "",
+      "answer": "Der positive Unterschied zwischen Einnahmen und Ausgaben eines Unternehmens.",
+      "id": "mk8gkbegipv2giajw7",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist Verlust?",
+      "description": "",
+      "answer": "Der negative Unterschied, wenn Ausgaben höher sind als Einnahmen.",
+      "id": "mk8gkbeg58tbdl0e1sn",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist Lohn?",
+      "description": "",
+      "answer": "Die Bezahlung, die Arbeitnehmer für ihre geleistete Arbeit erhalten (meist stunden- oder tageweise).",
+      "id": "mk8gkbegxesv134pqz",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist Gehalt?",
+      "description": "",
+      "answer": "Die monatliche feste Bezahlung für Arbeitnehmer.",
+      "id": "mk8gkbegyqfi1dtbkdi",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was sind Steuern?",
+      "description": "",
+      "answer": "Zwangszahlungen an den Staat, um öffentliche Aufgaben wie Schulen, Straßen oder Krankenhäuser zu finanzieren.",
+      "id": "mk8gkbegawrsldvffzb",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist Inflation?",
+      "description": "",
+      "answer": "Der Anstieg der Preise, wodurch das Geld an Kaufkraft verliert.",
+      "id": "mk8gkbeg5b57q4nojkx",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist Deflation?",
+      "description": "",
+      "answer": "Der Rückgang der Preise, was selten vorkommt und oft mit wirtschaftlichen Problemen verbunden ist.",
+      "id": "mk8gkbegpvxz7m2bo69",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist das Bruttoinlandsprodukt (BIP)?",
+      "description": "",
+      "answer": "Der Gesamtwert aller Waren und Dienstleistungen, die in einem Land in einem Jahr produziert werden.",
+      "id": "mk8gkbegidti0w7lk9",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist Arbeitslosigkeit?",
+      "description": "",
+      "answer": "Die Situation, in der Menschen Arbeit suchen, aber keine finden.",
+      "id": "mk8gkbeg9b0fzokyxnk",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist eine Bank?",
+      "description": "",
+      "answer": "Ein Unternehmen, das Geld verwahrt, Kredite vergibt und Zahlungsverkehr abwickelt.",
+      "id": "mk8gkbegu7y6pcvmbun",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist ein Kredit?",
+      "description": "",
+      "answer": "Geliehenes Geld, das man später mit Zinsen zurückzahlen muss.",
+      "id": "mk8gkbeggr95z09hp5d",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was sind Zinsen?",
+      "description": "",
+      "answer": "Der Preis für geliehenes Geld oder die Belohnung für gespartes Geld.",
+      "id": "mk8gkbegyfmx2ts3hdn",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was bedeutet Sparen?",
+      "description": "",
+      "answer": "Geld nicht ausgeben, sondern für später aufbewahren.",
+      "id": "mk8gkbegtkfodnpc42o",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist eine Investition?",
+      "description": "",
+      "answer": "Der Einsatz von Geld, um in Zukunft mehr Geld oder Nutzen zu erhalten.",
+      "id": "mk8gkbegb7o651k6pj7",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist eine Aktie?",
+      "description": "",
+      "answer": "Ein Anteil an einem Unternehmen, den man an der Börse kaufen und verkaufen kann.",
+      "id": "mk8gkbegqzt0xyom7xf",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist die Börse?",
+      "description": "",
+      "answer": "Ein Markt, an dem Aktien, Wertpapiere und andere Finanzprodukte gehandelt werden.",
+      "id": "mk8gkbeguo6g8r56kk",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist Konsum?",
+      "description": "",
+      "answer": "Das Kaufen und Verbrauchen von Gütern und Dienstleistungen durch Privatpersonen.",
+      "id": "mk8gkbeg0xyw4qc7l1tm",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist Produktion?",
+      "description": "",
+      "answer": "Die Herstellung von Gütern oder Dienstleistungen.",
+      "id": "mk8gkbeg6vjjtpnhhec",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist Import?",
+      "description": "",
+      "answer": "Der Kauf von Waren oder Dienstleistungen aus dem Ausland.",
+      "id": "mk8gkbegc4biuuigv69",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist Export?",
+      "description": "",
+      "answer": "Der Verkauf von Waren oder Dienstleistungen ins Ausland.",
+      "id": "mk8gkbeg30xtqac7lgq",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist Handel?",
+      "description": "",
+      "answer": "Der Austausch von Gütern und Dienstleistungen gegen Geld.",
+      "id": "mk8gkbegvfzue4ckg8b",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist Währung?",
+      "description": "",
+      "answer": "Das offizielle Zahlungsmittel eines Landes oder einer Währungsunion (z. B. Euro).",
+      "id": "mk8gkbeg16dfou3qm95",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist der Euro?",
+      "description": "",
+      "answer": "Die gemeinsame Währung vieler EU-Länder, einschließlich Österreich.",
+      "id": "mk8gkbegoh78z00wu8",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist ein Budget?",
+      "description": "",
+      "answer": "Ein Plan, wie viel Geld man einnimmt und ausgibt.",
+      "id": "mk8gkbegi7f3vjihjqb",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist ein Haushalt?",
+      "description": "",
+      "answer": "Die Einnahmen und Ausgaben eines Privathaushalts, Unternehmens oder Staates.",
+      "id": "mk8gkbeglutx9vdmxv",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist ein Monopol?",
+      "description": "",
+      "answer": "Wenn ein einzelnes Unternehmen den gesamten Markt für ein Gut beherrscht.",
+      "id": "mk8gkbegxymu55w739",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist Konkurrenz?",
+      "description": "",
+      "answer": "Der Wettbewerb zwischen Unternehmen um Kunden.",
+      "id": "mk8gkbeg231uzelrjmy",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist Werbung?",
+      "description": "",
+      "answer": "Die bezahlte Bewerbung von Produkten, um Kunden zu gewinnen.",
+      "id": "mk8gkbeg2emi7idvdu6",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist ein Verbraucher?",
+      "description": "",
+      "answer": "Eine Person, die Güter oder Dienstleistungen kauft und nutzt.",
+      "id": "mk8gkbegkr669rsziqh",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist ein Produzent?",
+      "description": "",
+      "answer": "Ein Unternehmen oder eine Person, die Güter oder Dienstleistungen herstellt.",
+      "id": "mk8gkbegynza3jmjobk",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist Knappheit?",
+      "description": "",
+      "answer": "Die Tatsache, dass Ressourcen begrenzt sind, während Bedürfnisse unbegrenzt sind.",
+      "id": "mk8gkbegt7ia5h7dptl",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was sind Bedürfnisse?",
+      "description": "",
+      "answer": "Wünsche und Notwendigkeiten der Menschen (z. B. Essen, Kleidung, Sicherheit).",
+      "id": "mk8gkbeg1os130303c1",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was sind Güter?",
+      "description": "",
+      "answer": "Materielle Dinge, die Bedürfnisse befriedigen (z. B. Brot, Auto).",
+      "id": "mk8gkbegzjveobbwz6d",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was sind Dienstleistungen?",
+      "description": "",
+      "answer": "Immaterielle Leistungen, die Bedürfnisse befriedigen (z. B. Friseur, Unterricht).",
+      "id": "mk8gkbeg4lmv9yev1x7",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist Kapital?",
+      "description": "",
+      "answer": "Ein Produktionsfaktor: Maschinen, Gebäude und Geld, das zur Produktion eingesetzt wird.",
+      "id": "mk8gkbeg2cndhso39j4",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist Arbeit?",
+      "description": "",
+      "answer": "Ein Produktionsfaktor: Die menschliche Arbeitskraft.",
+      "id": "mk8gkbeg560kpyftd1d",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist Boden?",
+      "description": "",
+      "answer": "Ein Produktionsfaktor: Natürliche Ressourcen wie Land, Rohstoffe.",
+      "id": "mk8gkbegjr0u2epigyl",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist ein Unternehmer?",
+      "description": "",
+      "answer": "Eine Person, die ein Unternehmen gründet und Risiken eingeht, um Gewinn zu machen.",
+      "id": "mk8gkbegvwpsdahte6k",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist Marktwirtschaft?",
+      "description": "",
+      "answer": "Ein Wirtschaftssystem, in dem Preise durch Angebot und Nachfrage entstehen.",
+      "id": "mk8gkbege20jv88p0ys",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-10"
+      }
+    },
+    {
+      "term": "Was ist Planwirtschaft?",
+      "description": "",
+      "answer": "Ein Wirtschaftssystem, in dem der Staat alles plant und verteilt.",
+      "id": "mk8gkbeg56jnlxdixv4",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Was ist Sozialmarktwirtschaft?",
+      "description": "",
+      "answer": "Eine Marktwirtschaft mit sozialem Ausgleich (wie in Österreich und Deutschland).",
+      "id": "mk8gkbegs0l36fek9dh",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Was ist Globalisierung?",
+      "description": "",
+      "answer": "Die weltweite Verknüpfung von Wirtschaft, Handel und Kultur.",
+      "id": "mk8gkbeg00g48dcp7cdz5",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Was bedeutet Nachhaltigkeit in der Wirtschaft?",
+      "description": "",
+      "answer": "Wirtschaften so, dass Ressourcen für zukünftige Generationen erhalten bleiben.",
+      "id": "mk8gkbegnm50jqoche",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    },
+    {
+      "term": "Was ist ein Konjunkturzyklus?",
+      "description": "",
+      "answer": "Die Schwankungen der Wirtschaft zwischen Aufschwung und Abschwung.",
+      "id": "mk8gkbegn5yf9m3rp7",
+      "topicId": "mk8gkbegxdyebzv6b3l",
+      "stats": {
+        "box": 2,
+        "streak": 1,
+        "total": 1,
+        "correct": 1,
+        "lastReviewed": "2026-01-10",
+        "nextDue": "2026-01-12"
+      }
+    }
+  ]
+}
