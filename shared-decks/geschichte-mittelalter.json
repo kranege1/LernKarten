@@ -1,0 +1,140 @@
+{
+  "metadata": {
+    "title": "Geschichte: Mittelalter in Europa",
+    "description": "Wichtige Ereignisse, Personen und Epochen des Mittelalters",
+    "category": "Geschichte",
+    "author": "LernKarten Community",
+    "version": "1.0",
+    "created": "2026-01-10"
+  },
+  "topics": [
+    {
+      "id": "topic-geschichte-mittelalter",
+      "name": "Mittelalter",
+      "folderId": null,
+      "answerMode": "type"
+    }
+  ],
+  "cards": [
+    {
+      "term": "Frühmittelalter",
+      "description": "Epoche von ca. 500-1000 n.Chr., geprägt durch Völkerwanderung und Christianisierung",
+      "answer": "Frühmittelalter",
+      "topicId": "topic-geschichte-mittelalter"
+    },
+    {
+      "term": "Hochmittelalter",
+      "description": "Epoche von ca. 1000-1250, Blütezeit der Ritter, Kreuzzüge und Kathedralen",
+      "answer": "Hochmittelalter",
+      "topicId": "topic-geschichte-mittelalter"
+    },
+    {
+      "term": "Spätmittelalter",
+      "description": "Epoche von ca. 1250-1500, geprägt durch Pest, Hundertjähriger Krieg, Beginn der Renaissance",
+      "answer": "Spätmittelalter",
+      "topicId": "topic-geschichte-mittelalter"
+    },
+    {
+      "term": "Feudalismus",
+      "description": "Gesellschaftssystem basierend auf Lehnswesen und persönlicher Abhängigkeit",
+      "answer": "Feudalismus",
+      "topicId": "topic-geschichte-mittelalter"
+    },
+    {
+      "term": "Karl der Große",
+      "description": "Fränkischer König und Kaiser (768-814), einte Westeuropa, Kaiserkrönung 800",
+      "answer": "Karl der Große",
+      "topicId": "topic-geschichte-mittelalter"
+    },
+    {
+      "term": "Kreuzzüge",
+      "description": "Militärische Expeditionen (1095-1291) zur Eroberung des Heiligen Landes",
+      "answer": "Kreuzzüge",
+      "topicId": "topic-geschichte-mittelalter"
+    },
+    {
+      "term": "Investiturstreit",
+      "description": "Machtkampf zwischen Papst und Kaiser um die Einsetzung von Bischöfen (11./12. Jh.)",
+      "answer": "Investiturstreit",
+      "topicId": "topic-geschichte-mittelalter"
+    },
+    {
+      "term": "Magna Carta",
+      "description": "Englisches Verfassungsdokument von 1215, begrenzte königliche Macht",
+      "answer": "Magna Carta",
+      "topicId": "topic-geschichte-mittelalter"
+    },
+    {
+      "term": "Schwarzer Tod",
+      "description": "Pestepidemie (1347-1353), tötete etwa ein Drittel der europäischen Bevölkerung",
+      "answer": "Schwarzer Tod",
+      "topicId": "topic-geschichte-mittelalter"
+    },
+    {
+      "term": "Hundertjähriger Krieg",
+      "description": "Konflikt zwischen England und Frankreich (1337-1453)",
+      "answer": "Hundertjähriger Krieg",
+      "topicId": "topic-geschichte-mittelalter"
+    },
+    {
+      "term": "Jeanne d'Arc",
+      "description": "Französische Nationalheldin, führte im Hundertjährigen Krieg Truppen, verbrannt 1431",
+      "answer": "Jeanne d'Arc",
+      "topicId": "topic-geschichte-mittelalter"
+    },
+    {
+      "term": "Lehnswesen",
+      "description": "System persönlicher Bindungen zwischen Lehnsherr und Vasall",
+      "answer": "Lehnswesen",
+      "topicId": "topic-geschichte-mittelalter"
+    },
+    {
+      "term": "Scholastik",
+      "description": "Mittelalterliche Denkweise, die Vernunft und Glauben zu vereinen suchte",
+      "answer": "Scholastik",
+      "topicId": "topic-geschichte-mittelalter"
+    },
+    {
+      "term": "Gotik",
+      "description": "Architekturstil (ab 12. Jh.) mit Spitzbögen, Rippengewölben und großen Fenstern",
+      "answer": "Gotik",
+      "topicId": "topic-geschichte-mittelalter"
+    },
+    {
+      "term": "Kloster",
+      "description": "Religiöse Gemeinschaft, Zentren von Bildung und Kultur im Mittelalter",
+      "answer": "Kloster",
+      "topicId": "topic-geschichte-mittelalter"
+    },
+    {
+      "term": "Ritter",
+      "description": "Berittener Krieger des Adels, gebunden an Ehrenkodex der Ritterlichkeit",
+      "answer": "Ritter",
+      "topicId": "topic-geschichte-mittelalter"
+    },
+    {
+      "term": "Zunft",
+      "description": "Handwerkervereinigung zur Regelung von Ausbildung und Handel",
+      "answer": "Zunft",
+      "topicId": "topic-geschichte-mittelalter"
+    },
+    {
+      "term": "Hanse",
+      "description": "Kaufmannsbund norddeutscher Städte (13.-17. Jh.) zur Förderung des Handels",
+      "answer": "Hanse",
+      "topicId": "topic-geschichte-mittelalter"
+    },
+    {
+      "term": "Minnesang",
+      "description": "Höfische Liebeslyrik des Hochmittelalters",
+      "answer": "Minnesang",
+      "topicId": "topic-geschichte-mittelalter"
+    },
+    {
+      "term": "Inquisition",
+      "description": "Kirchliche Gerichtsbarkeit zur Verfolgung von Ketzerei (ab 13. Jh.)",
+      "answer": "Inquisition",
+      "topicId": "topic-geschichte-mittelalter"
+    }
+  ]
+}
