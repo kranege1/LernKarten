@@ -1,0 +1,739 @@
+{
+  "metadata": {
+    "id": "mk89s4hf3d9me5q5yj",
+    "title": "Deutsch-RS-Stummes H",
+    "description": "Ein Kartenset zum Thema Deutsch-RS-Stummes H",
+    "difficulty": "LEICHT",
+    "category": "Sprachen",
+    "author": "Gerald",
+    "tags": [
+      "Rechtschreibung"
+    ],
+    "createdAt": "2026-01-10T12:16:54.963Z",
+    "cardCount": 34
+  },
+  "topics": [
+    {
+      "id": "mk5j3u00evj089sa4kl",
+      "name": "Deutsch-RS-Stummes H",
+      "folderId": "mk5j3u00tun7vbc15v",
+      "answerMode": "type"
+    }
+  ],
+  "cards": [
+    {
+      "term": "Bahn",
+      "description": "Ein schienengebundenes Verkehrsmittel, das Personen oder Güter über weite Strecken transportiert.",
+      "answer": "Bahn",
+      "mcOptions": [
+        "Ein schienengebundenes Verkehrsmittel",
+        "Ein Fahrzeug auf Rädern",
+        "Ein Fluggerät",
+        "Ein Wasserfahrzeug"
+      ],
+      "id": "mk5j3u00li60g4ptah",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Draht",
+      "description": "Ein dünnes, flexibles Metallstück, das oft zur Verbindung oder Befestigung verwendet wird.",
+      "answer": "Draht",
+      "mcOptions": [
+        "Ein dünnes, flexibles Metallstück",
+        "Ein dicker Metallstab",
+        "Ein Holzstück",
+        "Ein Kunststoffband"
+      ],
+      "id": "mk5j3u00dkdt4r1vv2a",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "fahren",
+      "description": "Sich mit einem Fahrzeug von einem Ort zum anderen bewegen.",
+      "answer": "fahren",
+      "mcOptions": [
+        "Sich mit einem Fahrzeug bewegen",
+        "Zu Fuß gehen",
+        "Schwimmen",
+        "Fliegen"
+      ],
+      "id": "mk5j3u00rct8dfhfbc",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Fahrt",
+      "description": "Eine Bewegung oder Reise mit einem Fahrzeug von einem Ort zum anderen.",
+      "answer": "Fahrt",
+      "mcOptions": [
+        "Eine Reise mit einem Fahrzeug",
+        "Ein Spaziergang",
+        "Ein Flug",
+        "Ein Schwimmausflug"
+      ],
+      "id": "mk5j3u00x05tmjmhkx9",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Gefahr",
+      "description": "Eine Situation oder Bedingung, die potenziell Schaden oder Verlust verursachen kann.",
+      "answer": "Gefahr",
+      "mcOptions": [
+        "Eine potenziell schädliche Situation",
+        "Eine sichere Umgebung",
+        "Ein harmloses Ereignis",
+        "Eine angenehme Lage"
+      ],
+      "id": "mk5j3u00pg7tzey5s3e",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Hahn",
+      "description": "Männliches Geflügel, das oft morgens kräht und auf dem Bauernhof lebt.",
+      "answer": "Hahn",
+      "mcOptions": [
+        "Männliches Geflügel, das morgens kräht",
+        "Ein weibliches Geflügel",
+        "Ein Wildvogel",
+        "Ein Wasserhahn"
+      ],
+      "id": "mk5j3u006ue28qnspj7",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Jahr",
+      "description": "Eine Zeiteinheit, die etwa 365 Tage umfasst und den Umlauf der Erde um die Sonne repräsentiert.",
+      "answer": "Jahr",
+      "mcOptions": [
+        "Eine Zeiteinheit von etwa 365 Tagen",
+        "Ein Zeitraum von 24 Stunden",
+        "Ein Monat",
+        "Eine Woche"
+      ],
+      "id": "mk5j3u00wkhj4vl38xs",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Kahn",
+      "description": "Ein flaches Boot, das oft auf Flüssen oder Kanälen genutzt wird.",
+      "answer": "Kahn",
+      "mcOptions": [
+        "Ein flaches Boot auf Flüssen",
+        "Ein großes Segelschiff",
+        "Ein motorisiertes Boot",
+        "Ein U-Boot"
+      ],
+      "id": "mk5j3u00mhnjr1rlth",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "lahm",
+      "description": "Etwas bewegt sich langsam oder wirkt träge und ohne Energie.",
+      "answer": "lahm",
+      "mcOptions": [
+        "Langsam und ohne Energie",
+        "Schnell und dynamisch",
+        "Stark und kräftig",
+        "Lebhaft und aktiv"
+      ],
+      "id": "mk5j3u002cgmqq60v9y",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Mahnung",
+      "description": "Eine schriftliche Aufforderung, eine ausstehende Zahlung oder Verpflichtung zu erfüllen.",
+      "answer": "Mahnung",
+      "mcOptions": [
+        "Eine schriftliche Zahlungsaufforderung",
+        "Ein freundlicher Hinweis",
+        "Eine Einladung",
+        "Ein Dankesschreiben"
+      ],
+      "id": "mk5j3u006xkcjmeamq6",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "nah",
+      "description": "In unmittelbarer Nähe oder mit geringem Abstand zu etwas oder jemandem.",
+      "answer": "nah",
+      "mcOptions": [
+        "In unmittelbarer Nähe",
+        "Weit entfernt",
+        "Auf großer Distanz",
+        "Abseits gelegen"
+      ],
+      "id": "mk5j3u006odrs9wpw6",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Sahne",
+      "description": "Ein fetthaltiges Milchprodukt, das oft zum Verfeinern von Speisen und Getränken verwendet wird.",
+      "answer": "Sahne",
+      "mcOptions": [
+        "Ein fetthaltiges Milchprodukt",
+        "Ein süßer Sirup",
+        "Ein pflanzliches Öl",
+        "Ein fermentiertes Getränk"
+      ],
+      "id": "mk5j3u00u571f1ctweb",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "wahr",
+      "description": "Entspricht der Realität oder den tatsächlichen Gegebenheiten.",
+      "answer": "wahr",
+      "mcOptions": [
+        "Entspricht der Realität",
+        "Ist eine Illusion",
+        "Ist erfunden",
+        "Ist unwichtig"
+      ],
+      "id": "mk5j3u00ovq1rfv0av",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Zahn",
+      "description": "Ein harter, weißlicher Bestandteil im Mund, der zum Kauen und Beißen dient.",
+      "answer": "Zahn",
+      "mcOptions": [
+        "Ein harter Bestandteil im Mund",
+        "Ein weicher Hautteil",
+        "Ein Knochen im Arm",
+        "Ein Teil des Fußes"
+      ],
+      "id": "mk5j3u00h3x8qj761kq",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "zahlen",
+      "description": "Es handelt sich um mathematische Symbole, die Mengen oder Werte repräsentieren.",
+      "answer": "zahlen",
+      "mcOptions": [
+        "Mathematische Symbole für Mengen",
+        "Buchstaben im Alphabet",
+        "Zeichen für Farben",
+        "Symbole für Töne"
+      ],
+      "id": "mk5j3u00gt3m8p4b5y8",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "dehnen",
+      "description": "Einen Muskel oder Körperteil gezielt strecken, um die Beweglichkeit zu verbessern.",
+      "answer": "dehnen",
+      "mcOptions": [
+        "Einen Muskel gezielt strecken",
+        "Einen Muskel entspannen",
+        "Einen Muskel verkürzen",
+        "Einen Muskel massieren"
+      ],
+      "id": "mk5j3u002cyi7knxe",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Ehre",
+      "description": "Ein hoher moralischer Wert, der mit Respekt, Würde und Ansehen in einer Gemeinschaft verbunden ist.",
+      "answer": "Ehre",
+      "mcOptions": [
+        "Ein hoher moralischer Wert",
+        "Ein materieller Besitz",
+        "Ein flüchtiger Gedanke",
+        "Ein unwichtiger Titel"
+      ],
+      "id": "mk5j3u008mtr7px629u",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "gehen",
+      "description": "Eine Fortbewegung zu Fuß, bei der man sich von einem Ort zum anderen bewegt.",
+      "answer": "gehen",
+      "mcOptions": [
+        "Fortbewegung zu Fuß",
+        "Bewegung mit dem Fahrrad",
+        "Bewegung im Auto",
+        "Bewegung im Flugzeug"
+      ],
+      "id": "mk5j3u00lkgh40kqh4c",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Lehm",
+      "description": "Es handelt sich um eine natürliche, feinkörnige Bodenart, die aus Ton, Schluff und Sand besteht und oft für den Bau oder die Keramik verwendet wird.",
+      "answer": "Lehm",
+      "mcOptions": [
+        "Eine feinkörnige Bodenart",
+        "Ein harter Fels",
+        "Ein sandiger Boden",
+        "Ein kiesiger Untergrund"
+      ],
+      "id": "mk5j3u00fptnn1jmowv",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "mehr",
+      "description": "Eine größere Menge oder ein höherer Grad im Vergleich zu etwas anderem.",
+      "answer": "mehr",
+      "mcOptions": [
+        "Eine größere Menge",
+        "Eine kleinere Menge",
+        "Eine gleiche Menge",
+        "Eine unwesentliche Menge"
+      ],
+      "id": "mk5j3u00t9a4uari7xt",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Reh",
+      "description": "Ein scheues, elegantes Wildtier mit schlankem Körper und oft einem gefleckten Fell, das in Wäldern und auf Wiesen lebt.",
+      "answer": "Reh",
+      "mcOptions": [
+        "Ein scheues Wildtier mit geflecktem Fell",
+        "Ein großes Raubtier",
+        "Ein domestiziertes Nutztier",
+        "Ein kleiner Vogel"
+      ],
+      "id": "mk5j3u00r0igndrbxxk",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "sehen",
+      "description": "Etwas mit den Augen wahrnehmen.",
+      "answer": "sehen",
+      "mcOptions": [
+        "Mit den Augen wahrnehmen",
+        "Mit den Ohren hören",
+        "Mit der Nase riechen",
+        "Mit der Haut fühlen"
+      ],
+      "id": "mk5j3u004dcrtkxky77",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "weh",
+      "description": "Ein Gefühl von Schmerz oder Traurigkeit, das körperlich oder emotional empfunden wird.",
+      "answer": "weh",
+      "mcOptions": [
+        "Ein Gefühl von Schmerz",
+        "Ein Gefühl von Freude",
+        "Ein Gefühl von Langeweile",
+        "Ein Gefühl von Aufregung"
+      ],
+      "id": "mk5j3u00z6cf2xjarjo",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "bohren",
+      "description": "Einen harten Gegenstand durch Drehbewegung mit einem Werkzeug durchdringen, um ein Loch zu schaffen.",
+      "answer": "bohren",
+      "mcOptions": [
+        "Ein Loch durch Drehbewegung schaffen",
+        "Etwas mit einem Hammer schlagen",
+        "Etwas mit einer Säge schneiden",
+        "Etwas mit einem Pinsel malen"
+      ],
+      "id": "mk5j3u00jws1m8y4ezg",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Floh",
+      "description": "Ein kleines, springendes Insekt, das als Parasit auf Tieren lebt und Blut saugt.",
+      "answer": "Floh",
+      "mcOptions": [
+        "Ein kleines, springendes Insekt",
+        "Ein fliegendes Insekt",
+        "Ein kriechendes Reptil",
+        "Ein schwimmendes Tier"
+      ],
+      "id": "mk5j3u009opik2nbz5c",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Mohr",
+      "description": "Eine veraltete, heute als diskriminierend empfundene Bezeichnung für Menschen afrikanischer Herkunft.",
+      "answer": "Mohr",
+      "mcOptions": [
+        "Eine veraltete Bezeichnung für Afrikaner",
+        "Ein moderner Begriff für Europäer",
+        "Ein Begriff für Asiaten",
+        "Ein Begriff für Amerikaner"
+      ],
+      "id": "mk5j3u00gw63x10jqy9",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Ohr",
+      "description": "Ein Sinnesorgan, das für das Hören und das Gleichgewicht verantwortlich ist.",
+      "answer": "Ohr",
+      "mcOptions": [
+        "Ein Sinnesorgan zum Hören",
+        "Ein Organ zum Sehen",
+        "Ein Organ zum Riechen",
+        "Ein Organ zum Schmecken"
+      ],
+      "id": "mk5j3u004i426qtd0j2",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Rohr",
+      "description": "Ein hohles, zylindrisches Gebilde, das oft zur Leitung von Flüssigkeiten oder Gasen verwendet wird.",
+      "answer": "Rohr",
+      "mcOptions": [
+        "Ein hohles, zylindrisches Gebilde",
+        "Ein massiver Metallblock",
+        "Ein flaches Holzstück",
+        "Ein weiches Stoffband"
+      ],
+      "id": "mk5j3u00ism9t0aypin",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Vieh",
+      "description": "Lebende Tiere, die in der Landwirtschaft gehalten werden, um Nahrung oder andere Produkte zu liefern.",
+      "answer": "Vieh",
+      "mcOptions": [
+        "Landwirtschaftlich gehaltene Tiere",
+        "Wilde Tiere im Wald",
+        "Haustiere im Haus",
+        "Vögel am Himmel"
+      ],
+      "id": "mk5j3u00f4hwgusfpx",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Ahorn",
+      "description": "Ein Laubbaum, der für seine charakteristischen, oft gezackten Blätter und sein hochwertiges Holz bekannt ist.",
+      "answer": "Ahorn",
+      "mcOptions": [
+        "Ein Laubbaum mit gezackten Blättern",
+        "Ein Nadelbaum mit Zapfen",
+        "Ein tropischer Baum",
+        "Ein Strauch mit Beeren"
+      ],
+      "id": "mk5j3u001fycbk1blt8",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "Ahre",
+      "description": "Ein fließendes Gewässer, das typischerweise kleiner als ein Fluss ist und oft in der Natur vorkommt.",
+      "answer": "Ahre",
+      "mcOptions": [
+        "Ein kleines fließendes Gewässer",
+        "Ein großer Ozean",
+        "Ein stiller See",
+        "Ein breiter Fluss"
+      ],
+      "id": "mk5j3u002asfaysyz8o",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "behende",
+      "description": "Geschickt und schnell in Bewegung oder Handlung.",
+      "answer": "behende",
+      "mcOptions": [
+        "Geschickt und schnell in Bewegung",
+        "Langsam und vorsichtig",
+        "Ungeschickt und schwerfällig",
+        "Zögerlich und unsicher"
+      ],
+      "id": "mk5j3u00tz01d9f8lol",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "stehen",
+      "description": "Eine aufrechte Position des Körpers einnehmen, bei der die Füße den Boden berühren.",
+      "answer": "stehen",
+      "mcOptions": [
+        "Eine aufrechte Körperposition",
+        "Eine liegende Position",
+        "Eine sitzende Position",
+        "Eine hockende Position"
+      ],
+      "id": "mk5j3u00ddam8r2zyj",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    },
+    {
+      "term": "verstehen",
+      "description": "Einen Sachverhalt oder eine Information gedanklich erfassen und deren Bedeutung nachvollziehen.",
+      "answer": "verstehen",
+      "mcOptions": [
+        "Einen Sachverhalt gedanklich erfassen",
+        "Einen Sachverhalt ignorieren",
+        "Einen Sachverhalt vergessen",
+        "Einen Sachverhalt ablehnen"
+      ],
+      "id": "mk5j3u00fz4io9e9uya",
+      "topicId": "mk5j3u00evj089sa4kl",
+      "stats": {
+        "box": 1,
+        "streak": 0,
+        "total": 0,
+        "correct": 0,
+        "lastReviewed": null,
+        "nextDue": "2026-01-08"
+      }
+    }
+  ]
+}
