@@ -226,7 +226,6 @@
 							<select id="import-format">
 								<option value="json">JSON</option>
 								<option value="csv">CSV/TSV</option>
-								<option value="text">Textliste (eine Zeile = Begriff)</option>
 								<option value="list">Liste (z.B. Haus, Zeit, ...)</option>
 							</select>
 							<button id="detect-import" class="ghost" style="white-space: nowrap;">Inhalt erkennen</button>
@@ -248,8 +247,9 @@
 						</div>
 						<div class="row two">
 							<select id="import-topic"></select>
-							<button id="run-import" class="primary">Importieren</button>
+							<button id="run-import" class="primary">Schnellimport (ohne Mapping)</button>
 						</div>
+						<div class="muted small">Hinweis: Schnellimport versucht gängige Spalten automatisch zuzuordnen. "Inhalt erkennen" öffnet den Mapping-Dialog. Für Textlisten bitte "Liste" wählen.</div>
 						<div class="muted small" id="import-status"></div>
 					</div>
 
