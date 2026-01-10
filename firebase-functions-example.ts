@@ -2,6 +2,7 @@
 // Datei: functions/src/index.ts
 
 import * as functions from "firebase-functions";
+import { defineSecret } from "firebase-functions/params";
 import * as admin from "firebase-admin";
 import fetch from "node-fetch";
 
@@ -103,8 +104,12 @@ export const submitDeck = functions
   });
 
 // Für Admin: Deck freigeben und zu GitHub pushen
+// Secret sicher aus Firebase Secrets Manager laden
+const GITHUB_TOKEN = defineSecret("GITHUB_TOKEN");
+
 export const approveDeck = functions
   .region("europe-west1")
+  .runWith({ secrets: [GITHUB_TOKEN] })
   .https.onCall(async (data: { submissionId: string }, context) => {
     // Nur Admin darf das
     if (context.auth?.token.email !== process.env.ADMIN_EMAIL) {
@@ -134,8 +139,8 @@ export const approveDeck = functions
       const [deckContent] = await deckFile.download();
       const deckJson = JSON.parse(deckContent.toString());
 
-      // Zu GitHub pushen (ähnlich wie vorher)
-      const githubToken = process.env.GITHUB_TOKEN;
+      // Zu GitHub pushen (Secret aus Secrets Manager)
+      const githubToken = GITHUB_TOKEN.value();
       const owner = "kranege1";
       const repo = "LernKarten";
       const branch = "gh-pages";

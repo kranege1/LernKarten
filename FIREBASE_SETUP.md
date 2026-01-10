@@ -33,13 +33,44 @@
 
 ## 5. GitHub Token in Firebase speichern
 
-1. Im Firebase Console: "Project Settings" (Zahnrad oben)
-2. Tab: "Service Accounts"
-3. "Database secrets" oder "Environment variables"
-4. Neuen Secret hinzufügen: 
-   - Name: `GITHUB_TOKEN`
-   - Value: Dein GitHub Personal Access Token (Classic)
-   - Repository permission: `repo` (full control)
+Variante A – per CLI (empfohlen):
+
+1. Firebase CLI installieren und anmelden
+   ```bash
+   npm i -g firebase-tools
+   firebase login
+   firebase use <dein-projekt-id>
+   ```
+2. Secret anlegen (du wirst nach dem Token gefragt – PRÜFE, dass er `repo`-Rechte hat)
+   ```bash
+   firebase functions:secrets:set GITHUB_TOKEN
+   ```
+3. Deploy der Functions (nachdem du die Functions-Struktur deployed hast)
+   ```bash
+   firebase deploy --only functions:submitDeck,functions:approveDeck
+   ```
+
+Variante B – in der Console:
+
+1. Firebase Console → Build → Functions → Secrets → "Add secret"
+2. Name: `GITHUB_TOKEN`
+3. Value: Dein GitHub Personal Access Token (Classic) mit `repo` Permission
+4. Danach das Secret in der Funktion binden (Binding hinzufügen) oder wie im Code via `runWith({ secrets: [...] })`
+
+Codebindung (bereits im Beispiel umgesetzt):
+
+```ts
+import { defineSecret } from 'firebase-functions/params';
+const GITHUB_TOKEN = defineSecret('GITHUB_TOKEN');
+
+export const approveDeck = functions
+  .region('europe-west1')
+  .runWith({ secrets: [GITHUB_TOKEN] })
+  .https.onCall(async (data, context) => {
+    const githubToken = GITHUB_TOKEN.value();
+    // ...
+  });
+```
 
 ## 6. Web App registrieren
 
