@@ -550,6 +550,39 @@
 		</div>
 	</dialog>
 
+	<!-- Import Success Dialog -->
+	<dialog id="import-success-dialog" class="modal">
+		<div class="dialog-form">
+			<h3>✅ Import abgeschlossen</h3>
+			
+			<div style="background: rgba(124,58,237,0.1); padding: 16px; border-radius: 8px; margin: 12px 0; border-left: 4px solid var(--primary);">
+				<div style="margin-bottom: 12px;">
+					<strong id="import-success-count" style="font-size: 18px; color: var(--primary-2);">0</strong>
+					<span id="import-success-count-label"> Karten importiert</span>
+				</div>
+				
+				<div style="margin-bottom: 8px;">
+					<span class="muted small">Thema:</span>
+					<strong id="import-success-topic" style="display: block; color: var(--text);">—</strong>
+				</div>
+				
+				<div>
+					<span class="muted small">Ordner:</span>
+					<strong id="import-success-folder" style="display: block; color: var(--text);">—</strong>
+				</div>
+			</div>
+			
+			<p class="muted small" style="text-align: center; margin-top: 12px;">
+				Das neue Thema ist jetzt in der Verwaltung verfügbar und du kannst damit sofort lernen.
+			</p>
+			
+			<menu class="dialog-menu">
+				<button type="button" class="primary" onclick="document.getElementById('import-success-dialog').close()">Schließen</button>
+				<button type="button" id="import-success-goto" class="ghost">Jetzt anschauen →</button>
+			</menu>
+		</div>
+	</dialog>
+
 	<!-- Import Mapping Dialog -->
 	<dialog id="import-mapping-dialog">
 		<div class="dialog-form import-mapping-dialog">
