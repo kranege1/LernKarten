@@ -391,6 +391,125 @@ dialog { border: 1px solid var(--border); border-radius: 12px; padding: 0; backg
 
 @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
+/* Card Entry Animations */
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes cardSlideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardSlideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardSlideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes cardSlideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes cardZoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes cardRotateIn {
+  from {
+    opacity: 0;
+    transform: rotate(-5deg) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+@keyframes cardFlipIn {
+  from {
+    opacity: 0;
+    transform: rotateY(-90deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotateY(0);
+  }
+}
+
+.card-enter {
+  animation: cardFadeIn 0.4s ease-out;
+}
+
+.card-enter.slide-up {
+  animation: cardSlideInUp 0.4s ease-out;
+}
+
+.card-enter.slide-down {
+  animation: cardSlideInDown 0.4s ease-out;
+}
+
+.card-enter.slide-left {
+  animation: cardSlideInLeft 0.4s ease-out;
+}
+
+.card-enter.slide-right {
+  animation: cardSlideInRight 0.4s ease-out;
+}
+
+.card-enter.zoom {
+  animation: cardZoomIn 0.4s ease-out;
+}
+
+.card-enter.rotate {
+  animation: cardRotateIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.card-enter.flip {
+  animation: cardFlipIn 0.5s ease-out;
+}
+
 .app-footer { max-width: 1200px; margin: 24px auto; padding: 0 16px; display: flex; justify-content: space-between; color: var(--muted); font-size: 12px; }
 
 @media (max-width: 960px) {
