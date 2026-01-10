@@ -620,6 +620,12 @@ dialog { border: 1px solid var(--border); border-radius: 12px; padding: 0; backg
   font-family: inherit;
 }
 
+.form-group select option {
+  background: var(--panel-2);
+  color: var(--text);
+  padding: 8px;
+}
+
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
