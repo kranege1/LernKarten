@@ -88,19 +88,55 @@
     </div>
   </div>
 
+  <div class="card" style="margin-top:16px;">
+    <div class="header-row" style="align-items:center;">
+      <h2 style="margin:0;">Veröffentlichte Decks</h2>
+      <div style="margin-left:auto; display:flex; gap:8px; align-items:center;">
+        <button id="refresh-published" class="ghost">🔄 Aktualisieren</button>
+      </div>
+    </div>
+    <div id="status-published" class="muted small" style="display:none; margin-top:8px;"></div>
+    <div class="card-list" style="overflow:auto;">
+      <table class="table" id="published-table">
+        <thead>
+          <tr>
+            <th>Titel</th>
+            <th>Kategorie</th>
+            <th>Karten</th>
+            <th>Erstellt</th>
+            <th>Aktionen</th>
+          </tr>
+        </thead>
+        <tbody id="published-body">
+          <tr><td colspan="5" class="muted">Lade…</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
   <script>
     const statusEl = document.getElementById('status');
+    const statusPubEl = document.getElementById('status-published');
     const adminUserEl = document.getElementById('admin-user');
     const loginBtn = document.getElementById('login');
     const logoutBtn = document.getElementById('logout');
     const refreshBtn = document.getElementById('refresh');
+    const refreshPubBtn = document.getElementById('refresh-published');
     const tbody = document.getElementById('submissions-body');
+    const pubBody = document.getElementById('published-body');
 
     function setStatus(msg, kind = 'info') {
       if (!msg) { statusEl.style.display = 'none'; statusEl.textContent = ''; return; }
       statusEl.style.display = 'block';
       statusEl.textContent = msg;
       statusEl.style.color = kind === 'error' ? '#ef4444' : '#9ca3af';
+    }
+
+    function setStatusPublished(msg, kind = 'info') {
+      if (!msg) { statusPubEl.style.display = 'none'; statusPubEl.textContent = ''; return; }
+      statusPubEl.style.display = 'block';
+      statusPubEl.textContent = msg;
+      statusPubEl.style.color = kind === 'error' ? '#ef4444' : '#9ca3af';
     }
 
     async function fetchPending() {
@@ -144,6 +180,40 @@
 
     function escapeHtml(s){ return (s||'').replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c])); }
 
+    async function fetchPublished(){
+      setStatusPublished('Lade veröffentlichte Decks…');
+      pubBody.innerHTML = '<tr><td colspan="5" class="muted">Lade…</td></tr>';
+      try{
+        const url = `https://kranege1.github.io/LernKarten/shared-decks/catalog.json?cb=${Date.now()}`;
+        const res = await fetch(url, { cache: 'no-cache' });
+        if(!res.ok){ throw new Error('Katalog konnte nicht geladen werden'); }
+        const catalog = await res.json();
+        const rows = [];
+        for(const deck of (catalog.decks || [])){
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td><strong>${escapeHtml(deck.title||'')}</strong></td>
+            <td>${escapeHtml(deck.category||'')}</td>
+            <td>${escapeHtml(String(deck.cardCount||''))}</td>
+            <td>${escapeHtml(deck.created||'')}</td>
+            <td class="actions">
+              <a href="${escapeHtml(deck.downloadUrl||'#')}" target="_blank" class="ghost">📥 Öffnen</a>
+              <button class="ghost" data-delete-published="${escapeHtml(deck.fileName)}" style="color:#ef4444;">🗑️ Löschen</button>
+            </td>
+          `;
+          rows.push(tr);
+        }
+        pubBody.innerHTML = '';
+        if(rows.length===0){ pubBody.innerHTML = '<tr><td colspan="5" class="muted">Keine veröffentlichten Decks</td></tr>'; }
+        rows.forEach(r=>pubBody.appendChild(r));
+        setStatusPublished(null);
+      } catch(e){
+        console.error(e);
+        setStatusPublished('Fehler beim Laden: ' + (e && e.message ? e.message : e), 'error');
+        pubBody.innerHTML = '<tr><td colspan="5" class="muted">Fehler beim Laden</td></tr>';
+      }
+    }
+
     tbody.addEventListener('click', async (e) => {
       // Handle Approve button
       const approveBtn = e.target.closest('button[data-approve]');
@@ -185,6 +255,26 @@
       }
     });
 
+    pubBody.addEventListener('click', async (e) => {
+      const delBtn = e.target.closest('button[data-delete-published]');
+      if(!delBtn) return;
+      const fileName = delBtn.getAttribute('data-delete-published');
+      if(!confirm(`Veröffentlichtes Deck löschen?\n${fileName}`)) return;
+      delBtn.disabled = true; delBtn.textContent = '⏳ Lösche…';
+      setStatusPublished('Lösche Deck ' + fileName + ' …');
+      try{
+        const fn = fns.httpsCallable('deleteDeck');
+        await fn({ fileName });
+        setStatusPublished('Deck gelöscht');
+        setTimeout(fetchPublished, 800);
+      } catch(err){
+        console.error('delete published error', err);
+        const msg = (err && (err.message || err.toString())) || 'Fehler';
+        setStatusPublished('Fehler beim Löschen: ' + msg, 'error');
+        delBtn.disabled = false; delBtn.textContent = '🗑️ Löschen';
+      }
+    });
+
     loginBtn.addEventListener('click', async () => {
       try {
         const provider = new firebase.auth.GoogleAuthProvider();
@@ -200,6 +290,7 @@
     });
 
     refreshBtn.addEventListener('click', fetchPending);
+    refreshPubBtn.addEventListener('click', fetchPublished);
 
     auth.onAuthStateChanged((user) => {
       if (user) {
@@ -208,11 +299,13 @@
         loginBtn.style.display = 'none';
         logoutBtn.style.display = 'inline-block';
         fetchPending();
+        fetchPublished();
       } else {
         adminUserEl.style.display = 'none';
         loginBtn.style.display = 'inline-block';
         logoutBtn.style.display = 'none';
         tbody.innerHTML = '<tr><td colspan="5" class="muted">Bitte zuerst einloggen</td></tr>';
+        pubBody.innerHTML = '<tr><td colspan="5" class="muted">Bitte zuerst einloggen</td></tr>';
       }
     });
   </script>

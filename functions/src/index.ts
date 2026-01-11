@@ -195,7 +195,7 @@ export const approveDeck = functions
         throw new functions.https.HttpsError("not-found", "Deck-Inhalt nicht gefunden");
       }
 
-      const githubToken = GITHUB_TOKEN.value();
+      const githubToken = GITHUB_TOKEN.value().trim();
       if (!githubToken) {
         throw new functions.https.HttpsError("failed-precondition", "GitHub Token nicht konfiguriert");
       }
@@ -309,6 +309,107 @@ export const approveDeck = functions
         "internal",
         error?.message || "Fehler beim Genehmigen"
       );
+    }
+  });
+
+export const deleteDeck = functions
+  .region("europe-west1")
+  .runWith({ secrets: [GITHUB_TOKEN] })
+  .https.onCall(async (data: { fileName: string; id?: string }, context) => {
+    if (!context.auth?.token?.email || context.auth.token.email !== ADMIN_EMAIL) {
+      throw new functions.https.HttpsError(
+        "permission-denied",
+        `Nur Admin erlaubt. Eingeloggt als: ${context.auth?.token?.email || 'nicht eingeloggt'}`
+      );
+    }
+
+    const fileName = String(data.fileName || "").trim();
+    if (!fileName) {
+      throw new functions.https.HttpsError("invalid-argument", "fileName fehlt");
+    }
+
+    const githubToken = GITHUB_TOKEN.value().trim();
+    if (!githubToken) {
+      throw new functions.https.HttpsError("failed-precondition", "GitHub Token nicht konfiguriert");
+    }
+
+    const owner = "kranege1";
+    const repo = "LernKarten";
+    const branch = "gh-pages";
+    const filePath = `shared-decks/${fileName}`;
+
+    try {
+      // Get file SHA for deletion
+      const fileResp = await fetch(
+        `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}?ref=${branch}`,
+        { headers: { Authorization: `token ${githubToken}` } }
+      );
+      if (!fileResp.ok) {
+        throw new Error(`Deck-Datei nicht gefunden: ${fileResp.statusText}`);
+      }
+      const fileJson: any = await fileResp.json();
+      const fileSha = fileJson.sha;
+
+      // Delete the deck file
+      const delResp = await fetch(
+        `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `token ${githubToken}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            message: `Remove community deck: ${fileName}`,
+            sha: fileSha,
+            branch,
+          }),
+        }
+      );
+      if (!delResp.ok) {
+        const errText = await delResp.text();
+        throw new Error(`Löschen fehlgeschlagen: ${delResp.status} - ${errText}`);
+      }
+
+      // Load catalog.json
+      const catalogResp = await fetch(
+        `https://api.github.com/repos/${owner}/${repo}/contents/shared-decks/catalog.json?ref=${branch}`,
+        { headers: { Authorization: `token ${githubToken}` } }
+      );
+      if (!catalogResp.ok) {
+        throw new Error(`Katalog laden fehlgeschlagen: ${catalogResp.statusText}`);
+      }
+      const catalogData: any = await catalogResp.json();
+      const catalogContent = Buffer.from(catalogData.content, "base64").toString("utf-8");
+      const catalog = JSON.parse(catalogContent);
+
+      // Remove entry
+      catalog.decks = (catalog.decks || []).filter((d: any) => d.fileName !== fileName && d.id !== data.id);
+      catalog.lastUpdated = new Date().toISOString();
+
+      const newCatalog64 = Buffer.from(JSON.stringify(catalog, null, 2)).toString("base64");
+      const catalogUpdate = await fetch(
+        `https://api.github.com/repos/${owner}/${repo}/contents/shared-decks/catalog.json?ref=${branch}`,
+        {
+          method: "PUT",
+          headers: { Authorization: `token ${githubToken}`, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            message: `Update catalog: remove ${fileName}`,
+            content: newCatalog64,
+            sha: catalogData.sha,
+            branch,
+          }),
+        }
+      );
+      if (!catalogUpdate.ok) {
+        const errText = await catalogUpdate.text();
+        throw new Error(`Katalog-Update fehlgeschlagen: ${catalogUpdate.status} - ${errText}`);
+      }
+
+      return { success: true };
+    } catch (error: any) {
+      console.error("deleteDeck error:", error);
+      throw new functions.https.HttpsError("internal", error?.message || "Fehler beim Löschen");
     }
   });
 
