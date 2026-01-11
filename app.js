@@ -91,35 +91,49 @@
   }
 
   function init(){
-    Storage.load();
-    TTS.initVoices();
-    bindTabs();
-    bindManage();
-    bindLearn();
-    bindImportExport();
-    bindCommunityUpload();
-    bindSettings();
-    populateAllSelects();
-    renderFolderTree();
-    if(state.data.topics.length>0){
-      state.ui.selectedTopicId = state.data.topics[0].id;
-      renderCardsTable();
-    }
-    // Initialisiere UI-Werte für Settings
-    $('#tts-rate').value = state.data.settings.tts.rate || 0.7;
-    $('#google-tts-key').value = state.data.settings.tts.googleKey || '';
-    $('#google-voice-type').value = state.data.settings.tts.googleVoiceType || 'Standard';
-    $('#google-voice-variant').value = state.data.settings.tts.googleVoiceVariant || 'A';
+    console.log('Init started...');
+    try {
+      Storage.load();
+      console.log('Storage loaded');
+      TTS.initVoices();
+      console.log('TTS initialized');
+      bindTabs();
+      console.log('Tabs bound');
+      bindManage();
+      console.log('Manage bound');
+      bindLearn();
+      console.log('Learn bound');
+      bindImportExport();
+      console.log('Import/Export bound');
+      bindCommunityUpload();
+      console.log('Community upload bound');
+      bindSettings();
+      console.log('Settings bound');
+      populateAllSelects();
+      renderFolderTree();
+      if(state.data.topics.length>0){
+        state.ui.selectedTopicId = state.data.topics[0].id;
+        renderCardsTable();
+      }
+      // Initialisiere UI-Werte für Settings
+      $('#tts-rate').value = state.data.settings.tts.rate || 0.7;
+      $('#google-tts-key').value = state.data.settings.tts.googleKey || '';
+      $('#google-voice-type').value = state.data.settings.tts.googleVoiceType || 'Standard';
+      $('#google-voice-variant').value = state.data.settings.tts.googleVoiceVariant || 'A';
 
-    // Version im Footer anzeigen
-    showDeployedVersion();
-    
-    // Prüfe ob Deck-URL übergeben wurde (von home.html)
-    const params = new URLSearchParams(window.location.search);
-    const deckUrl = params.get('deck-url');
-    if (deckUrl) {
-      // Stille das Deck direkt von der URL
-      loadAndImportDeckFromUrl(deckUrl);
+      // Version im Footer anzeigen
+      showDeployedVersion();
+      
+      // Prüfe ob Deck-URL übergeben wurde (von home.html)
+      const params = new URLSearchParams(window.location.search);
+      const deckUrl = params.get('deck-url');
+      if (deckUrl) {
+        // Stille das Deck direkt von der URL
+        loadAndImportDeckFromUrl(deckUrl);
+      }
+      console.log('Init completed successfully');
+    } catch(err) {
+      console.error('Init failed:', err);
     }
   }
 
