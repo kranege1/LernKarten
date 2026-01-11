@@ -77,6 +77,7 @@ console.log('✅ Starting IIFE...');
     alert('FATAL: Storage object creation failed:\n' + e.message);
     Storage = {}; // Fallback
   }
+  console.log('4️⃣ AFTER catch block - execution continues');
 
   console.log('4️⃣ After Storage, defining helper functions...');
 
