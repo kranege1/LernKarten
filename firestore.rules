@@ -1,0 +1,16 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Pending submissions - anyone can create (no auth required)
+    match /pending_decks/{document} {
+      allow create: if true;
+      allow read, update, delete: if false; // Only via Cloud Functions
+    }
+    
+    // Approved decks - public read
+    match /approved_decks/{document} {
+      allow read: if true;
+      allow write: if false; // Only via Cloud Functions
+    }
+  }
+}
