@@ -1,11 +1,15 @@
 // Global Error Handler für Debugging - BEVOR IIFE startet!
 console.log('📋 app.js wird geladen...');
 window.addEventListener('error', (event) => {
-  console.error('❌ Unhandled Error:', event.error);
-  console.error('Stack:', event.error?.stack);
+  console.error('❌ UNHANDLED ERROR:', event.message);
+  console.error('❌ File:', event.filename, 'Line:', event.lineno);
+  console.error('❌ Stack:', event.error?.stack);
+  alert('ERROR: ' + event.message + ' at line ' + event.lineno);
 });
 window.addEventListener('unhandledrejection', (event) => {
-  console.error('❌ Unhandled Promise Rejection:', event.reason);
+  console.error('❌ UNHANDLED REJECTION:', event.reason);
+  console.error('❌ Stack:', event.reason?.stack);
+  alert('REJECTION: ' + (event.reason?.message || event.reason));
 });
 
 /* LernKarten – App Logic */
