@@ -4289,14 +4289,18 @@
   }
 
   // Kickoff
-  window.addEventListener('DOMContentLoaded', init);
+  console.log('⚙️ App Kickoff: Registriere DOMContentLoaded listener');
+  window.addEventListener('DOMContentLoaded', () => {
+    console.log('🚀 DOMContentLoaded event fired, rufe init() auf...');
+    init();
+  });
+  
   // Firebase Auth nach DOM-Load
   window.addEventListener('load', () => {
+    console.log('✅ Page fully loaded');
     if (typeof firebaseAuth !== 'undefined') {
       initFirebaseAuth();
     }
   });
-
-}}} // Close remaining scopes
 
 })();
