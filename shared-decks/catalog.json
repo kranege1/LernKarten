@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "lastUpdated": "2026-01-10T12:00:00Z",
+  "lastUpdated": "2026-01-11T06:51:03.879Z",
   "decks": [
     {
       "id": "biologie-zellbiologie",
@@ -11,7 +11,11 @@
       "cardCount": 15,
       "difficulty": "MITTEL",
       "author": "LernKarten Community",
-      "tags": ["Biologie", "Zellen", "Naturwissenschaft"],
+      "tags": [
+        "Biologie",
+        "Zellen",
+        "Naturwissenschaft"
+      ],
       "fileName": "biologie-zellbiologie.json",
       "downloadUrl": "https://kranege1.github.io/LernKarten/shared-decks/biologie-zellbiologie.json",
       "created": "2026-01-10"
@@ -25,7 +29,11 @@
       "cardCount": 20,
       "difficulty": "MITTEL",
       "author": "LernKarten Community",
-      "tags": ["Geschichte", "Mittelalter", "Europa"],
+      "tags": [
+        "Geschichte",
+        "Mittelalter",
+        "Europa"
+      ],
       "fileName": "geschichte-mittelalter.json",
       "downloadUrl": "https://kranege1.github.io/LernKarten/shared-decks/geschichte-mittelalter.json",
       "created": "2026-01-10"
@@ -39,7 +47,11 @@
       "cardCount": 25,
       "difficulty": "LEICHT",
       "author": "LernKarten Community",
-      "tags": ["Python", "Programmierung", "IT"],
+      "tags": [
+        "Python",
+        "Programmierung",
+        "IT"
+      ],
       "fileName": "programmierung-python-basics.json",
       "downloadUrl": "https://kranege1.github.io/LernKarten/shared-decks/programmierung-python-basics.json",
       "created": "2026-01-10"
@@ -53,7 +65,11 @@
       "cardCount": 20,
       "difficulty": "LEICHT",
       "author": "Community User",
-      "tags": ["Mathematik", "Grundschule", "2. Klasse"],
+      "tags": [
+        "Mathematik",
+        "Grundschule",
+        "2. Klasse"
+      ],
       "fileName": "mathe-aufgaben-2-klasse.json",
       "downloadUrl": "https://kranege1.github.io/LernKarten/shared-decks/mathe-aufgaben-2-klasse.json",
       "created": "2026-01-10"
@@ -67,10 +83,31 @@
       "cardCount": 30,
       "difficulty": "LEICHT",
       "author": "Community User",
-      "tags": ["Englisch", "Sprachen", "5. Klasse"],
+      "tags": [
+        "Englisch",
+        "Sprachen",
+        "5. Klasse"
+      ],
       "fileName": "english-5-klasse.json",
       "downloadUrl": "https://kranege1.github.io/LernKarten/shared-decks/english-5-klasse.json",
       "created": "2026-01-10"
+    },
+    {
+      "id": "tKgCPkLcRziMjZVTWCBg",
+      "title": "English 5.Klasse",
+      "description": "Ein Kartenset zum Thema English 5.Klasse",
+      "category": "Sprachen",
+      "language": "de",
+      "cardCount": 60,
+      "difficulty": "einfach",
+      "author": "Gerald",
+      "tags": [
+        "Übungen",
+        "Schule"
+      ],
+      "fileName": "english-5-klasse-1768113861309.json",
+      "downloadUrl": "https://kranege1.github.io/LernKarten/shared-decks/english-5-klasse-1768113861309.json",
+      "created": "2026-01-11"
     }
   ],
   "categories": [
