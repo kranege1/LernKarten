@@ -175,6 +175,8 @@ console.log('✅ Starting IIFE...');
     }
   }
 
+  console.log('7️⃣ After init() definition');
+
   // Lade und importiere Deck direkt von URL (von home.html)
   async function loadAndImportDeckFromUrl(deckUrl) {
     try {
