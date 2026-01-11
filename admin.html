@@ -25,10 +25,10 @@
       measurementId: "G-KX3QBNTGGK",
     };
 
-    firebase.initializeApp(firebaseConfig);
+    const app = firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
     const db = firebase.firestore();
-    const fns = firebase.app().functions("europe-west1");
+    const fns = app.functions("europe-west1");
   </script>
 
   <style>
