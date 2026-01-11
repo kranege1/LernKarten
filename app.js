@@ -372,6 +372,7 @@ console.log('✅ Starting IIFE...');
   console.log('AA Before TTS object definition');
   const TTS = {
     currentAudio: null,
+    __debug1: (() => { console.log('DEBUG: TTS.currentAudio initialized'); return true; })(),
     initVoices(){
       if(!('speechSynthesis' in window)) return;
       const load = () => {
@@ -589,6 +590,7 @@ console.log('✅ Starting IIFE...');
       setTtsStatus(null);
     }
   };
+  console.log('✅ TTS object fully defined and assigned');
 
   // UI helper to show/hide TTS status (null hides)
   function setTtsStatus(text){

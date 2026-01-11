@@ -40,3 +40,8 @@ Dann im Browser: http://localhost:5173
 - TTS erfordert einen unterstützten Browser (Chromium/Edge/Chrome, Safari).
 - OCR passiert im Browser und kann je nach Bildgröße einige Sekunden dauern.
 - Exportiere regelmäßig deine Daten (JSON), um Backups zu haben.
+
+## Multiple-Choice Hinweise
+- MC-Antwortoptionen werden beim Lernen dynamisch aus anderen Karten im gleichen Thema generiert.
+- Beim Import/Upload gibt es deshalb kein Feld `mcOptions`; nur `term`, `description`, `answer` werden gespeichert.
+- Details zu Community-Uploads und Backend-Setup: siehe [FIREBASE_SETUP.md](FIREBASE_SETUP.md).

@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LernKarten – Admin</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Firebase SDKs (matching index.html usage) -->
+  <!-- Firebase compat builds (namespace style) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-functions-compat.js"></script>
+
+  <script>
+    // Firebase Configuration - bitte aus den Projekteinstellungen übernehmen (wie in index.html)
+    const firebaseConfig = {
+      apiKey: "AIzaSyC84gMOM2_zLz3jiSeuQjbfDnPirPNz-6Y",
+      authDomain: "lernkarten-fdadf.firebaseapp.com",
+      projectId: "lernkarten-fdadf",
+      storageBucket: "lernkarten-fdadf.firebasestorage.app",
+      messagingSenderId: "768419395772",
+      appId: "1:768419395772:web:d537f302bcde4c4fd1b8b9",
+      measurementId: "G-KX3QBNTGGK",
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+    const fns = firebase.functions("europe-west1");
+  </script>
+
+  <style>
+    .admin-container { max-width: 1000px; margin: 24px auto; padding: 0 16px; }
+    .admin-header { display: flex; align-items: center; gap: 12px; }
+    .admin-header h1 { margin: 0; }
+    .badge { display: inline-block; padding: 2px 8px; font-size: 12px; border-radius: 999px; background: rgba(59,130,246,.15); color: #60a5fa; }
+    .card-list { margin-top: 16px; }
+    .table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .table th, .table td { padding: 10px 8px; border-bottom: 1px solid rgba(255,255,255,0.08); vertical-align: top; }
+    .table th { text-align: left; color: var(--muted); font-weight: 600; }
+    .actions { display: flex; gap: 8px; }
+    .muted { color: var(--muted); }
+    .small { font-size: 12px; }
+  </style>
+</head>
+<body>
+  <div class="admin-container">
+    <div class="admin-header">
+      <h1>Admin – Community Einreichungen</h1>
+      <span class="badge">Beta</span>
+      <div style="margin-left:auto; display:flex; align-items:center; gap:8px;">
+        <span id="admin-user" class="muted small" style="display:none;"></span>
+        <button id="login" class="ghost">🔐 Login</button>
+        <button id="logout" class="ghost" style="display:none;">Logout</button>
+      </div>
+    </div>
+
+    <div id="notice" class="muted small" style="margin-top:8px;">
+      Hinweis: Nur die in Functions als <strong>ADMIN_EMAIL</strong> konfigurierte Adresse darf genehmigen. Andernfalls schlägt die Genehmigung fehl.
+    </div>
+
+    <div class="card" style="margin-top:16px;">
+      <div class="header-row" style="align-items:center;">
+        <h2 style="margin:0;">Wartende Einreichungen</h2>
+        <div style="margin-left:auto; display:flex; gap:8px; align-items:center;">
+          <button id="refresh" class="ghost">🔄 Aktualisieren</button>
+        </div>
+      </div>
+      <div id="status" class="muted small" style="display:none; margin-top:8px;"></div>
+      <div class="card-list" style="overflow:auto;">
+        <table class="table" id="submissions-table">
+          <thead>
+            <tr>
+              <th>Titel</th>
+              <th>Benutzer</th>
+              <th>Details</th>
+              <th>Eingereicht</th>
+              <th>Aktionen</th>
+            </tr>
+          </thead>
+          <tbody id="submissions-body">
+            <tr><td colspan="5" class="muted">Lade…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const statusEl = document.getElementById('status');
+    const adminUserEl = document.getElementById('admin-user');
+    const loginBtn = document.getElementById('login');
+    const logoutBtn = document.getElementById('logout');
+    const refreshBtn = document.getElementById('refresh');
+    const tbody = document.getElementById('submissions-body');
+
+    function setStatus(msg, kind = 'info') {
+      if (!msg) { statusEl.style.display = 'none'; statusEl.textContent = ''; return; }
+      statusEl.style.display = 'block';
+      statusEl.textContent = msg;
+      statusEl.style.color = kind === 'error' ? '#ef4444' : '#9ca3af';
+    }
+
+    async function fetchPending() {
+      setStatus('Lade wartende Einreichungen…');
+      tbody.innerHTML = '<tr><td colspan="5" class="muted">Lade…</td></tr>';
+      try {
+        const snap = await db.collection('submissions').where('status','==','pending').get();
+        if (snap.empty) {
+          tbody.innerHTML = '<tr><td colspan="5" class="muted">Keine pending Einreichungen</td></tr>';
+          setStatus(null);
+          return;
+        }
+        const rows = [];
+        snap.forEach(doc => {
+          const d = doc.data();
+          const submittedAt = d.submittedAt && d.submittedAt.toDate ? d.submittedAt.toDate() : null;
+          const submittedStr = submittedAt ? submittedAt.toLocaleString() : '—';
+          const tags = Array.isArray(d.tags) ? d.tags.join(', ') : '';
+          const cardCount = Array.isArray(d.cards) ? d.cards.length : (d.cardCount || '—');
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td><strong>${escapeHtml(d.title || '')}</strong><div class="small muted">${escapeHtml(d.category || '')} · ${escapeHtml(d.difficulty || '')}</div></td>
+            <td>${escapeHtml(d.userEmail || '')}<div class="small muted">UID: ${escapeHtml(d.userId || '')}</div></td>
+            <td>${cardCount} Karten<div class="small muted">Tags: ${escapeHtml(tags)}</div></td>
+            <td>${submittedStr}</td>
+            <td class="actions">
+              <button class="primary" data-approve="${doc.id}">✅ Freigeben</button>
+            </td>
+          `;
+          rows.push(tr);
+        });
+        tbody.innerHTML = '';
+        rows.forEach(r => tbody.appendChild(r));
+      } catch (e) {
+        console.error(e);
+        setStatus('Fehler beim Laden: ' + (e && e.message ? e.message : e), 'error');
+        tbody.innerHTML = '<tr><td colspan="5" class="muted">Fehler beim Laden</td></tr>';
+      }
+    }
+
+    function escapeHtml(s){ return (s||'').replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c])); }
+
+    tbody.addEventListener('click', async (e) => {
+      const btn = e.target.closest('button[data-approve]');
+      if (!btn) return;
+      const id = btn.getAttribute('data-approve');
+      btn.disabled = true; btn.textContent = '⏳ Freigabe…';
+      setStatus('Genehmige Einreichung ' + id + ' …');
+      try {
+        const approveDeck = fns.httpsCallable('approveDeck');
+        const res = await approveDeck({ submissionId: id });
+        setStatus(res?.data?.message || 'Erfolg: Freigegeben');
+        // Nach kurzer Verzögerung Liste aktualisieren
+        setTimeout(fetchPending, 1200);
+      } catch (err) {
+        console.error('approve error', err);
+        const msg = (err && (err.message || err.toString())) || 'Fehler';
+        setStatus('Fehler bei Freigabe: ' + msg, 'error');
+        btn.disabled = false; btn.textContent = '✅ Freigeben';
+      }
+    });
+
+    loginBtn.addEventListener('click', async () => {
+      try {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        await auth.signInWithPopup(provider);
+      } catch (e) {
+        console.error('login error', e);
+        setStatus('Login fehlgeschlagen: ' + (e && e.message ? e.message : e), 'error');
+      }
+    });
+
+    logoutBtn.addEventListener('click', async () => {
+      try { await auth.signOut(); } catch (e) { console.error('logout error', e); }
+    });
+
+    refreshBtn.addEventListener('click', fetchPending);
+
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        adminUserEl.style.display = 'inline';
+        adminUserEl.textContent = user.displayName || user.email || '(ohne Name)';
+        loginBtn.style.display = 'none';
+        logoutBtn.style.display = 'inline-block';
+        fetchPending();
+      } else {
+        adminUserEl.style.display = 'none';
+        loginBtn.style.display = 'inline-block';
+        logoutBtn.style.display = 'none';
+        tbody.innerHTML = '<tr><td colspan="5" class="muted">Bitte zuerst einloggen</td></tr>';
+      }
+    });
+  </script>
+</body>
+</html>
