@@ -14,16 +14,21 @@ console.log('✅ Starting IIFE...');
   'use strict';
   console.log('📝 IIFE started, use strict enabled');
   
+  console.log('1️⃣ Creating $ and $$ functions...');
   const $ = s => document.querySelector(s);
   const $$ = s => document.querySelectorAll(s);
+  console.log('✅ $ and $$ created');
 
+  console.log('2️⃣ Creating state object...');
   const state = {
     data: { folders: [], topics: [], cards: [], settings: { tts: { lang: 'de-DE', voiceURI: '', rate: 0.7, charsUsed: 0, requestsUsed: 0, lastResetDate: new Date().toISOString().split('T')[0] }, ai: { provider: 'openai', keyOpenai: '', keyGrok: '', endpoint: '', apiKey: '' }, drive: { clientId: '' } } },
     session: { active: false, topicId: null, mode: 'beschreibung', answered: 0, correct: 0, current: null, multipleChoiceCorrect: null, maxCards: null, selectedCardCount: null },
     ui: { selectedFolderId: null, selectedTopicId: null, selectedStatsId: null, selectedStatsType: null, collapsedFolders: {} },
     voices: []
   };
+  console.log('✅ State object created');
 
+  console.log('3️⃣ Creating Storage object...');
   const Storage = {
     lastCardCount: 0,
     load(){
