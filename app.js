@@ -4335,6 +4335,8 @@ console.log('✅ Starting IIFE...');
     }
   });
 
+  console.log('6️⃣ Before the }}} closing braces');
+
 }}}
 
 })();
