@@ -123,6 +123,7 @@ export const submitDeck = functions
 
       const docRef = await db.collection("submissions").add(submission);
 
+      // Store full deck JSON directly in Firestore (simpler than using Storage)
       const deckJson = {
         metadata: {
           id: docRef.id,
@@ -139,13 +140,10 @@ export const submitDeck = functions
         cards: data.cards,
       };
 
-      const bucket = admin.storage().bucket();
-      await bucket.file(`submissions/${submission.deckFileName}`).save(
-        JSON.stringify(deckJson, null, 2),
-        {
-          metadata: { contentType: "application/json" },
-        }
-      );
+      // Save deck content directly to the submission document
+      await docRef.update({
+        deckContent: deckJson
+      });
 
       return {
         success: true,
@@ -161,20 +159,21 @@ export const submitDeck = functions
     }
   });
 
-// Admin functions - require Secret Manager API to be enabled
-// Uncomment when you have set up GITHUB_TOKEN secret in Firebase
-/*
+// Admin approval function - requires GITHUB_TOKEN secret
 const GITHUB_TOKEN = defineSecret("GITHUB_TOKEN");
+
+// Hardcoded admin email - change this to your email
+const ADMIN_EMAIL = "gerald.kranewitter@gmail.com";
 
 export const approveDeck = functions
   .region("europe-west1")
   .runWith({ secrets: [GITHUB_TOKEN] })
   .https.onCall(async (data: { submissionId: string }, context) => {
-    const adminEmail = process.env.ADMIN_EMAIL;
-    if (!context.auth?.token?.email || context.auth.token.email !== adminEmail) {
+    // Check admin permission
+    if (!context.auth?.token?.email || context.auth.token.email !== ADMIN_EMAIL) {
       throw new functions.https.HttpsError(
         "permission-denied",
-        "Nur Admin erlaubt"
+        `Nur Admin erlaubt. Eingeloggt als: ${context.auth?.token?.email || 'nicht eingeloggt'}`
       );
     }
 
@@ -190,18 +189,23 @@ export const approveDeck = functions
 
       const submissionData = submissionSnap.data() as any;
 
-      const bucket = admin.storage().bucket();
-      const deckFile = bucket.file(`submissions/${submissionData.deckFileName}`);
-      const [deckContent] = await deckFile.download();
-      const deckJson = JSON.parse(deckContent.toString());
+      // Get deck content directly from Firestore (saved in deckContent field)
+      const deckJson = submissionData.deckContent;
+      if (!deckJson) {
+        throw new functions.https.HttpsError("not-found", "Deck-Inhalt nicht gefunden");
+      }
 
       const githubToken = GITHUB_TOKEN.value();
+      if (!githubToken) {
+        throw new functions.https.HttpsError("failed-precondition", "GitHub Token nicht konfiguriert");
+      }
+
       const owner = "kranege1";
       const repo = "LernKarten";
       const branch = "gh-pages";
       const filePath = `shared-decks/${submissionData.deckFileName}`;
 
-      // 1) Upload Deck Datei
+      // 1) Upload Deck file to GitHub
       const deckContent64 = Buffer.from(
         JSON.stringify(deckJson, null, 2)
       ).toString("base64");
@@ -217,17 +221,19 @@ export const approveDeck = functions
           body: JSON.stringify({
             message: `Add community deck: ${submissionData.title}`,
             content: deckContent64,
+            branch: branch,
           }),
         }
       );
 
       if (!uploadResponse.ok) {
-        throw new Error(`GitHub upload failed: ${uploadResponse.statusText}`);
+        const errText = await uploadResponse.text();
+        throw new Error(`GitHub upload failed: ${uploadResponse.status} - ${errText}`);
       }
 
-      // 2) Katalog aktualisieren
+      // 2) Update catalog.json
       const catalogResponse = await fetch(
-        `https://api.github.com/repos/${owner}/${repo}/contents/shared-decks/catalog.json`,
+        `https://api.github.com/repos/${owner}/${repo}/contents/shared-decks/catalog.json?ref=${branch}`,
         {
           headers: {
             Authorization: `token ${githubToken}`,
@@ -240,7 +246,7 @@ export const approveDeck = functions
       }
 
       const catalogData: any = await catalogResponse.json();
-      const catalogContent = Buffer.from(catalogData.content, "base64").toString();
+      const catalogContent = Buffer.from(catalogData.content, "base64").toString("utf-8");
       const catalog = JSON.parse(catalogContent);
 
       catalog.decks.push({
@@ -249,10 +255,10 @@ export const approveDeck = functions
         description: submissionData.description,
         category: submissionData.category,
         language: "de",
-        cardCount: submissionData.cards.length,
+        cardCount: Array.isArray(submissionData.cards) ? submissionData.cards.length : 0,
         difficulty: submissionData.difficulty,
-        author: submissionData.author,
-        tags: submissionData.tags,
+        author: submissionData.author || "Anonym",
+        tags: submissionData.tags || [],
         fileName: submissionData.deckFileName,
         downloadUrl: `https://${owner}.github.io/${repo}/shared-decks/${submissionData.deckFileName}`,
         created: new Date().toISOString().split("T")[0],
@@ -276,14 +282,17 @@ export const approveDeck = functions
             message: `Update catalog: add ${submissionData.title}`,
             content: catalogContent64,
             sha: catalogData.sha,
+            branch: branch,
           }),
         }
       );
 
       if (!catalogUpdateResponse.ok) {
-        throw new Error(`Catalog update failed: ${catalogUpdateResponse.statusText}`);
+        const errText = await catalogUpdateResponse.text();
+        throw new Error(`Catalog update failed: ${catalogUpdateResponse.status} - ${errText}`);
       }
 
+      // 3) Mark submission as approved
       await db.collection("submissions").doc(data.submissionId).update({
         status: "approved",
         approvedAt: admin.firestore.FieldValue.serverTimestamp(),
@@ -292,7 +301,7 @@ export const approveDeck = functions
 
       return {
         success: true,
-        message: "Deck wurde genehmigt und veröffentlicht!",
+        message: "Deck wurde genehmigt und auf GitHub veröffentlicht!",
       };
     } catch (error: any) {
       console.error("Approve error:", error);
@@ -302,4 +311,4 @@ export const approveDeck = functions
       );
     }
   });
-*/
+

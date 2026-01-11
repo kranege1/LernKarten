@@ -28,7 +28,7 @@
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
     const db = firebase.firestore();
-    const fns = firebase.functions("europe-west1");
+    const fns = firebase.app().functions("europe-west1");
   </script>
 
   <style>
