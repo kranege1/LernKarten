@@ -126,8 +126,6 @@ console.log('✅ Starting IIFE...');
     if(costEl) costEl.textContent = costUsed.toFixed(4);
   }
 
-  console.log('5️⃣ Before init() function...');
-
   function init(){
     console.log('Init started...');
     try {
