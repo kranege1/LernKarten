@@ -1,6 +1,16 @@
 /* LernKarten – App Logic */
 (function(){
   'use strict';
+  
+  // Global Error Handler für Debugging
+  window.addEventListener('error', (event) => {
+    console.error('❌ Unhandled Error:', event.error);
+    console.error('Stack:', event.error?.stack);
+  });
+  window.addEventListener('unhandledrejection', (event) => {
+    console.error('❌ Unhandled Promise Rejection:', event.reason);
+  });
+  
   const $ = s => document.querySelector(s);
   const $$ = s => document.querySelectorAll(s);
 
@@ -1236,15 +1246,26 @@
   };
 
   function bindTabs(){
-    $$('.tab').forEach(btn => {
+    console.log('bindTabs: Suche nach .tab buttons mit data-tab...');
+    const tabButtons = $$('button.tab[data-tab]');
+    console.log('bindTabs: Gefunden', tabButtons.length, 'Tab Buttons');
+    tabButtons.forEach(btn => {
+      console.log('bindTabs: Binde', btn.getAttribute('data-tab'));
       btn.addEventListener('click', () => {
-        $$('.tab').forEach(b=>b.classList.remove('active'));
+        console.log('Tab clicked:', btn.getAttribute('data-tab'));
+        $$('button.tab[data-tab]').forEach(b=>b.classList.remove('active'));
         btn.classList.add('active');
         const id = btn.getAttribute('data-tab');
+        console.log('Aktiviere Tab:', id);
         $$('.tab-panel').forEach(p=>p.classList.remove('active'));
-        $(`#tab-${id}`).classList.add('active');
-        if(id==='statistik') renderStats();
-        if(id==='verwalten') renderCardsTable();
+        const panel = $(`#tab-${id}`);
+        if(panel) {
+          panel.classList.add('active');
+          if(id==='statistik') renderStats();
+          if(id==='verwalten') renderCardsTable();
+        } else {
+          console.error('Panel nicht gefunden: #tab-' + id);
+        }
       });
     });
     
