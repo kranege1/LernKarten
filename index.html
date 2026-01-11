@@ -35,7 +35,7 @@
 			// Firebase initialisieren
 			firebase.initializeApp(firebaseConfig);
 			window.firebaseAuth = firebase.auth();
-			window.firebaseFunctions = firebase.functions("europe-west1");
+		window.firebaseFunctions = firebase.app().functions("europe-west1");
 			// App Check (reCAPTCHA v3) für No-Login Submits
 			window.APP_CHECK_SITE_KEY = "BITTE_RECAPTCHA_V3_SITE_KEY";
 			try { firebase.appCheck().activate(window.APP_CHECK_SITE_KEY, true); } catch (e) { console.warn('App Check init fehlgeschlagen', e); }
