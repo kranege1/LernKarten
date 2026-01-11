@@ -776,7 +776,7 @@ dialog { border: 1px solid var(--border); border-radius: 12px; padding: 0; backg
   bottom: 0;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
-  display: flex !important;
+  display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;

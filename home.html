@@ -7,6 +7,24 @@
 	<link rel="stylesheet" href="styles.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<!-- Firebase (nur Auth für Admin-Link) -->
+	<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+	<script>
+		// Firebase Configuration – wie in index.html einsetzen
+		const firebaseConfig = {
+			apiKey: "BITTE_FIREBASE_API_KEY_EINTRAGEN",
+			authDomain: "BITTE_PROJECT_ID.firebaseapp.com",
+			projectId: "BITTE_PROJECT_ID_EINTRAGEN",
+			storageBucket: "BITTE_PROJECT_ID.appspot.com",
+			messagingSenderId: "BITTE_SENDER_ID_EINTRAGEN",
+			appId: "BITTE_APP_ID_EINTRAGEN",
+		};
+		firebase.initializeApp(firebaseConfig);
+		const homeAuth = firebase.auth();
+		// Admin-E-Mail (UI-Anzeige; Server prüft zusätzlich in Cloud Function)
+		window.APP_ADMIN_EMAIL = window.APP_ADMIN_EMAIL || "ADMIN_EMAIL_EINTRAGEN";
+	</script>
 	<style>
 		* {
 			margin: 0;
@@ -585,6 +603,7 @@
 			</div>
 			<div class="nav-buttons">
 				<a href="index.html" class="btn btn-primary">🚀 App starten</a>
+				<a id="admin-link" href="admin.html" class="btn btn-secondary" style="display:none;">🛠️ Admin</a>
 			</div>
 		</div>
 	</header>
@@ -903,6 +922,17 @@
 		document.getElementById('difficulty-filter').addEventListener('change', applyFilters);
 		
 		loadCatalog();
+
+		// Admin-Link Sichtbarkeit je nach Login steuern
+		homeAuth.onAuthStateChanged((user) => {
+			const adminLink = document.getElementById('admin-link');
+			if (!adminLink) return;
+			try {
+				const adminEmail = (window && window.APP_ADMIN_EMAIL) ? String(window.APP_ADMIN_EMAIL) : '';
+				const isAdmin = !!(user && user.email && adminEmail && user.email === adminEmail);
+				adminLink.style.display = isAdmin ? 'inline-block' : 'none';
+			} catch(e){ adminLink.style.display = 'none'; }
+		});
 	</script>
 </body>
 </html>
