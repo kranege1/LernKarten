@@ -128,6 +128,7 @@
             <td>${submittedStr}</td>
             <td class="actions">
               <button class="primary" data-approve="${doc.id}">✅ Freigeben</button>
+              <button class="ghost" data-delete="${doc.id}" style="color:#ef4444;">🗑️ Löschen</button>
             </td>
           `;
           rows.push(tr);
@@ -144,22 +145,43 @@
     function escapeHtml(s){ return (s||'').replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c])); }
 
     tbody.addEventListener('click', async (e) => {
-      const btn = e.target.closest('button[data-approve]');
-      if (!btn) return;
-      const id = btn.getAttribute('data-approve');
-      btn.disabled = true; btn.textContent = '⏳ Freigabe…';
-      setStatus('Genehmige Einreichung ' + id + ' …');
-      try {
-        const approveDeck = fns.httpsCallable('approveDeck');
-        const res = await approveDeck({ submissionId: id });
-        setStatus(res?.data?.message || 'Erfolg: Freigegeben');
-        // Nach kurzer Verzögerung Liste aktualisieren
-        setTimeout(fetchPending, 1200);
-      } catch (err) {
-        console.error('approve error', err);
-        const msg = (err && (err.message || err.toString())) || 'Fehler';
-        setStatus('Fehler bei Freigabe: ' + msg, 'error');
-        btn.disabled = false; btn.textContent = '✅ Freigeben';
+      // Handle Approve button
+      const approveBtn = e.target.closest('button[data-approve]');
+      if (approveBtn) {
+        const id = approveBtn.getAttribute('data-approve');
+        approveBtn.disabled = true; approveBtn.textContent = '⏳ Freigabe…';
+        setStatus('Genehmige Einreichung ' + id + ' …');
+        try {
+          const approveDeck = fns.httpsCallable('approveDeck');
+          const res = await approveDeck({ submissionId: id });
+          setStatus(res?.data?.message || 'Erfolg: Freigegeben');
+          setTimeout(fetchPending, 1200);
+        } catch (err) {
+          console.error('approve error', err);
+          const msg = (err && (err.message || err.toString())) || 'Fehler';
+          setStatus('Fehler bei Freigabe: ' + msg, 'error');
+          approveBtn.disabled = false; approveBtn.textContent = '✅ Freigeben';
+        }
+        return;
+      }
+
+      // Handle Delete button
+      const deleteBtn = e.target.closest('button[data-delete]');
+      if (deleteBtn) {
+        const id = deleteBtn.getAttribute('data-delete');
+        if (!confirm('Einreichung wirklich löschen?')) return;
+        deleteBtn.disabled = true; deleteBtn.textContent = '⏳ Lösche…';
+        setStatus('Lösche Einreichung ' + id + ' …');
+        try {
+          await db.collection('submissions').doc(id).delete();
+          setStatus('Einreichung gelöscht');
+          setTimeout(fetchPending, 500);
+        } catch (err) {
+          console.error('delete error', err);
+          const msg = (err && (err.message || err.toString())) || 'Fehler';
+          setStatus('Fehler beim Löschen: ' + msg, 'error');
+          deleteBtn.disabled = false; deleteBtn.textContent = '🗑️ Löschen';
+        }
       }
     });
 
