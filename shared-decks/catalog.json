@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "lastUpdated": "2026-01-11T06:52:28.195Z",
+  "lastUpdated": "2026-01-11T07:23:45.387Z",
   "decks": [
     {
       "id": "biologie-zellbiologie",
@@ -72,24 +72,6 @@
       ],
       "fileName": "mathe-aufgaben-2-klasse.json",
       "downloadUrl": "https://kranege1.github.io/LernKarten/shared-decks/mathe-aufgaben-2-klasse.json",
-      "created": "2026-01-10"
-    },
-    {
-      "id": "english-5-klasse",
-      "title": "English 5. Klasse",
-      "description": "Englisch Vokabeln und Grammatik für die 5. Klasse",
-      "category": "Sprachen",
-      "language": "de",
-      "cardCount": 30,
-      "difficulty": "LEICHT",
-      "author": "Community User",
-      "tags": [
-        "Englisch",
-        "Sprachen",
-        "5. Klasse"
-      ],
-      "fileName": "english-5-klasse.json",
-      "downloadUrl": "https://kranege1.github.io/LernKarten/shared-decks/english-5-klasse.json",
       "created": "2026-01-10"
     },
     {
