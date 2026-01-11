@@ -315,7 +315,10 @@ console.log('✅ Starting IIFE...');
     }
   };
 
+  console.log('BB After Scheduler object definition');
+
   // --- TTS ---
+  console.log('AA Before TTS object definition');
   const TTS = {
     currentAudio: null,
     initVoices(){
@@ -1275,6 +1278,8 @@ console.log('✅ Starting IIFE...');
       return 'type';
     }
   };
+
+  console.log('CC After AI object definition');
 
   function bindTabs(){
     console.log('bindTabs: Suche nach .tab buttons mit data-tab...');
