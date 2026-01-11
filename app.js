@@ -369,10 +369,8 @@ console.log('✅ Starting IIFE...');
   }
 
   // --- TTS ---
-  console.log('AA Before TTS object definition');
   const TTS = {
     currentAudio: null,
-    __debug1: (() => { console.log('DEBUG: TTS.currentAudio initialized'); return true; })(),
     initVoices(){
       if(!('speechSynthesis' in window)) return;
       const load = () => {
@@ -590,8 +588,6 @@ console.log('✅ Starting IIFE...');
       setTtsStatus(null);
     }
   };
-  console.log('✅ TTS object fully defined and assigned');
-  console.log('🔹 About to define setTtsStatus function');
 
   // UI helper to show/hide TTS status (null hides)
   function setTtsStatus(text){
@@ -606,10 +602,8 @@ console.log('✅ Starting IIFE...');
       statusText.textContent = '';
     }
   }
-  console.log('🔹 setTtsStatus function defined');
 
   // --- GitHub Community Upload ---
-  console.log('🔹 About to define GitHub object');
   const GitHub = {
     token: '', // WICHTIG: GitHub Token hier eintragen (nicht committen!)
     owner: 'kranege1',
@@ -4357,7 +4351,5 @@ console.log('✅ Starting IIFE...');
       initFirebaseAuth();
     }
   });
-
-  console.log('6️⃣ Before closing IIFE');
 
 })();
