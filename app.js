@@ -78,6 +78,8 @@ console.log('✅ Starting IIFE...');
     Storage = {}; // Fallback
   }
 
+  console.log('4️⃣ After Storage, defining helper functions...');
+
   function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2); }
   function todayISO(){ return new Date().toISOString().slice(0,10); }
   function toISODate(d){ return d.toISOString().slice(0,10); }
@@ -122,6 +124,8 @@ console.log('✅ Starting IIFE...');
     if(charsEl) charsEl.textContent = charsUsed.toLocaleString();
     if(costEl) costEl.textContent = costUsed.toFixed(4);
   }
+
+  console.log('5️⃣ Before init() function...');
 
   function init(){
     console.log('Init started...');
