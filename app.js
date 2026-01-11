@@ -4252,6 +4252,8 @@ console.log('✅ Starting IIFE...');
   // --- Helpers ---
   function escapeHtml(s){ return (s||'').replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c])); }
   function escapeAttr(s){ return (s||'').replace(/["']/g, c=> c==='"'? '&quot;' : '&#39;'); }
+  
+  console.log('🔧 Helpers und Funktionen definitions fertig');
 
   // --- Firebase Authentication ---
   function initFirebaseAuth() {
@@ -4310,6 +4312,8 @@ console.log('✅ Starting IIFE...');
       });
     }
   }
+
+  console.log('🔐 Firebase-Auth-Funktion definiert');
 
   // Kickoff
   console.log('⚙️ App Kickoff: Registriere DOMContentLoaded listener');
