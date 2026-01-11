@@ -131,10 +131,13 @@ console.log('✅ Starting IIFE...');
   function init(){
     console.log('Init started...');
     try {
+      console.log('8️⃣ Calling Storage.load()');
       Storage.load();
       console.log('Storage loaded');
+      console.log('9️⃣ Calling TTS.initVoices()');
       TTS.initVoices();
       console.log('TTS initialized');
+      console.log('🔟 Calling bindTabs()');
       bindTabs();
       console.log('Tabs bound');
       bindManage();
