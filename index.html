@@ -36,9 +36,15 @@
 			firebase.initializeApp(firebaseConfig);
 			window.firebaseAuth = firebase.auth();
 		window.firebaseFunctions = firebase.app().functions("europe-west1");
-			// App Check (reCAPTCHA v3) für No-Login Submits
-			window.APP_CHECK_SITE_KEY = "BITTE_RECAPTCHA_V3_SITE_KEY";
-			try { firebase.appCheck().activate(window.APP_CHECK_SITE_KEY, true); } catch (e) { console.warn('App Check init fehlgeschlagen', e); }
+		// App Check (reCAPTCHA v3) für No-Login Submits - nach DOM-Load initialisieren
+		window.APP_CHECK_SITE_KEY = "BITTE_RECAPTCHA_V3_SITE_KEY";
+		window.addEventListener('DOMContentLoaded', () => {
+			try { 
+				if (window.APP_CHECK_SITE_KEY && window.APP_CHECK_SITE_KEY !== "BITTE_RECAPTCHA_V3_SITE_KEY") {
+					firebase.appCheck().activate(window.APP_CHECK_SITE_KEY, true); 
+				}
+			} catch (e) { console.warn('App Check init fehlgeschlagen', e); }
+		});
 			// Admin-E-Mail für UI (nur Anzeige der Admin-Seite; Server prüft zusätzlich)
 			window.APP_ADMIN_EMAIL = "ADMIN_EMAIL_EINTRAGEN";
 		</script>
