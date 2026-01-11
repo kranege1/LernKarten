@@ -54,7 +54,12 @@ console.log('✅ Starting IIFE...');
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      const name = topicId ? `lernKarten_${getTopicName(topicId)}.json` : `lernKarten_export.json`;
+      // Verwende Fallback wenn getTopicName noch nicht definiert ist
+      let name = 'lernKarten_export.json';
+      if(topicId) {
+        const topic = state.data.topics.find(t=>t.id===topicId);
+        name = `lernKarten_${topic?.name || topicId}.json`;
+      }
       a.download = name;
       a.click();
       URL.revokeObjectURL(url);
