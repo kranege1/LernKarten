@@ -33,44 +33,50 @@ console.log('✅ Starting IIFE...');
   console.log('✅ State object created');
 
   console.log('3️⃣ Creating Storage object...');
-  const Storage = {
-    lastCardCount: 0,
-    load(){
-      const raw = localStorage.getItem('lernKarten');
-      if(raw){
-        try {
-          const parsed = JSON.parse(raw);
-          if(parsed.folders) state.data.folders = parsed.folders;
-          if(parsed.topics) state.data.topics = parsed.topics;
-          if(parsed.cards) state.data.cards = parsed.cards;
-          if(parsed.settings) state.data.settings = { ...state.data.settings, ...parsed.settings };
-          this.lastCardCount = state.data.cards.length;
-        } catch(e){ console.error('Load error', e); }
+  let Storage;
+  try {
+    Storage = {
+      lastCardCount: 0,
+      load(){
+        const raw = localStorage.getItem('lernKarten');
+        if(raw){
+          try {
+            const parsed = JSON.parse(raw);
+            if(parsed.folders) state.data.folders = parsed.folders;
+            if(parsed.topics) state.data.topics = parsed.topics;
+            if(parsed.cards) state.data.cards = parsed.cards;
+            if(parsed.settings) state.data.settings = { ...state.data.settings, ...parsed.settings };
+            this.lastCardCount = state.data.cards.length;
+          } catch(e){ console.error('Load error', e); }
+        }
+      },
+      save(){
+        localStorage.setItem('lernKarten', JSON.stringify(state.data));
+      },
+      exportJSON(topicId){
+        const data = topicId ? { topics: state.data.topics.filter(t=>t.id===topicId), cards: state.data.cards.filter(c=>c.topicId===topicId) } : { folders: state.data.folders, topics: state.data.topics, cards: state.data.cards };
+        const json = JSON.stringify(data, null, 2);
+        const blob = new Blob([json], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        let name = 'lernKarten_export.json';
+        if(topicId) {
+          const topic = state.data.topics.find(t=>t.id===topicId);
+          name = `lernKarten_${topic?.name || topicId}.json`;
+        }
+        a.download = name;
+        a.click();
+        URL.revokeObjectURL(url);
       }
-    },
-    save(){
-      localStorage.setItem('lernKarten', JSON.stringify(state.data));
-    },
-    exportJSON(topicId){
-      const data = topicId ? { topics: state.data.topics.filter(t=>t.id===topicId), cards: state.data.cards.filter(c=>c.topicId===topicId) } : { folders: state.data.folders, topics: state.data.topics, cards: state.data.cards };
-      const json = JSON.stringify(data, null, 2);
-      const blob = new Blob([json], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      // Verwende Fallback wenn getTopicName noch nicht definiert ist
-      let name = 'lernKarten_export.json';
-      if(topicId) {
-        const topic = state.data.topics.find(t=>t.id===topicId);
-        name = `lernKarten_${topic?.name || topicId}.json`;
-      }
-      a.download = name;
-      a.click();
-      URL.revokeObjectURL(url);
-    }
-  };
-
-
+    };
+    console.log('✅ Storage object created');
+  } catch(e) {
+    console.error('❌ ERROR creating Storage object:', e.message);
+    console.error('❌ Stack:', e.stack);
+    alert('FATAL: Storage object creation failed:\n' + e.message);
+    Storage = {}; // Fallback
+  }
 
   function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2); }
   function todayISO(){ return new Date().toISOString().slice(0,10); }
