@@ -591,6 +591,7 @@ console.log('✅ Starting IIFE...');
     }
   };
   console.log('✅ TTS object fully defined and assigned');
+  console.log('🔹 About to define setTtsStatus function');
 
   // UI helper to show/hide TTS status (null hides)
   function setTtsStatus(text){
@@ -605,8 +606,10 @@ console.log('✅ Starting IIFE...');
       statusText.textContent = '';
     }
   }
+  console.log('🔹 setTtsStatus function defined');
 
   // --- GitHub Community Upload ---
+  console.log('🔹 About to define GitHub object');
   const GitHub = {
     token: '', // WICHTIG: GitHub Token hier eintragen (nicht committen!)
     owner: 'kranege1',
@@ -837,6 +840,16 @@ console.log('✅ Starting IIFE...');
 
         return true;
       } catch (error) {
+        console.error('GitHub upload error:', error);
+        const statusEl = $('#upload-status');
+        statusEl.innerHTML = `❌ Fehler: ${error.message}`;
+        statusEl.style.background = 'rgba(239, 68, 68, 0.1)';
+        statusEl.style.borderLeft = '3px solid #ef4444';
+        throw error;
+      }
+    }
+  };
+
   // Firebase Integration für Community Uploads
   const FirebaseUpload = {
     async submitDeck(deckData) {
