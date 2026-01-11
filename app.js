@@ -317,6 +317,57 @@ console.log('✅ Starting IIFE...');
 
   console.log('BB After Scheduler object definition');
 
+  function refreshVoiceSelectors(){
+    const langSel = $('#tts-lang');
+    const voiceSel = $('#tts-voice');
+    
+    // Use Web Speech API voices
+    const voices = state.voices || [];
+    
+    // Whitelist für erlaubte Sprachen mit bevorzugten Varianten
+    const allowedLanguages = {
+      'de': { name: 'Deutsch', preferred: 'de-DE' },
+      'en': { name: 'Englisch', preferred: 'en-US' },
+      'it': { name: 'Italienisch', preferred: 'it-IT' },
+      'es': { name: 'Spanisch', preferred: 'es-ES' },
+      'fr': { name: 'Französisch', preferred: 'fr-FR' }
+    };
+    
+    // Finde verfügbare Sprachen (nur eine Variante pro Sprache)
+    const allLangs = [...new Set(voices.map(v=>v.lang))];
+    const languageMap = new Map();
+    
+    for(const lang of allLangs){
+      const prefix = lang.split('-')[0];
+      if(allowedLanguages[prefix]){
+        // Bevorzuge die Hauptvariante (de-DE, en-US, etc.), sonst erste verfügbare
+        if(!languageMap.has(prefix) || lang === allowedLanguages[prefix].preferred){
+          languageMap.set(prefix, lang);
+        }
+      }
+    }
+    
+    // Erstelle sortierte Liste der Sprachen
+    const sortedLanguages = ['de', 'en', 'it', 'es', 'fr']
+      .filter(prefix => languageMap.has(prefix))
+      .map(prefix => ({
+        code: languageMap.get(prefix),
+        name: allowedLanguages[prefix].name
+      }));
+    
+    // Erstelle Dropdown mit nur 5 Einträgen
+    langSel.innerHTML = sortedLanguages.map(lang => 
+      `<option value="${lang.code}">${lang.name}</option>`
+    ).join('');
+    
+    langSel.value = state.data.settings.tts.lang || 'de-DE';
+    
+    const filteredVoices = voices.filter(v=>v.lang===langSel.value);
+    voiceSel.innerHTML = `<option value="">Standard</option>` + 
+      filteredVoices.map(v=>`<option value="${v.voiceURI}">${v.name}</option>`).join('');
+    voiceSel.value = state.data.settings.tts.voiceURI || '';
+  }
+
   // --- TTS ---
   console.log('AA Before TTS object definition');
   const TTS = {
@@ -551,57 +602,6 @@ console.log('✅ Starting IIFE...');
       statusEl.style.display = 'none';
       statusText.textContent = '';
     }
-  }
-
-  function refreshVoiceSelectors(){
-    const langSel = $('#tts-lang');
-    const voiceSel = $('#tts-voice');
-    
-    // Use Web Speech API voices
-    const voices = state.voices || [];
-    
-    // Whitelist für erlaubte Sprachen mit bevorzugten Varianten
-    const allowedLanguages = {
-      'de': { name: 'Deutsch', preferred: 'de-DE' },
-      'en': { name: 'Englisch', preferred: 'en-US' },
-      'it': { name: 'Italienisch', preferred: 'it-IT' },
-      'es': { name: 'Spanisch', preferred: 'es-ES' },
-      'fr': { name: 'Französisch', preferred: 'fr-FR' }
-    };
-    
-    // Finde verfügbare Sprachen (nur eine Variante pro Sprache)
-    const allLangs = [...new Set(voices.map(v=>v.lang))];
-    const languageMap = new Map();
-    
-    for(const lang of allLangs){
-      const prefix = lang.split('-')[0];
-      if(allowedLanguages[prefix]){
-        // Bevorzuge die Hauptvariante (de-DE, en-US, etc.), sonst erste verfügbare
-        if(!languageMap.has(prefix) || lang === allowedLanguages[prefix].preferred){
-          languageMap.set(prefix, lang);
-        }
-      }
-    }
-    
-    // Erstelle sortierte Liste der Sprachen
-    const sortedLanguages = ['de', 'en', 'it', 'es', 'fr']
-      .filter(prefix => languageMap.has(prefix))
-      .map(prefix => ({
-        code: languageMap.get(prefix),
-        name: allowedLanguages[prefix].name
-      }));
-    
-    // Erstelle Dropdown mit nur 5 Einträgen
-    langSel.innerHTML = sortedLanguages.map(lang => 
-      `<option value="${lang.code}">${lang.name}</option>`
-    ).join('');
-    
-    langSel.value = state.data.settings.tts.lang || 'de-DE';
-    
-    const filteredVoices = voices.filter(v=>v.lang===langSel.value);
-    voiceSel.innerHTML = `<option value="">Standard</option>` + 
-      filteredVoices.map(v=>`<option value="${v.voiceURI}">${v.name}</option>`).join('');
-    voiceSel.value = state.data.settings.tts.voiceURI || '';
   }
 
   // --- GitHub Community Upload ---
